@@ -1,9 +1,11 @@
 package com.caseykulm.retroravelry.models.craft;
 
-public class ListCraft {
+import com.google.auto.value.AutoValue;
 
-  private int id;
-  private String name;
-  private String permalink;
+@AutoValue public abstract class ListCraft {
+
+  public abstract int id();
+  public abstract String name();
+  public abstract String permalink();
 
 }

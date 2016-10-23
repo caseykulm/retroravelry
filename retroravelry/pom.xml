@@ -13,5 +13,9 @@
       <groupId>com.squareup.retrofit2</groupId>
       <artifactId>retrofit</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.google.auto.value</groupId>
+      <artifactId>auto-value</artifactId>
+    </dependency>
   </dependencies>
 </project>

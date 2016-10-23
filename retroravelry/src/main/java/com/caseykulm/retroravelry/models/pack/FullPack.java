@@ -1,18 +1,20 @@
 package com.caseykulm.retroravelry.models.pack;
 
-public class FullPack {
+import com.google.auto.value.AutoValue;
 
-  private String color_family_id;
-  private String colorway;
-  private String dye_lot;
-  private int id;
-  private String personal_name;
-  private int project_id;
-  private int shop_id;
-  private String shop_name;
-  private String skeins;
-  private int stash_id;
-  private int yarn_id;
-  private String yarn_name;
+@AutoValue public abstract class FullPack {
+
+  public abstract String color_family_id();
+  public abstract String colorway();
+  public abstract String dye_lot();
+  public abstract int id();
+  public abstract String personal_name();
+  public abstract int project_id();
+  public abstract int shop_id();
+  public abstract String shop_name();
+  public abstract String skeins();
+  public abstract int stash_id();
+  public abstract int yarn_id();
+  public abstract String yarn_name();
 
 }

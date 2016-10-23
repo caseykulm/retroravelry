@@ -2,17 +2,18 @@ package com.caseykulm.retroravelry.models.pattern;
 
 import com.caseykulm.retroravelry.models.patternauthor.PatternAuthor;
 import com.caseykulm.retroravelry.models.photo.Photo;
+import com.google.auto.value.AutoValue;
 import java.util.Map;
 
-public class ListPattern {
+@AutoValue public abstract class ListPattern {
 
-  private PatternAuthor designer;
-  private Photo first_photo;
-  private boolean free;
-  private int id;
-  private String name;
-  private PatternAuthor pattern_author;
-  private String permalink;
-  private Map<String, String> personal_attributes;
+  public abstract PatternAuthor designer();
+  public abstract Photo first_photo();
+  public abstract boolean free();
+  public abstract int id();
+  public abstract String name();
+  public abstract PatternAuthor pattern_author();
+  public abstract String permalink();
+  public abstract Map<String, String> personal_attributes();
 
 }

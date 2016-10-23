@@ -1,8 +1,10 @@
 package com.caseykulm.retroravelry.models.patternattribute;
 
-public class PatternAttribute {
+import com.google.auto.value.AutoValue;
 
-  private int id;
-  private String permalink;
+@AutoValue public abstract class PatternAttribute {
+
+  public abstract int id();
+  public abstract String permalink();
 
 }

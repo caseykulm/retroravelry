@@ -1,8 +1,10 @@
 package com.caseykulm.retroravelry.models.printing;
 
-public class ListPrinting {
+import com.google.auto.value.AutoValue;
 
-  private String pattern_source;
-  private String primary_source;
+@AutoValue public abstract class ListPrinting {
+
+  public abstract String pattern_source();
+  public abstract String primary_source();
 
 }

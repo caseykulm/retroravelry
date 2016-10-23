@@ -15,6 +15,15 @@
       <artifactId>retroravelry</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.squareup.retrofit2</groupId>
+      <artifactId>converter-moshi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.ryanharter.auto.value</groupId>
+      <artifactId>auto-value-moshi</artifactId>
+      <version>0.4.1</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

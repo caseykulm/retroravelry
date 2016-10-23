@@ -1,10 +1,11 @@
 package com.caseykulm.retroravelry.responses.patterns;
 
 import com.caseykulm.retroravelry.models.pattern.ListPattern;
+import com.google.auto.value.AutoValue;
 import java.util.List;
 
-public class SearchPatternsResponse {
+@AutoValue public abstract class SearchPatternsResponse {
 
-  private List<ListPattern> patterns;
+  public abstract List<ListPattern> patterns();
 
 }

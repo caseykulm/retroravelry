@@ -1,12 +1,14 @@
 package com.caseykulm.retroravelry.models.user;
 
-public class SmallUser {
+import com.google.auto.value.AutoValue;
 
-  private int id;
-  private String large_photo_url;
-  private String photo_url;
-  private String small_photo_url;
-  private String tiny_photo_url;
-  private String username;
+@AutoValue public abstract class SmallUser {
+
+  public abstract int id();
+  public abstract String large_photo_url();
+  public abstract String photo_url();
+  public abstract String small_photo_url();
+  public abstract String tiny_photo_url();
+  public abstract String username();
 
 }

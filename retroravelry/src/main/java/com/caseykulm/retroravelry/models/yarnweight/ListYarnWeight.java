@@ -1,8 +1,10 @@
 package com.caseykulm.retroravelry.models.yarnweight;
 
-public class ListYarnWeight {
+import com.google.auto.value.AutoValue;
 
-  private int id;
-  private String name;
+@AutoValue public abstract class ListYarnWeight {
+
+  public abstract int id();
+  public abstract String name();
 
 }

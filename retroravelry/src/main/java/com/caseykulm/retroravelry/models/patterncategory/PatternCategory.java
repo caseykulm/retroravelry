@@ -1,10 +1,12 @@
 package com.caseykulm.retroravelry.models.patterncategory;
 
-public class PatternCategory {
+import com.google.auto.value.AutoValue;
 
-  private int id;
-  private String name;
-  private PatternCategory parent;
-  private String permalink;
+@AutoValue public abstract class PatternCategory {
+
+  public abstract int id();
+  public abstract String name();
+  public abstract PatternCategory parent();
+  public abstract String permalink();
 
 }

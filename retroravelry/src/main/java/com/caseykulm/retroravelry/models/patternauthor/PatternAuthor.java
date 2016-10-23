@@ -1,15 +1,16 @@
 package com.caseykulm.retroravelry.models.patternauthor;
 
 import com.caseykulm.retroravelry.models.user.SmallUser;
+import com.google.auto.value.AutoValue;
 import java.util.List;
 
-public class PatternAuthor {
+@AutoValue public abstract class PatternAuthor {
 
-  private int favorites_count;
-  private int id;
-  private String name;
-  private int patterns_count;
-  private String permalink;
-  private List<SmallUser> users;
+  public abstract int favorites_count();
+  public abstract int id();
+  public abstract String name();
+  public abstract int patterns_count();
+  public abstract String permalink();
+  public abstract List<SmallUser> users();
 
 }

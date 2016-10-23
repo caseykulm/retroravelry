@@ -1,9 +1,10 @@
 package com.caseykulm.retroravelry.responses.patterns;
 
 import com.caseykulm.retroravelry.models.pattern.FullPattern;
+import com.google.auto.value.AutoValue;
 
-public class ShowPatternResponse {
+@AutoValue public abstract class ShowPatternResponse {
 
-  private FullPattern patterns;
+  public abstract FullPattern patterns();
 
 }
