@@ -20,6 +20,7 @@
 
   <modules>
     <module>retroravelry</module>
+    <module>retroravelry-rxjava</module>
     <module>samples</module>
   </modules>
 
