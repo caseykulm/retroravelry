@@ -1,6 +1,7 @@
 package com.example.retroravelry;
 
 import com.caseykulm.retroravelry.RetroRavelryAuthService;
+import com.caseykulm.retroravelry.RetroRavelryConstants;
 import com.caseykulm.retroravelry.RetroRavelryService;
 import com.caseykulm.retroravelry.RxRetroRavelryAuthService;
 import com.caseykulm.retroravelry.RxRetroRavelryService;
@@ -10,11 +11,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 
 public class ServiceFactory {
 
-  private static final String RAVELRY_API_URL = "https://api.ravelry.com/";
-
   public static RetroRavelryService newService() {
     Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(RAVELRY_API_URL)
+        .baseUrl(RetroRavelryConstants.API_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .build();
     return retrofit.create(RetroRavelryService.class);
@@ -22,7 +21,7 @@ public class ServiceFactory {
 
   public static RetroRavelryAuthService newAuthService() {
     Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(RAVELRY_API_URL)
+        .baseUrl(RetroRavelryConstants.API_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .build();
     return retrofit.create(RetroRavelryAuthService.class);
@@ -30,7 +29,7 @@ public class ServiceFactory {
 
   public static RxRetroRavelryService newRxService() {
     Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(RAVELRY_API_URL)
+        .baseUrl(RetroRavelryConstants.API_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
         .build();
@@ -39,7 +38,7 @@ public class ServiceFactory {
 
   public static RxRetroRavelryAuthService newRxAuthService() {
     Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(RAVELRY_API_URL)
+        .baseUrl(RetroRavelryConstants.API_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .build();
     return retrofit.create(RxRetroRavelryAuthService.class);
