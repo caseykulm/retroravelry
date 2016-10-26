@@ -4,6 +4,7 @@ import com.caseykulm.retroravelry.responses.patterns.SearchPatternsResponse;
 import com.caseykulm.retroravelry.responses.patterns.ShowPatternResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetroRavelryService {
@@ -18,7 +19,7 @@ public interface RetroRavelryService {
       @Query("personal_attributes") boolean personal_attributes);
 
   @GET("patterns/{id}.json")
-  Call<ShowPatternResponse> showPattern(@Query("id") int id);
+  Call<ShowPatternResponse> showPattern(@Path("id") int id);
 
   // endregion
 
