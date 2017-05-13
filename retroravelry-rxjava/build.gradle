@@ -1,0 +1,5 @@
+description = 'Retro-Ravelry RxJava'
+dependencies {
+  compile project(':retroravelry')
+  compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+}

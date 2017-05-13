@@ -3,20 +3,20 @@ package com.example.retroravelry.patterns;
 import com.caseykulm.retroravelry.RxRetroRavelryService;
 import com.caseykulm.retroravelry.responses.patterns.SearchPatternsResponse;
 import com.example.retroravelry.ServiceFactory;
-import rx.Single;
-import rx.Subscription;
-import rx.functions.Action1;
+import io.reactivex.Single;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 public class RxJavaGetPatterns extends BaseGetPatterns {
-
-  private Action1<SearchPatternsResponse> success = new Action1<SearchPatternsResponse>() {
-    public void call(SearchPatternsResponse response) {
+  private Consumer<SearchPatternsResponse> success = new Consumer<SearchPatternsResponse>() {
+    public void accept(@NonNull SearchPatternsResponse response) throws Exception {
       printPatterns(response);
     }
   };
 
-  private Action1<Throwable> failure = new Action1<Throwable>() {
-    public void call(Throwable throwable) {
+  private Consumer<Throwable> failure = new Consumer<Throwable>() {
+    public void accept(@NonNull Throwable throwable) throws Exception {
       printErrors(throwable);
     }
   };
@@ -24,8 +24,7 @@ public class RxJavaGetPatterns extends BaseGetPatterns {
   @Override void getPatterns() {
     RxRetroRavelryService service = ServiceFactory.newRxService();
     Single<SearchPatternsResponse> call = service.searchPatterns("", 0, 10, false);
-    Subscription subscription = call.subscribe(success, failure);
+    Disposable disposable = call.subscribe(success, failure);
     // need to kill this subscription when done
   }
-
 }

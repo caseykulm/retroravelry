@@ -1,0 +1,10 @@
+
+description = 'Samples'
+dependencies {
+  compile project(':retroravelry')
+  compile project(':retroravelry-rxjava')
+    compile group: 'com.squareup.retrofit2', name: 'converter-moshi', version:'2.2.0'
+    compile group: 'com.ryanharter.auto.value', name: 'auto-value-moshi', version:'0.4.1'
+    compile group: 'com.squareup.retrofit2', name: 'adapter-rxjava', version:'2.1.0'
+    compile group: 'io.reactivex', name: 'rxjava', version:'1.2.0'
+}

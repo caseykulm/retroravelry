@@ -1,11 +1,10 @@
 package com.caseykulm.retroravelry;
 
 import com.caseykulm.retroravelry.responses.library.LibraryResponse;
-import retrofit2.Call;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Single;
 
 public interface RxRetroRavelryAuthService {
 

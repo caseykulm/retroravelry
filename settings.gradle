@@ -1,0 +1,8 @@
+rootProject.name = 'parent'
+include ':retroravelry'
+include ':retroravelry-rxjava'
+include ':samples'
+
+project(':retroravelry').projectDir = "$rootDir/retroravelry" as File
+project(':retroravelry-rxjava').projectDir = "$rootDir/retroravelry-rxjava" as File
+project(':samples').projectDir = "$rootDir/samples" as File
