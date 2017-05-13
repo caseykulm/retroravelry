@@ -8,7 +8,6 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 public class SyncSearchLibrary extends BaseSearchLibrary {
-
   @Override void searchLibrary() {
     RetroRavelryAuthService service = ServiceFactory.newAuthService();
     Call<LibraryResponse> call = service.searchLibrary(
@@ -20,5 +19,4 @@ public class SyncSearchLibrary extends BaseSearchLibrary {
       printErrors(e);
     }
   }
-
 }
