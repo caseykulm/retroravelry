@@ -3,8 +3,10 @@ description = 'Samples'
 dependencies {
   compile project(':retroravelry')
   compile project(':retroravelry-rxjava')
-  compile 'com.squareup.retrofit2:converter-moshi:2.2.0'
-  compile 'com.ryanharter.auto.value:auto-value-moshi:0.4.1'
-  compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-  compile 'io.reactivex:rxjava:1.2.0'
+  compile dep.converterMoshi
+  compile dep.autoValueMoshi
+  compile dep.rxjavaAdapter
+  compile dep.rxjava2
+
+  testCompile dep.junit4
 }

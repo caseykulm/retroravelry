@@ -1,0 +1,20 @@
+ext {
+  rxjava2 = '2.1.0'
+  retrofit2 = '2.2.0'
+  dep = [
+      // Retroravelry Deps
+      retrofit2      : "com.squareup.retrofit2:retrofit:$retrofit2",
+      autoValue      : "com.google.auto.value:auto-value:1.4.1",
+
+      // Retroravelry RX Deps
+      rxjava2        : "io.reactivex.rxjava2:rxjava:$rxjava2",
+
+      // Sample Deps
+      autoValueMoshi : "com.ryanharter.auto.value:auto-value-moshi:0.4.3",
+      rxjavaAdapter  : "com.squareup.retrofit2:adapter-rxjava2:$retrofit2",
+      converterMoshi : "com.squareup.retrofit2:converter-moshi:$retrofit2",
+
+      // Test Deps
+      junit4         : "junit:junit:4.12"
+  ]
+}

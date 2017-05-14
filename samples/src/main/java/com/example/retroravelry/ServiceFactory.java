@@ -6,7 +6,7 @@ import com.caseykulm.retroravelry.RetroRavelryService;
 import com.caseykulm.retroravelry.RxRetroRavelryAuthService;
 import com.caseykulm.retroravelry.RxRetroRavelryService;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 public class ServiceFactory {
@@ -31,7 +31,7 @@ public class ServiceFactory {
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl(RetroRavelryConstants.API_URL)
         .addConverterFactory(MoshiConverterFactory.create())
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build();
     return retrofit.create(RxRetroRavelryService.class);
   }

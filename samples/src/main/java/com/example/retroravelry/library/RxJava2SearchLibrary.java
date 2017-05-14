@@ -6,10 +6,8 @@ import com.example.retroravelry.ServiceFactory;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import rx.Subscription;
-import rx.functions.Action1;
 
-public class RxJavaSearchLibrary extends BaseSearchLibrary {
+public class RxJava2SearchLibrary extends BaseSearchLibrary {
 
   private Consumer<LibraryResponse> success = new Consumer<LibraryResponse>() {
     public void accept(@NonNull LibraryResponse libraryResponse) throws Exception {
