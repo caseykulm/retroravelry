@@ -1,3 +1,5 @@
+apply from: rootProject.file('dependencies.gradle')
+
 allprojects  {
   apply plugin: 'maven'
 
@@ -6,6 +8,12 @@ allprojects  {
 }
 
 subprojects {
+  buildscript {
+    repositories {
+      mavenCentral()
+    }
+  }
+
   apply plugin: 'java'
   sourceCompatibility = 1.7
   targetCompatibility = 1.7
@@ -17,5 +25,3 @@ subprojects {
     mavenCentral()
   }
 }
-
-apply from: rootProject.file('dependencies.gradle')

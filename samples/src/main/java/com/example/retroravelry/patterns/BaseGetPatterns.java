@@ -14,9 +14,9 @@ public abstract class BaseGetPatterns implements Runnable {
 
   protected void printPatterns(SearchPatternsResponse response) {
     System.out.println("Found patterns:");
-    List<ListPattern> patterns = response.patterns();
+    List<ListPattern> patterns = response.getPatterns();
     for (ListPattern pattern : patterns) {
-      System.out.println(pattern.name());
+      System.out.println(pattern.getName());
     }
   }
 

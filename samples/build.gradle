@@ -1,12 +1,17 @@
+buildscript {
+  dependencies {
+    classpath dep.kotlinPlugin
+  }
+}
+
+apply plugin: 'kotlin'
 
 description = 'Samples'
+
 dependencies {
   compile project(':retroravelry')
   compile project(':retroravelry-rxjava')
-  compile dep.converterMoshi
-  compile dep.autoValueMoshi
-  compile dep.rxjavaAdapter
-  compile dep.rxjava2
+  compile dep.kotlin
 
   testCompile dep.junit4
 }

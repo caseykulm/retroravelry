@@ -1,8 +1,8 @@
 package com.example.retroravelry.patterns;
 
 import com.caseykulm.retroravelry.RxRetroRavelryService;
+import com.caseykulm.retroravelry.RxServiceFactory;
 import com.caseykulm.retroravelry.responses.patterns.SearchPatternsResponse;
-import com.example.retroravelry.ServiceFactory;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -22,7 +22,7 @@ public class RxJavaGetPatterns extends BaseGetPatterns {
   };
 
   @Override void getPatterns() {
-    RxRetroRavelryService service = ServiceFactory.newRxService();
+    RxRetroRavelryService service = RxServiceFactory.newRxService();
     Single<SearchPatternsResponse> call = service.searchPatterns("", 0, 10, false);
     Disposable disposable = call.subscribe(success, failure);
     // need to kill this subscription when done

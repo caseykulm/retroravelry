@@ -1,8 +1,8 @@
 package com.example.retroravelry.library;
 
 import com.caseykulm.retroravelry.RxRetroRavelryAuthService;
+import com.caseykulm.retroravelry.RxServiceFactory;
 import com.caseykulm.retroravelry.responses.library.LibraryResponse;
-import com.example.retroravelry.ServiceFactory;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -22,7 +22,7 @@ public class RxJava2SearchLibrary extends BaseSearchLibrary {
   };
 
   @Override void searchLibrary() {
-    RxRetroRavelryAuthService service = ServiceFactory.newRxAuthService();
+    RxRetroRavelryAuthService service = RxServiceFactory.newRxAuthService();
     Disposable disposable = service.searchLibrary(
         USERNAME, QUERY, QUERY_TYPE, TYPE, SORT, PAGE, PAGE_SIZE)
       .subscribe(success, failure);

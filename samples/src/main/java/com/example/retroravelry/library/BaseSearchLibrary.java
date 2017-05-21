@@ -22,9 +22,9 @@ public abstract class BaseSearchLibrary implements Runnable {
 
   protected void printLibrary(LibraryResponse libraryResponse) {
     System.out.println("Found volumes:");
-    List<ListVolume> volumes = libraryResponse.volumes();
+    List<ListVolume> volumes = libraryResponse.getVolumes();
     for (ListVolume listVolume : volumes) {
-      System.out.println(listVolume.title());
+      System.out.println(listVolume.getTitle());
     }
   }
 

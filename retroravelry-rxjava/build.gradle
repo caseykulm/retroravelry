@@ -1,5 +1,16 @@
+buildscript {
+  dependencies {
+    classpath dep.kotlinPlugin
+  }
+}
+
+apply plugin: 'kotlin'
+
 description = 'Retro-Ravelry RxJava'
+
 dependencies {
   compile project(':retroravelry')
+  compile dep.rxjavaAdapter
   compile dep.rxjava2
+  compile dep.kotlin
 }
