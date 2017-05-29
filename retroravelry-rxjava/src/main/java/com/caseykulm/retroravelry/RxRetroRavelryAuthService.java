@@ -3,7 +3,9 @@ package com.caseykulm.retroravelry;
 import com.caseykulm.retroravelry.models.user.SmallUser;
 import com.caseykulm.retroravelry.responses.library.LibraryResponse;
 import io.reactivex.Single;
+import java.util.Map;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -12,7 +14,9 @@ public interface RxRetroRavelryAuthService {
   // region Miscellaneous
 
   @GET("current_user.json")
-  Single<SmallUser> getCurrentUser();
+  Single<SmallUser> getCurrentUser(
+      @HeaderMap Map<String, String> authHeaders
+  );
 
   // endregion
 
@@ -20,6 +24,7 @@ public interface RxRetroRavelryAuthService {
 
   @GET("people/{username}/library/search.json")
   Single<LibraryResponse> searchLibrary(
+      @HeaderMap Map<String, String> authHeaders,
       @Path("username") String username,
       @Query("query") String query,
       @Query("query_type") String queryType,
