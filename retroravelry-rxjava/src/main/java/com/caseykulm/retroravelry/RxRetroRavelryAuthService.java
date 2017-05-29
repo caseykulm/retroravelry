@@ -8,6 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public interface RxRetroRavelryAuthService {
 
@@ -15,7 +16,8 @@ public interface RxRetroRavelryAuthService {
 
   @GET("current_user.json")
   Single<SmallUser> getCurrentUser(
-      @HeaderMap Map<String, String> authHeaders
+      @HeaderMap Map<String, String> authHeaders,
+      @QueryMap Map<String, String> authQueryMap
   );
 
   // endregion
