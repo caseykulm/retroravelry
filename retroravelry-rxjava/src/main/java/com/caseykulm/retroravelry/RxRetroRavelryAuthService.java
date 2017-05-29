@@ -1,5 +1,6 @@
 package com.caseykulm.retroravelry;
 
+import com.caseykulm.retroravelry.models.user.SmallUser;
 import com.caseykulm.retroravelry.responses.library.LibraryResponse;
 import io.reactivex.Single;
 import retrofit2.http.GET;
@@ -7,6 +8,13 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RxRetroRavelryAuthService {
+
+  // region Miscellaneous
+
+  @GET("current_user.json")
+  Single<SmallUser> getCurrentUser();
+
+  // endregion
 
   // region Library
 

@@ -1,6 +1,6 @@
 package com.caseykulm.retroravelry.models.user
 
-class SmallUser(
+data class SmallUser(
     val id: Int,
     val large_photo_url: String?,
     val photo_url: String?,

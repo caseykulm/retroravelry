@@ -1,5 +1,6 @@
 package com.caseykulm.retroravelry;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
@@ -18,6 +19,7 @@ public class RxServiceFactory {
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl(RetroRavelryConstants.API_URL)
         .addConverterFactory(MoshiConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build();
     return retrofit.create(RxRetroRavelryAuthService.class);
   }
