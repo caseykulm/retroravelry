@@ -41,11 +41,11 @@ public class ServiceFactory {
     return retrofit.create(RetroRavelryService.class);
   }
 
-  public static RetroRavelryAuthService newAuthService() {
+  public static RetroRavelryService newAuthService() {
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl(RetroRavelryConstants.API_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .build();
-    return retrofit.create(RetroRavelryAuthService.class);
+    return retrofit.create(RetroRavelryService.class);
   }
 }

@@ -1,5 +1,6 @@
 package com.caseykulm.retroravelry;
 
+import com.caseykulm.retroravelry.responses.library.LibraryResponse;
 import com.caseykulm.retroravelry.responses.patterns.SearchPatternsResponse;
 import com.caseykulm.retroravelry.responses.patterns.ShowPatternResponse;
 import retrofit2.Call;
@@ -22,5 +23,20 @@ public interface RetroRavelryService {
   Call<ShowPatternResponse> showPattern(@Path("id") int id);
 
   // endregion
+
+  // region Library
+
+  @GET("people/{username}/library/search.json")
+  Call<LibraryResponse> searchLibrary(
+      @Path("username") String username,
+      @Query("query") String query,
+      @Query("query_type") String queryType,
+      @Query("type") String type,
+      @Query("sort") String sort,
+      @Query("page") int page,
+      @Query("page_size") int pageSize);
+
+  // endregion
+
 
 }

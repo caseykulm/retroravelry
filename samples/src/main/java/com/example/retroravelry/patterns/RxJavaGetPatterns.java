@@ -23,7 +23,7 @@ public class RxJavaGetPatterns extends BaseGetPatterns {
 
   @Override void getPatterns() {
     RxRetroRavelryService service = RxServiceFactory.newRxService();
-    Single<SearchPatternsResponse> call = service.searchPatterns("", 0, 10, false);
+    Single<SearchPatternsResponse> call = service.searchPatterns("","", 0, 10, false);
     Disposable disposable = call.subscribe(success, failure);
     // need to kill this subscription when done
   }

@@ -1,6 +1,6 @@
 package com.example.retroravelry.library;
 
-import com.caseykulm.retroravelry.RxRetroRavelryAuthService;
+import com.caseykulm.retroravelry.RxRetroRavelryService;
 import com.caseykulm.retroravelry.RxServiceFactory;
 import com.caseykulm.retroravelry.responses.library.LibraryResponse;
 import io.reactivex.annotations.NonNull;
@@ -32,11 +32,10 @@ public class RxJava2SearchLibrary extends BaseSearchLibrary {
         return chain.proceed(chain.request());
       }
     };
-    RxRetroRavelryAuthService service = RxServiceFactory.newRxAuthService(interceptor);
-    Map<String, String> authHeaders = new HashMap<>();
-    authHeaders.put("Authorization", "token foobar123");
+    RxRetroRavelryService service = RxServiceFactory.newRxAuthService(interceptor);
+    String requestAuth = "";
     Disposable disposable = service.searchLibrary(
-        authHeaders,
+        requestAuth,
         USERNAME, QUERY, QUERY_TYPE, TYPE, SORT, PAGE, PAGE_SIZE)
       .subscribe(success, failure);
     // need to kill this subscription when done

@@ -16,7 +16,7 @@ public class RxServiceFactory {
     return retrofit.create(RxRetroRavelryService.class);
   }
 
-  public static RxRetroRavelryAuthService newRxAuthService(Interceptor interceptor) {
+  public static RxRetroRavelryService newRxAuthService(Interceptor interceptor) {
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
         .addNetworkInterceptor(interceptor)
         .build();
@@ -26,6 +26,6 @@ public class RxServiceFactory {
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build();
-    return retrofit.create(RxRetroRavelryAuthService.class);
+    return retrofit.create(RxRetroRavelryService.class);
   }
 }
