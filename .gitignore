@@ -3,4 +3,6 @@
 *.iml
 build/
 target/
+out/
+.DS_Store
 

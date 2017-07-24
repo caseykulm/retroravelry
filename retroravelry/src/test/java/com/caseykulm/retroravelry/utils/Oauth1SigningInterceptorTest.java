@@ -142,32 +142,32 @@ public final class Oauth1SigningInterceptorTest {
     authHeaderBuilder.append("oauth_signature_method=\"").append(oAuthSignatureMethod).append("\", ");
     authHeaderBuilder.append("oauth_version=\"").append(oAuthVersion).append("\"");
 
-    HttpUrl httpUrl = new HttpUrl.Builder()
-        .scheme("https")
-        .host("www.ravelry.com")
-        .encodedPath("oauth/request_token")
-        .addQueryParameter("scope", "profile-only")
-        .build();
-
-    Request request = new Request.Builder()
-        .url(httpUrl)
-        .addHeader("Authorization", authHeaderBuilder.toString())
-        .build();
-
-    //authHeaderBuilder.append("oauth_signature=\"").append(oAuthSignature).append("\", ");
-
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
-        .addNetworkInterceptor(new Interceptor() {
-          @Override public Response intercept(Chain chain) throws IOException {
-            Request req = chain.request();
-            System.out.println(req.toString());
-            Response resp = chain.proceed(req);
-            System.out.println(resp.toString());
-            return resp;
-          }
-        })
-        .build();
-
-    okHttpClient.newCall(request).execute();
+    //HttpUrl httpUrl = new HttpUrl.Builder()
+    //    .scheme("https")
+    //    .host("www.ravelry.com")
+    //    .encodedPath("oauth/request_token")
+    //    .addQueryParameter("scope", "profile-only")
+    //    .build();
+    //
+    //Request request = new Request.Builder()
+    //    .url(httpUrl)
+    //    .addHeader("Authorization", authHeaderBuilder.toString())
+    //    .build();
+    //
+    ////authHeaderBuilder.append("oauth_signature=\"").append(oAuthSignature).append("\", ");
+    //
+    //OkHttpClient okHttpClient = new OkHttpClient.Builder()
+    //    .addNetworkInterceptor(new Interceptor() {
+    //      @Override public Response intercept(Chain chain) throws IOException {
+    //        Request req = chain.request();
+    //        System.out.println(req.toString());
+    //        Response resp = chain.proceed(req);
+    //        System.out.println(resp.toString());
+    //        return resp;
+    //      }
+    //    })
+    //    .build();
+    //
+    //okHttpClient.newCall(request).execute();
   }
 }

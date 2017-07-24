@@ -17,7 +17,7 @@ public class RavelryAuthHelper {
     this.authPersister = authPersister;
   }
 
-  public Observable<OAuth1RequestToken> getRequestToken() {
+  private Observable<OAuth1RequestToken> getRequestToken() {
     return Observable.defer(new Callable<ObservableSource<? extends OAuth1RequestToken>>() {
       @Override
       public ObservableSource<? extends OAuth1RequestToken> call() throws Exception {
@@ -32,7 +32,7 @@ public class RavelryAuthHelper {
     });
   }
 
-  public Function<OAuth1RequestToken, String> mapRequestTokenToAuthUrl() {
+  private Function<OAuth1RequestToken, String> mapRequestTokenToAuthUrl() {
     return new Function<OAuth1RequestToken, String>() {
       @Override
       public String apply(OAuth1RequestToken oAuth1RequestToken) throws Exception {
@@ -45,6 +45,10 @@ public class RavelryAuthHelper {
         return authUrl;
       }
     };
+  }
+
+  public Observable<String> getAuthorizationUrl() {
+    return getRequestToken().map(mapRequestTokenToAuthUrl());
   }
 
   public Observable<OAuth1AccessToken> getAccessToken(final String oauthVerifier) {
