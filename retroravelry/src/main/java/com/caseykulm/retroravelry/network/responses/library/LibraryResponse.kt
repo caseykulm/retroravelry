@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.responses.library
+package com.caseykulm.retroravelry.network.responses.library
 
 import com.caseykulm.retroravelry.models.Paginator
 import com.caseykulm.retroravelry.models.volume.ListVolume

@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.responses.patterns
+package com.caseykulm.retroravelry.network.responses.patterns
 
 import com.caseykulm.retroravelry.models.pattern.FullPattern
 
