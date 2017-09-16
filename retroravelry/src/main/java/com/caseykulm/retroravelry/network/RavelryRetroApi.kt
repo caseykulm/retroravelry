@@ -45,7 +45,7 @@ interface RavelryRetroApi {
 
   @GET("people/{username}/stash/list.json")
   fun getStashes(
-      @Query("username") username: String
+      @Path("username") username: String
   ): Call<StashesResponse>
 
   // endregion
