@@ -7,8 +7,10 @@ import com.caseykulm.retroravelry.entities.Pattern
 import com.caseykulm.retroravelry.entities.Stash
 import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.caseykulm.retroravelry.network.ResponseMapper
+import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
@@ -61,5 +63,16 @@ class RavelryClient(
       return stashesResp.stashes
     }
     throw IllegalStateException("failed to search: " + resp.code())
+  }
+
+  override fun getMyLibrary(page: Int, pageSize: Int): Call<LibraryResponse> {
+    return ravelryRetroApi.searchLibrary(
+        username,
+        "",
+        "",
+        "",
+        "",
+        page,
+        pageSize)
   }
 }
