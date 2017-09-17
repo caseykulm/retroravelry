@@ -9,5 +9,14 @@ interface RavelryApi {
   fun searchPatterns(query: String, page: Int, pageSize: Int): List<Pattern>
   fun getMyStashes(): List<Stash>
   fun getStashes(username: String): List<Stash>
-  fun getMyLibrary(page: Int, pageSize: Int): Call<LibraryResponse>
+  fun getMyLibrary(
+      query: String,
+      queryType: String,
+      type: String,
+      sort: String,
+      page: Int,
+      pageSize: Int): Call<LibraryResponse>
+  fun getMyDefaultLibrary(
+      sort: String,
+      page: Int, pageSize: Int): Call<LibraryResponse>
 }

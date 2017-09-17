@@ -65,13 +65,28 @@ class RavelryClient(
     throw IllegalStateException("failed to search: " + resp.code())
   }
 
-  override fun getMyLibrary(page: Int, pageSize: Int): Call<LibraryResponse> {
+  override fun getMyLibrary(
+      query: String,
+      queryType: String,
+      type: String,
+      sort: String,
+      page: Int,
+      pageSize: Int
+  ): Call<LibraryResponse> {
     return ravelryRetroApi.searchLibrary(
         username,
-        "",
-        "",
-        "",
-        "",
+        query,
+        queryType,
+        type,
+        sort,
+        page,
+        pageSize)
+  }
+
+  override fun getMyDefaultLibrary(sort: String, page: Int, pageSize: Int): Call<LibraryResponse> {
+    return ravelryRetroApi.defaultSearchLibrary(
+        username,
+        sort,
         page,
         pageSize)
   }
