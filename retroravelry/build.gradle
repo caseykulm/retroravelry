@@ -29,6 +29,8 @@ dependencies {
   compile dep.oauthServices
 
   compile dep.okhttp3
+  compile dep.rxjava2
+  compile dep.rxjavaAdapter
   testCompile dep.truth
   testCompile dep.junit4
   testCompile dep.mockito

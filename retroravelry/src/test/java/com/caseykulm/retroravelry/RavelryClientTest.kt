@@ -12,4 +12,10 @@ class RavelryClientTest {
     println(libResp)
     assertNotNull(libResp)
   }
+
+  @Test
+  fun searchPatternsShouldNotBeNull() {
+    val searchResponse = ravelryClient.searchPatterns("cardigan", 1, 20)
+    assertNotNull(searchResponse)
+  }
 }

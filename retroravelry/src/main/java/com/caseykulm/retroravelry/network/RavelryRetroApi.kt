@@ -4,6 +4,7 @@ import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
 import com.caseykulm.retroravelry.network.responses.stash.StashesResponse
+import io.reactivex.Flowable
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,7 +21,7 @@ interface RavelryRetroApi {
       @Query("query") query: String,
       @Query("page") page: Int,
       @Query("page_size") pageSize: Int,
-      @Query("personal_attributes") personal_attributes: Boolean): Call<SearchPatternsResponse>
+      @Query("personal_attributes") personal_attributes: Boolean): Flowable<SearchPatternsResponse>
 
   @GET("patterns/{id}.json")
   fun showPattern(@Path("id") id: Int): Call<ShowPatternResponse>

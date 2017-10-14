@@ -23,6 +23,9 @@ ext {
       // Test Deps
       junit4         : "junit:junit:4.12",
       truth          : "com.google.truth:truth:0.34",
-      mockito        : "org.mockito:mockito-core:2.8.9"
+      mockito        : "org.mockito:mockito-core:2.8.9",
+
+      //RxJava
+      rxjava2        : "io.reactivex.rxjava2:rxjava:$rxjava2"
   ]
 }
