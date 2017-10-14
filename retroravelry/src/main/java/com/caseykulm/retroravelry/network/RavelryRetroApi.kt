@@ -24,7 +24,7 @@ interface RavelryRetroApi {
       @Query("personal_attributes") personal_attributes: Boolean): Flowable<SearchPatternsResponse>
 
   @GET("patterns/{id}.json")
-  fun showPattern(@Path("id") id: Int): Call<ShowPatternResponse>
+  fun showPattern(@Path("id") id: Int): Flowable<ShowPatternResponse>
 
   // endregion
 

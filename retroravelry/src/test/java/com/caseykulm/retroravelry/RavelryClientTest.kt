@@ -29,4 +29,19 @@ class RavelryClientTest {
     assertNotNull(resp)
     assertEquals(20, resp.paginator?.page_size)
   }
+
+  @Test
+  fun showPatternsShouldSubscribe() {
+    val showResponse = ravelryClient.showPattern(243083)
+    val testSubToShow = showResponse.test()
+    testSubToShow.assertNoErrors()
+  }
+
+  @Test
+  fun showPatternsShouldReturnResults() {
+    val showResponse = ravelryClient.showPattern(243083)
+    val resp = showResponse.blockingFirst()
+    println(resp)
+    assertNotNull(resp)
+  }
 }

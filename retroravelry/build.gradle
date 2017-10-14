@@ -23,12 +23,16 @@ repositories {
 dependencies {
   compile dep.retrofit2
   compile dep.moshi
+  compile dep.moshiKotlin
+  compile dep.moshiAdapter
   compile dep.converterMoshi
   compile dep.kotlin
+  compile dep.kotlinReflect
   compile dep.oauth
   compile dep.oauthServices
 
   compile dep.okhttp3
+  compile dep.okHttpInterceptor
   compile dep.rxjava2
   compile dep.rxjavaAdapter
   testCompile dep.truth

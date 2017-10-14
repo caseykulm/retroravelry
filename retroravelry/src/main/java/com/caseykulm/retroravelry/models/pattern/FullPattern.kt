@@ -1,10 +1,12 @@
 package com.caseykulm.retroravelry.models.pattern
 
 import com.caseykulm.retroravelry.models.craft.ListCraft
+import com.caseykulm.retroravelry.models.needles.PatternNeedleSize
 import com.caseykulm.retroravelry.models.pack.FullPack
 import com.caseykulm.retroravelry.models.patternattribute.PatternAttribute
 import com.caseykulm.retroravelry.models.patternauthor.PatternAuthor
 import com.caseykulm.retroravelry.models.patterncategory.PatternCategory
+import com.caseykulm.retroravelry.models.personalattribute.PersonalAttribute
 import com.caseykulm.retroravelry.models.photo.Photo
 import com.caseykulm.retroravelry.models.printing.ListPrinting
 import com.caseykulm.retroravelry.models.yarnweight.ListYarnWeight
@@ -28,21 +30,22 @@ data class FullPattern(
     val name: String?,
     val notes_html: String?,
     val notes: String?,
-    val packs: FullPack?,
+    val packs: List<FullPack>?,
     val pattern_attributes: List<PatternAttribute>?,
     val pattern_author: PatternAuthor?,
     val pattern_categories: List<PatternCategory>?,
-    val pattern_needle_sizes: String?,
+    val pattern_needle_sizes: List<PatternNeedleSize>?,
     val pdf_in_library: Boolean,
     val pdf_url: String?,
     val permalink: String?,
-    val personal_attributes: Map<String, String>?,
+    val personal_attributes: PersonalAttribute?,
     val photos: List<Photo>?,
     val price: String?,
     val printings: List<ListPrinting>?,
     val product_id: Int,
     val projects_count: Int,
-    val published: Date?,
+    //TODO Parse this into a recognized date format, currently returning YYYY/MM/DD instead of standard YYYY-MM-DD
+    val published: String?,
     val queued_projects_count: Int,
     val rating_average: Float,
     val rating_count: Int,
