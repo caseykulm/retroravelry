@@ -1,17 +1,17 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.oauthheader.Oauth1Interceptor
-import com.caseykulm.oauthheader.models.AccessTokenResponse
-import com.caseykulm.oauthheader.models.AuthorizationResponse
-import com.caseykulm.retroravelry.entities.Pattern
 import com.caseykulm.retroravelry.entities.Stash
 import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.caseykulm.retroravelry.network.ResponseMapper
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
+import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.squareup.moshi.Moshi
+import io.reactivex.Flowable
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
 
@@ -31,24 +31,15 @@ class RavelryClient(
     val retrofit = Retrofit.Builder()
         .baseUrl("https://api.ravelry.com/")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .client(oauthClient)
         .build()
     ravelryRetroApi = retrofit.create(RavelryRetroApi::class.java)
   }
 
-  override fun searchPatterns(query: String, page: Int, pageSize: Int): List<Pattern> {
-    val patternList = ArrayList<Pattern>()
-    val retroResp = ravelryRetroApi.searchPatterns(
-        query, page, pageSize, false)
-    val resp = retroResp.execute()
-    if (resp.isSuccessful) {
-      val searchPatternResp = resp.body()
-      searchPatternResp?.patterns?.forEach {
-        patternList.add(responseMapper.toPatternEntity(it))
-      }
-      return patternList
-    }
-    throw IllegalStateException("failed to search: " + resp.code())
+  override fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<SearchPatternsResponse> {
+    val searchPatternFlowable: Flowable<SearchPatternsResponse> = ravelryRetroApi.searchPatterns(query, page, pageSize, false)
+    return searchPatternFlowable
   }
 
   override fun getMyStashes(): List<Stash> {
