@@ -6,3 +6,4 @@ target/
 out/
 .DS_Store
 local.properties
+retroravelry/src/test/resources/oauth_secrets.json
