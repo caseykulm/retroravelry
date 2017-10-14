@@ -28,6 +28,7 @@ class RavelryClient(
   var ravelryRetroApi: RavelryRetroApi
 
   init {
+    //TODO inject moshi and logging interceptor
     val logging = HttpLoggingInterceptor()
     logging.level = HttpLoggingInterceptor.Level.BODY
     val moshi = Moshi.Builder()
