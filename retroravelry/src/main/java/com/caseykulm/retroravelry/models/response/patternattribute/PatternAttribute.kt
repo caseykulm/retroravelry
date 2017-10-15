@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models.patternattribute
+package com.caseykulm.retroravelry.models.response.patternattribute
 
 data class PatternAttribute(
     val id: Int,

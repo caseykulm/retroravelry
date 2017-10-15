@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models.needles
+package com.caseykulm.retroravelry.models.response.needles
 
 /**
  * Created by lorajones on 10/14/17.

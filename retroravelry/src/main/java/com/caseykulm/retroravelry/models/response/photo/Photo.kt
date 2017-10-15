@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models.photo
+package com.caseykulm.retroravelry.models.response.photo
 
 data class Photo(
     val id: String?,

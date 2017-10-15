@@ -1,5 +1,6 @@
 package com.caseykulm.retroravelry
 
+import com.caseykulm.retroravelry.models.request.library.Type
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
@@ -43,5 +44,30 @@ class RavelryClientTest {
     val resp = showResponse.blockingFirst()
     println(resp)
     assertNotNull(resp)
+  }
+
+  @Test
+  fun libraryShouldSubscribe() {
+    val libraryResponse = ravelryClient.getMyLibrary("duck", null, Type.pattern, null, 1, 20)
+    val testSubToSearchLibrary = libraryResponse.test()
+    testSubToSearchLibrary.assertNoErrors()
+  }
+
+  @Test
+  fun libraryShouldReturnResults() {
+    val libraryResponse = ravelryClient.getMyLibrary("duck", null, Type.pattern, null, 1, 20)
+    val resp = libraryResponse.blockingFirst()
+    println(resp)
+    assertNotNull(resp)
+    assertEquals(20, resp.paginator?.page_size)
+  }
+
+  @Test
+  fun libraryShouldReturnNothing() {
+    val libraryResponse = ravelryClient.getMyLibrary("duck", null, Type.book, null, 1, 20)
+    val resp = libraryResponse.blockingFirst()
+    println(resp)
+    assertNotNull(resp)
+    assertEquals(0, resp.paginator?.page_size)
   }
 }

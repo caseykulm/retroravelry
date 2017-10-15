@@ -1,6 +1,8 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.entities.Stash
+import com.caseykulm.retroravelry.models.request.library.Sort
+import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
@@ -14,11 +16,11 @@ interface RavelryApi {
   fun getStashes(username: String): List<Stash>
   fun getMyLibrary(
       query: String,
-      queryType: String,
-      type: String,
-      sort: String,
+      queryType: String?,
+      type: Type?,
+      sort: Sort?,
       page: Int,
-      pageSize: Int): Call<LibraryResponse>
+      pageSize: Int): Flowable<LibraryResponse>
   fun getMyDefaultLibrary(
       sort: String,
       page: Int, pageSize: Int): Call<LibraryResponse>

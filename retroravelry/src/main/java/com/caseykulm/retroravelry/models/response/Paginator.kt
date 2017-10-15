@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models
+package com.caseykulm.retroravelry.models.response
 
 import com.squareup.moshi.Json
 

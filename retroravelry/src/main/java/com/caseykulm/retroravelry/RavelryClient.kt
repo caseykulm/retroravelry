@@ -2,6 +2,8 @@ package com.caseykulm.retroravelry
 
 import com.caseykulm.oauthheader.Oauth1Interceptor
 import com.caseykulm.retroravelry.entities.Stash
+import com.caseykulm.retroravelry.models.request.library.Sort
+import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
@@ -16,7 +18,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
-import sun.util.logging.LoggingSupport.setLevel
 import okhttp3.logging.HttpLoggingInterceptor
 
 
@@ -74,20 +75,14 @@ class RavelryClient(
 
   override fun getMyLibrary(
       query: String,
-      queryType: String,
-      type: String,
-      sort: String,
+      queryType: String?,
+      type: Type?,
+      sort: Sort?,
       page: Int,
       pageSize: Int
-  ): Call<LibraryResponse> {
-    return ravelryRetroApi.searchLibrary(
-        username,
-        query,
-        queryType,
-        type,
-        sort,
-        page,
-        pageSize)
+  ): Flowable<LibraryResponse> {
+    val libraryFlowable: Flowable<LibraryResponse> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
+    return libraryFlowable
   }
 
   override fun getMyDefaultLibrary(sort: String, page: Int, pageSize: Int): Call<LibraryResponse> {
