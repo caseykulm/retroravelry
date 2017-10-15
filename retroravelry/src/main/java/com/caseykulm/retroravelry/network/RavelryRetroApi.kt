@@ -40,14 +40,7 @@ interface RavelryRetroApi {
       @Query("sort") sort: Sort?,
       @Query("page") page: Int,
       @Query("page_size") pageSize: Int): Flowable<LibraryResponse>
-
-  @GET("people/{username}/library/search.json")
-  fun defaultSearchLibrary(
-      @Path("username") username: String,
-      @Query("sort") sort: String,
-      @Query("page") page: Int,
-      @Query("page_size") pageSize: Int): Call<LibraryResponse>
-
+  
   // endregion
 
 }
