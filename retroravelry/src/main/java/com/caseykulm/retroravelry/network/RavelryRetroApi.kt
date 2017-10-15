@@ -1,5 +1,7 @@
 package com.caseykulm.retroravelry.network
 
+import com.caseykulm.retroravelry.models.request.library.Sort
+import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
@@ -33,11 +35,11 @@ interface RavelryRetroApi {
   fun searchLibrary(
       @Path("username") username: String,
       @Query("query") query: String,
-      @Query("query_type") queryType: String,
-      @Query("type") type: String,
-      @Query("sort") sort: String,
+      @Query("query_type") queryType: String?,
+      @Query("type") type: Type?,
+      @Query("sort") sort: Sort?,
       @Query("page") page: Int,
-      @Query("page_size") pageSize: Int): Call<LibraryResponse>
+      @Query("page_size") pageSize: Int): Flowable<LibraryResponse>
 
   @GET("people/{username}/library/search.json")
   fun defaultSearchLibrary(

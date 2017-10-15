@@ -1,16 +1,15 @@
-package com.caseykulm.retroravelry.models.pattern
+package com.caseykulm.retroravelry.models.response.pattern
 
-import com.caseykulm.retroravelry.models.craft.ListCraft
-import com.caseykulm.retroravelry.models.needles.PatternNeedleSize
-import com.caseykulm.retroravelry.models.pack.FullPack
-import com.caseykulm.retroravelry.models.patternattribute.PatternAttribute
-import com.caseykulm.retroravelry.models.patternauthor.PatternAuthor
-import com.caseykulm.retroravelry.models.patterncategory.PatternCategory
-import com.caseykulm.retroravelry.models.personalattribute.PersonalAttribute
-import com.caseykulm.retroravelry.models.photo.Photo
-import com.caseykulm.retroravelry.models.printing.ListPrinting
-import com.caseykulm.retroravelry.models.yarnweight.ListYarnWeight
-import java.util.Date
+import com.caseykulm.retroravelry.models.response.craft.ListCraft
+import com.caseykulm.retroravelry.models.response.needles.PatternNeedleSize
+import com.caseykulm.retroravelry.models.response.pack.FullPack
+import com.caseykulm.retroravelry.models.response.patternattribute.PatternAttribute
+import com.caseykulm.retroravelry.models.response.patternauthor.PatternAuthor
+import com.caseykulm.retroravelry.models.response.patterncategory.PatternCategory
+import com.caseykulm.retroravelry.models.response.personalattribute.PersonalAttribute
+import com.caseykulm.retroravelry.models.response.photo.Photo
+import com.caseykulm.retroravelry.models.response.printing.ListPrinting
+import com.caseykulm.retroravelry.models.response.yarnweight.ListYarnWeight
 
 data class FullPattern(
     val comments_count: Int,

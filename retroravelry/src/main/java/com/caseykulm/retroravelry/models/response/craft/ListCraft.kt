@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models.craft
+package com.caseykulm.retroravelry.models.response.craft
 
 data class ListCraft(
     val id: Int,
