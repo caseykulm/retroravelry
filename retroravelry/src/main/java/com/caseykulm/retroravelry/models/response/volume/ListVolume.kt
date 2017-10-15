@@ -1,6 +1,6 @@
-package com.caseykulm.retroravelry.models.volume
+package com.caseykulm.retroravelry.models.response.volume
 
-import com.caseykulm.retroravelry.models.photo.Photo
+import com.caseykulm.retroravelry.models.response.photo.Photo
 
 data class ListVolume(
     val author_name: String?,

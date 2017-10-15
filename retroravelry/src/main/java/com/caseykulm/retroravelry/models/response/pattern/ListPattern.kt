@@ -1,7 +1,7 @@
-package com.caseykulm.retroravelry.models.pattern
+package com.caseykulm.retroravelry.models.response.pattern
 
-import com.caseykulm.retroravelry.models.patternauthor.PatternAuthor
-import com.caseykulm.retroravelry.models.photo.Photo
+import com.caseykulm.retroravelry.models.response.patternauthor.PatternAuthor
+import com.caseykulm.retroravelry.models.response.photo.Photo
 
 data class ListPattern(
     val designer: PatternAuthor?,

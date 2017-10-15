@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models.patterncategory
+package com.caseykulm.retroravelry.models.response.patterncategory
 
 data class PatternCategory(
     val id: Int,

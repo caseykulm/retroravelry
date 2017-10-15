@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models.pattern
+package com.caseykulm.retroravelry.models.response.pattern
 
 /**
  * Created by lorajones on 10/14/17.

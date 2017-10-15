@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.models.user
+package com.caseykulm.retroravelry.models.response.user
 
 data class SmallUser(
     val id: Int,
