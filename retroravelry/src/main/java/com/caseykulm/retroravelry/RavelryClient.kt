@@ -69,12 +69,4 @@ class RavelryClient(
     val libraryFlowable: Flowable<LibraryResponse> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
     return libraryFlowable
   }
-
-  override fun getMyDefaultLibrary(sort: String, page: Int, pageSize: Int): Call<LibraryResponse> {
-    return ravelryRetroApi.defaultSearchLibrary(
-        username,
-        sort,
-        page,
-        pageSize)
-  }
 }

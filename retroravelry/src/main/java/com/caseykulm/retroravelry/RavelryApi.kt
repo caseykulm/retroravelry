@@ -18,7 +18,4 @@ interface RavelryApi {
       sort: Sort?,
       page: Int,
       pageSize: Int): Flowable<LibraryResponse>
-  fun getMyDefaultLibrary(
-      sort: String,
-      page: Int, pageSize: Int): Call<LibraryResponse>
 }

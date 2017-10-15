@@ -9,13 +9,6 @@ class RavelryClientTest {
   val ravelryClient = LiveClient().ravelryClient
 
   @Test
-  fun getMyLibraryShouldNotBeNull() {
-    val libResp = ravelryClient.getMyDefaultLibrary("added", 0, 20).execute().body()
-    println(libResp)
-    assertNotNull(libResp)
-  }
-
-  @Test
   fun searchPatternsShouldSubscribe() {
     val searchResponse = ravelryClient.searchPatterns("cardigan", 1, 20)
     val testSubToSearch = searchResponse.test()
