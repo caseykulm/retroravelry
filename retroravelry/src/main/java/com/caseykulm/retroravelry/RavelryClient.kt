@@ -1,7 +1,6 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.oauthheader.Oauth1Interceptor
-import com.caseykulm.retroravelry.entities.Stash
 import com.caseykulm.retroravelry.models.request.library.Sort
 import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.RavelryRetroApi
@@ -57,20 +56,6 @@ class RavelryClient(
   override fun showPattern(id: Int): Flowable<ShowPatternResponse> {
     val showPatternFlowable: Flowable<ShowPatternResponse> = ravelryRetroApi.showPattern(id)
     return showPatternFlowable
-  }
-
-  override fun getMyStashes(): List<Stash> {
-    return getStashes(username)
-  }
-
-  override fun getStashes(username: String): List<Stash> {
-    val retroResp = ravelryRetroApi.getStashes(username)
-    val resp = retroResp.execute()
-    if (resp.isSuccessful) {
-      val stashesResp = resp.body()
-      return stashesResp.stashes
-    }
-    throw IllegalStateException("failed to search: " + resp.code())
   }
 
   override fun getMyLibrary(
