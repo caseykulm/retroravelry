@@ -1,23 +1,31 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.models.request.library.Type
+import okhttp3.mockwebserver.MockWebServer
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
 
 class RavelryClientTest {
-  val ravelryClient = LiveClient().ravelryClient
+  // Used to aide TDD, but make sure to ship not using this
+  val liveClient = LiveClient()
+  val liveRavelryClient: RavelryApi by lazy { liveClient.ravelryClient }
+
+  // Used to finalize tests against saved JSON responses from the API
+  val mockClient = MockClient()
+  val mockRavelryClient: RavelryApi by lazy { mockClient.ravelryClient }
+  val mockServer: MockWebServer by lazy { mockClient.server }
 
   @Test
   fun searchPatternsShouldSubscribe() {
-    val searchResponse = ravelryClient.searchPatterns("cardigan", 1, 20)
+    val searchResponse = liveRavelryClient.searchPatterns("cardigan", 1, 20)
     val testSubToSearch = searchResponse.test()
     testSubToSearch.assertNoErrors()
   }
 
   @Test
   fun searchPatternsShouldReturnResults() {
-    val searchResponse = ravelryClient.searchPatterns("cardigan", 1, 20)
+    val searchResponse = liveRavelryClient.searchPatterns("cardigan", 1, 20)
     val resp = searchResponse.blockingFirst()
     println(resp)
     assertNotNull(resp)
@@ -26,14 +34,14 @@ class RavelryClientTest {
 
   @Test
   fun showPatternsShouldSubscribe() {
-    val showResponse = ravelryClient.showPattern(243083)
+    val showResponse = liveRavelryClient.showPattern(243083)
     val testSubToShow = showResponse.test()
     testSubToShow.assertNoErrors()
   }
 
   @Test
   fun showPatternsShouldReturnResults() {
-    val showResponse = ravelryClient.showPattern(243083)
+    val showResponse = liveRavelryClient.showPattern(243083)
     val resp = showResponse.blockingFirst()
     println(resp)
     assertNotNull(resp)
@@ -41,14 +49,14 @@ class RavelryClientTest {
 
   @Test
   fun libraryShouldSubscribe() {
-    val libraryResponse = ravelryClient.getMyLibrary("duck", null, Type.pattern, null, 1, 20)
+    val libraryResponse = liveRavelryClient.getMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val testSubToSearchLibrary = libraryResponse.test()
     testSubToSearchLibrary.assertNoErrors()
   }
 
   @Test
   fun libraryShouldReturnResults() {
-    val libraryResponse = ravelryClient.getMyLibrary("duck", null, Type.pattern, null, 1, 20)
+    val libraryResponse = liveRavelryClient.getMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     println(resp)
     assertNotNull(resp)
@@ -57,7 +65,7 @@ class RavelryClientTest {
 
   @Test
   fun libraryShouldReturnNothing() {
-    val libraryResponse = ravelryClient.getMyLibrary("duck", null, Type.book, null, 1, 20)
+    val libraryResponse = liveRavelryClient.getMyLibrary("duck", null, Type.book, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     println(resp)
     assertNotNull(resp)

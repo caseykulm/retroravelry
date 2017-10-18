@@ -16,6 +16,7 @@ apply plugin: 'kotlin'
 apply plugin: 'maven'
 
 repositories {
+  jcenter()
   mavenLocal()
   mavenCentral()
 }
@@ -38,6 +39,7 @@ dependencies {
   testCompile dep.truth
   testCompile dep.junit4
   testCompile dep.mockito
+  testCompile dep.mockWebServer
 }
 
 compileKotlin {

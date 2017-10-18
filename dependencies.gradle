@@ -4,7 +4,7 @@ ext {
   kotlin_version = '1.1.4'
   moshi = '1.5.0'
   okhttpVersion = '3.8.0'
-  oauthVersion = '0.2.7-SNAPSHOT'
+  oauthVersion = '0.2.8'
 
   dep = [
       kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
@@ -29,6 +29,7 @@ ext {
       junit4         : "junit:junit:4.12",
       truth          : "com.google.truth:truth:0.34",
       mockito        : "org.mockito:mockito-core:2.8.9",
+      mockWebServer  : "com.squareup.okhttp3:mockwebserver:$okhttpVersion",
 
       //RxJava
       rxjava2        : "io.reactivex.rxjava2:rxjava:$rxjava2"
