@@ -10,10 +10,14 @@ fun readFile(stream: InputStream): String {
   Okio.buffer(Okio.source(stream)).use({ source -> return source.readUtf8() })
 }
 
+fun <T> Class<T>.readResourceFile(filename: String): String {
+  val inputStream = classLoader.getResourceAsStream(filename)
+  return readFile(inputStream)
+}
+
 @Throws(Exception::class)
 fun <ResponseType> parseJsonResourceFile(filename: String, responseClass: Class<ResponseType>): ResponseType {
-  val inputStream = responseClass.classLoader.getResourceAsStream(filename)
-  val responseStr = readFile(inputStream)
+  val responseStr = responseClass.readResourceFile(filename)
   val moshi = Moshi.Builder().build()
   val jsonAdapter = moshi.adapter<ResponseType>(responseClass)
   return jsonAdapter.fromJson(responseStr)!!

@@ -16,10 +16,10 @@ val MOCK_CONSUMER_SECRET = "mockConsumerSecret"
 val MOCK_CALLBACK_URL = "https://example.com/oauth"
 
 class MockClient {
-  val ravelryClient: RavelryClient by lazy {
-    RavelryClient(MOCK_USER_NAME, okhttpClient, oauthInterceptor)
-  }
   var server: MockWebServer = MockWebServer()
+  val ravelryClient: RavelryClient by lazy {
+    RavelryClient(MOCK_USER_NAME, okhttpClient, oauthInterceptor, server.url("/"))
+  }
   private val okhttpClient: OkHttpClient by lazy {
     OkHttpClient.Builder()
         .build()

@@ -11,6 +11,7 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Rfc3339DateJsonAdapter
 import io.reactivex.Flowable
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +22,8 @@ import java.util.*
 class RavelryClient(
     val username: String,
     val okHttpClient: OkHttpClient,
-    val oauth1Interceptor: Oauth1Interceptor): RavelryApi {
+    val oauth1Interceptor: Oauth1Interceptor,
+    val baseUrl: HttpUrl = HttpUrl.parse("https://api.ravelry.com/")!!): RavelryApi {
   var ravelryRetroApi: RavelryRetroApi
 
   init {
@@ -37,7 +39,7 @@ class RavelryClient(
         .addInterceptor(oauth1Interceptor)
         .build()
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.ravelry.com/")
+        .baseUrl(baseUrl)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .client(oauthClient)
