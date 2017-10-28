@@ -57,7 +57,20 @@ class RavelryClient(
     return showPatternFlowable
   }
 
-  override fun getMyLibrary(
+  override fun searchMyLibrary(
+      query: String,
+      queryType: String?,
+      type: Type?,
+      sort: Sort?,
+      page: Int,
+      pageSize: Int
+  ): Flowable<LibraryResponse> {
+    val libraryFlowable: Flowable<LibraryResponse> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
+    return libraryFlowable
+  }
+
+  override fun searchLibrary(
+      username: String,
       query: String,
       queryType: String?,
       type: Type?,

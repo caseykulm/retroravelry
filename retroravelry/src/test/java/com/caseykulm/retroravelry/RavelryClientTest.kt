@@ -1,7 +1,6 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.models.request.library.Type
-import okhttp3.mockwebserver.MockResponse
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Rule
@@ -72,13 +71,59 @@ class RavelryClientTest {
   }
 
   @Test
+  fun myLibraryShouldSubscribe() {
+    // arrange
+    mockClientRule.enqueueHttp200("my_library_patterns.json")
+
+    // act
+    val libraryResponse = mockClientRule.ravelryClient
+        .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
+    val testSubToSearchLibrary = libraryResponse.test()
+
+    // assert
+    testSubToSearchLibrary.assertNoErrors()
+  }
+
+  @Test
+  fun myLibraryShouldReturnPatternResults() {
+    // arrange
+    mockClientRule.enqueueHttp200("my_library_patterns.json")
+
+    // act
+    val libraryResponse = mockClientRule.ravelryClient
+        .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
+    val resp = libraryResponse.blockingFirst()
+    println(resp)
+
+    // assert
+    assertNotNull(resp)
+    assertEquals(20, resp.paginator?.page_size)
+  }
+
+  @Test
+  fun myLibraryShouldReturnNoBooks() {
+    // arrange
+    mockClientRule.enqueueHttp200("my_library_books.json")
+
+    // act
+    val libraryResponse = mockClientRule.ravelryClient
+        .searchMyLibrary("duck", null, Type.book, null, 1, 20)
+    val resp = libraryResponse.blockingFirst()
+    println(resp)
+
+    // assert
+    assertNotNull(resp)
+    assertEquals(0, resp.paginator?.page_size)
+  }
+
+  @Test
   fun libraryShouldSubscribe() {
     // arrange
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
     val libraryResponse = mockClientRule.ravelryClient
-        .getMyLibrary("duck", null, Type.pattern, null, 1, 20)
+        .searchLibrary("ducksaucer", "duck", null, Type.pattern, null, 1, 20)
     val testSubToSearchLibrary = libraryResponse.test()
 
     // assert
@@ -92,28 +137,16 @@ class RavelryClientTest {
 
     // act
     val libraryResponse = mockClientRule.ravelryClient
-        .getMyLibrary("duck", null, Type.pattern, null, 1, 20)
+        .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     println(resp)
 
     // assert
     assertNotNull(resp)
     assertEquals(20, resp.paginator?.page_size)
-  }
-
-  @Test
-  fun libraryShouldReturnNoBooks() {
-    // arrange
-    mockClientRule.enqueueHttp200("my_library_books.json")
-
-    // act
-    val libraryResponse = mockClientRule.ravelryClient
-        .getMyLibrary("duck", null, Type.book, null, 1, 20)
-    val resp = libraryResponse.blockingFirst()
-    println(resp)
-
-    // assert
-    assertNotNull(resp)
-    assertEquals(0, resp.paginator?.page_size)
+    assertEquals(4, resp.volumes?.size)
+    val firstVolume = resp.volumes!!.get(0)
+    assertEquals(213045775, firstVolume.id)
+    assertEquals("Duck the Sailor - toy knitting pattern", firstVolume.title)
   }
 }

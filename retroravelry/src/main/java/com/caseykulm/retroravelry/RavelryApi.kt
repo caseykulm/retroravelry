@@ -11,7 +11,15 @@ import retrofit2.Call
 interface RavelryApi {
   fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<SearchPatternsResponse>
   fun showPattern(id: Int): Flowable<ShowPatternResponse>
-  fun getMyLibrary(
+  fun searchMyLibrary(
+      query: String,
+      queryType: String?,
+      type: Type?,
+      sort: Sort?,
+      page: Int,
+      pageSize: Int): Flowable<LibraryResponse>
+  fun searchLibrary(
+      username: String,
       query: String,
       queryType: String?,
       type: Type?,
