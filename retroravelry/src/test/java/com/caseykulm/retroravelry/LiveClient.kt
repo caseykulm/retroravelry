@@ -6,9 +6,16 @@ import com.caseykulm.oauthheader.models.AccessTokenResponse
 import com.caseykulm.oauthheader.models.OauthConsumer
 import com.caseykulm.oauthheader.services.RavelryOauthService
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 
 class LiveClient {
-  private val okhttpClient = OkHttpClient.Builder().build()
+  private val okhttpClient by lazy {
+    val logging = HttpLoggingInterceptor()
+    logging.level = HttpLoggingInterceptor.Level.BODY
+    OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
+  }
   private val oauthConsumer: OauthConsumer by lazy {
     OauthConsumer(
         oauthTestSecrets.consumerKey,

@@ -6,6 +6,7 @@ import com.caseykulm.oauthheader.models.AccessTokenResponse
 import com.caseykulm.oauthheader.models.OauthConsumer
 import com.caseykulm.oauthheader.services.RavelryOauthService
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockWebServer
 
 val MOCK_USER_NAME = "rumpletestuser"
@@ -20,8 +21,11 @@ class MockClient {
   val ravelryClient: RavelryClient by lazy {
     RavelryClient(MOCK_USER_NAME, okhttpClient, oauthInterceptor, server.url("/"))
   }
-  private val okhttpClient: OkHttpClient by lazy {
+  private val okhttpClient by lazy {
+    val logging = HttpLoggingInterceptor()
+    logging.level = HttpLoggingInterceptor.Level.BODY
     OkHttpClient.Builder()
+        .addInterceptor(logging)
         .build()
   }
   private val oauthInterceptor: Oauth1Interceptor by lazy {

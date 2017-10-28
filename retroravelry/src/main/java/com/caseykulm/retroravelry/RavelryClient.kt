@@ -13,7 +13,6 @@ import com.squareup.moshi.Rfc3339DateJsonAdapter
 import io.reactivex.Flowable
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -27,15 +26,11 @@ class RavelryClient(
   var ravelryRetroApi: RavelryRetroApi
 
   init {
-    //TODO inject moshi and logging interceptor
-    val logging = HttpLoggingInterceptor()
-    logging.level = HttpLoggingInterceptor.Level.BODY
     val moshi = Moshi.Builder()
         .add(Date::class.java, Rfc3339DateJsonAdapter())
         .add(KotlinJsonAdapterFactory())
         .build()
     val oauthClient = okHttpClient.newBuilder()
-        .addInterceptor(logging)
         .addInterceptor(oauth1Interceptor)
         .build()
     val retrofit = Retrofit.Builder()
