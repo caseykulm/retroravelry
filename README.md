@@ -1,42 +1,12 @@
 #Retro-Ravelry
 
-Java wrapper for the [Ravelry API][1] using [Retrofit][2] and [Google AutoValue][3].
+Kotlin wrapper for the [Ravelry API][1] using [Retrofit][2] and [RxJava2][3].
 
-####Download
+## Download
 
-Download [the latest JAR][4] or grab via Maven:
-```xml
-<dependency>
-  <groupId>com.caseykulm.retroravelry</groupId>
-  <artifactId>retroravelry</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-</dependency>
-```
-or Gradle:
-```groovy
-compile 'com.caseykulm.retroravelry:retroravelry:0.1.0-SNAPSHOT'
-```
+Coming soon to a Maven repo near you.
 
-###RxJava Support
-
-[RxJava][5] 1 is also supported with [RxJava][5] 2 support coming soon.
-
-####Download
-
-Download [the latest JAR][4] or grab via Maven:
-```xml
-<dependency>
-  <groupId>com.caseykulm.retroravelry</groupId>
-  <artifactId>retroravelry-rxjava</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-</dependency>
-```
-or Gradle:
-```groovy
-compile 'com.caseykulm.retroravelry:retroravelry-rxjava:0.1.0-SNAPSHOT'
-```
-
-#License
+## License
 
     Copyright 2016 Casey Kulm
     
@@ -54,9 +24,8 @@ compile 'com.caseykulm.retroravelry:retroravelry-rxjava:0.1.0-SNAPSHOT'
 
 [1]: http://www.ravelry.com/groups/ravelry-api
 [2]: https://github.com/square/retrofit
-[3]: https://github.com/google/auto/tree/master/value
-[4]: https://search.maven.org/remote_content?g=com.caseykulm.retroravelry&a=retroravelry&v=LATEST
-[5]: https://github.com/ReactiveX/RxJava
+[3]: https://github.com/ReactiveX/RxJava
+
 
 
 
