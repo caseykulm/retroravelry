@@ -12,6 +12,7 @@ fun readFile(stream: InputStream): String {
 
 fun <T> Class<T>.readResourceFile(filename: String): String {
   val inputStream = classLoader.getResourceAsStream(filename)
+  // TODO Report that this cannot find the file
   return readFile(inputStream)
 }
 

@@ -5,8 +5,9 @@ import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
+import com.caseykulm.retroravelry.network.responses.photos.ShowPhotoSizesResponse
 import io.reactivex.Flowable
-import retrofit2.Call
+import retrofit2.adapter.rxjava2.Result
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -43,4 +44,9 @@ interface RavelryRetroApi {
   
   // endregion
 
+  // region Photos
+  @GET("photos/{id}/sizes.json")
+  fun showPhotoDimensions(@Path("id") photoId: String): Flowable<Result<ShowPhotoSizesResponse>>
+
+  // endregion
 }

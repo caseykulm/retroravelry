@@ -1,8 +1,7 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.models.request.library.Type
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
+import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 
@@ -148,5 +147,22 @@ class RavelryClientTest {
     val firstVolume = resp.volumes!!.get(0)
     assertEquals(213045775, firstVolume.id)
     assertEquals("Duck the Sailor - toy knitting pattern", firstVolume.title)
+  }
+
+  @Test
+  fun showPhotoDimensions() {
+    // arrange
+    mockClientRule.enqueueHttp200("show_photo_sizes.json")
+
+    // act
+    val photoResponse = mockClientRule.ravelryClient.showPhotoSizes("17022022")
+    val resp = photoResponse.blockingFirst()
+    println(resp)
+
+    // assert
+    assertNotNull(resp)
+    val url = resp.response().raw().request().url()
+    assertEquals("/photos/17022022/sizes.json", url.encodedPath())
+    assertTrue("Response should be success", resp.response().isSuccessful)
   }
 }

@@ -7,6 +7,7 @@ import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
+import com.caseykulm.retroravelry.network.responses.photos.ShowPhotoSizesResponse
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Rfc3339DateJsonAdapter
@@ -14,6 +15,7 @@ import io.reactivex.Flowable
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.Result
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
@@ -75,5 +77,9 @@ class RavelryClient(
   ): Flowable<LibraryResponse> {
     val libraryFlowable: Flowable<LibraryResponse> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
     return libraryFlowable
+  }
+
+  override fun showPhotoSizes(photoId: String): Flowable<Result<ShowPhotoSizesResponse>> {
+    return ravelryRetroApi.showPhotoDimensions(photoId)
   }
 }
