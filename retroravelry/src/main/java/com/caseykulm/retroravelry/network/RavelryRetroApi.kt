@@ -23,10 +23,10 @@ interface RavelryRetroApi {
       @Query("query") query: String,
       @Query("page") page: Int,
       @Query("page_size") pageSize: Int,
-      @Query("personal_attributes") personal_attributes: Boolean): Flowable<SearchPatternsResponse>
+      @Query("personal_attributes") personal_attributes: Boolean): Flowable<Result<SearchPatternsResponse>>
 
   @GET("patterns/{id}.json")
-  fun showPattern(@Path("id") id: Int): Flowable<ShowPatternResponse>
+  fun showPattern(@Path("id") id: Int): Flowable<Result<ShowPatternResponse>>
 
   // endregion
 
@@ -40,7 +40,7 @@ interface RavelryRetroApi {
       @Query("type") type: Type?,
       @Query("sort") sort: Sort?,
       @Query("page") page: Int,
-      @Query("page_size") pageSize: Int): Flowable<LibraryResponse>
+      @Query("page_size") pageSize: Int): Flowable<Result<LibraryResponse>>
   
   // endregion
 

@@ -10,15 +10,15 @@ import io.reactivex.Flowable
 import retrofit2.adapter.rxjava2.Result
 
 interface RavelryApi {
-  fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<SearchPatternsResponse>
-  fun showPattern(id: Int): Flowable<ShowPatternResponse>
+  fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
+  fun showPattern(id: Int): Flowable<Result<ShowPatternResponse>>
   fun searchMyLibrary(
       query: String,
       queryType: String?,
       type: Type?,
       sort: Sort?,
       page: Int,
-      pageSize: Int): Flowable<LibraryResponse>
+      pageSize: Int): Flowable<Result<LibraryResponse>>
   fun searchLibrary(
       username: String,
       query: String,
@@ -26,6 +26,6 @@ interface RavelryApi {
       type: Type?,
       sort: Sort?,
       page: Int,
-      pageSize: Int): Flowable<LibraryResponse>
+      pageSize: Int): Flowable<Result<LibraryResponse>>
   fun showPhotoSizes(photoId: String): Flowable<Result<ShowPhotoSizesResponse>>
 }

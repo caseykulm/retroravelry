@@ -44,13 +44,13 @@ class RavelryClient(
     ravelryRetroApi = retrofit.create(RavelryRetroApi::class.java)
   }
 
-  override fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<SearchPatternsResponse> {
-    val searchPatternFlowable: Flowable<SearchPatternsResponse> = ravelryRetroApi.searchPatterns(query, page, pageSize, false)
+  override fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>> {
+    val searchPatternFlowable: Flowable<Result<SearchPatternsResponse>> = ravelryRetroApi.searchPatterns(query, page, pageSize, false)
     return searchPatternFlowable
   }
 
-  override fun showPattern(id: Int): Flowable<ShowPatternResponse> {
-    val showPatternFlowable: Flowable<ShowPatternResponse> = ravelryRetroApi.showPattern(id)
+  override fun showPattern(id: Int): Flowable<Result<ShowPatternResponse>> {
+    val showPatternFlowable: Flowable<Result<ShowPatternResponse>> = ravelryRetroApi.showPattern(id)
     return showPatternFlowable
   }
 
@@ -61,8 +61,8 @@ class RavelryClient(
       sort: Sort?,
       page: Int,
       pageSize: Int
-  ): Flowable<LibraryResponse> {
-    val libraryFlowable: Flowable<LibraryResponse> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
+  ): Flowable<Result<LibraryResponse>> {
+    val libraryFlowable: Flowable<Result<LibraryResponse>> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
     return libraryFlowable
   }
 
@@ -74,8 +74,8 @@ class RavelryClient(
       sort: Sort?,
       page: Int,
       pageSize: Int
-  ): Flowable<LibraryResponse> {
-    val libraryFlowable: Flowable<LibraryResponse> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
+  ): Flowable<Result<LibraryResponse>> {
+    val libraryFlowable: Flowable<Result<LibraryResponse>> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
     return libraryFlowable
   }
 

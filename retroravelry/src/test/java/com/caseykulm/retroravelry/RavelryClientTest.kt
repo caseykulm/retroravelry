@@ -35,11 +35,12 @@ class RavelryClientTest {
     val searchResponse = mockClientRule.ravelryClient
         .searchPatterns("cardigan", 1, 20)
     val resp = searchResponse.blockingFirst()
+    val patternsResp = resp.response().body()
     println(resp)
 
     // assert
     assertNotNull(resp)
-    assertEquals(20, resp.paginator?.page_size)
+    assertEquals(20, patternsResp.paginator?.page_size)
   }
 
   @Test
@@ -92,11 +93,12 @@ class RavelryClientTest {
     val libraryResponse = mockClientRule.ravelryClient
         .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
+    val libraryResp = resp.response().body()
     println(resp)
 
     // assert
     assertNotNull(resp)
-    assertEquals(20, resp.paginator?.page_size)
+    assertEquals(20, libraryResp.paginator?.page_size)
   }
 
   @Test
@@ -108,11 +110,12 @@ class RavelryClientTest {
     val libraryResponse = mockClientRule.ravelryClient
         .searchMyLibrary("duck", null, Type.book, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
+    val libraryResp = resp.response().body()
     println(resp)
 
     // assert
     assertNotNull(resp)
-    assertEquals(0, resp.paginator?.page_size)
+    assertEquals(0, libraryResp.paginator?.page_size)
   }
 
   @Test
@@ -138,13 +141,14 @@ class RavelryClientTest {
     val libraryResponse = mockClientRule.ravelryClient
         .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
+    val libraryResp = resp.response().body()
     println(resp)
 
     // assert
     assertNotNull(resp)
-    assertEquals(20, resp.paginator?.page_size)
-    assertEquals(4, resp.volumes?.size)
-    val firstVolume = resp.volumes!!.get(0)
+    assertEquals(20, libraryResp.paginator?.page_size)
+    assertEquals(4, libraryResp.volumes?.size)
+    val firstVolume = libraryResp.volumes!!.get(0)
     assertEquals(213045775, firstVolume.id)
     assertEquals("Duck the Sailor - toy knitting pattern", firstVolume.title)
   }
