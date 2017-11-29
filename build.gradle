@@ -1,7 +1,7 @@
 apply from: rootProject.file('dependencies.gradle')
 
 group 'com.caseykulm.retroravelry'
-version '0.2.3-SNAPSHOT'
+version '0.2.4-SNAPSHOT'
 
 buildscript {
   ext.kotlin_version = '1.1.4'

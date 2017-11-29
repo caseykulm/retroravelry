@@ -1,5 +1,5 @@
 group 'com.caseykulm.retroravelry'
-version '0.2.3-SNAPSHOT'
+version '0.2.4-SNAPSHOT'
 
 buildscript {
   ext.kotlin_version = '1.1.4'
@@ -28,7 +28,7 @@ dependencies {
   implementation dep.moshiAdapter
   implementation dep.converterMoshi
   implementation dep.kotlin
-  implementation dep.kotlinReflect
+//  implementation dep.kotlinReflect
   implementation dep.oauth
   implementation dep.oauthServices
 
