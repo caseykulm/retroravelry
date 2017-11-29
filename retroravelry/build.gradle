@@ -22,24 +22,24 @@ repositories {
 }
 
 dependencies {
-  compile dep.retrofit2
-  compile dep.moshi
-  compile dep.moshiKotlin
-  compile dep.moshiAdapter
-  compile dep.converterMoshi
-  compile dep.kotlin
-  compile dep.kotlinReflect
-  compile dep.oauth
-  compile dep.oauthServices
+  implementation dep.retrofit2
+  implementation dep.moshi
+  implementation dep.moshiKotlin
+  implementation dep.moshiAdapter
+  implementation dep.converterMoshi
+  implementation dep.kotlin
+  implementation dep.kotlinReflect
+  implementation dep.oauth
+  implementation dep.oauthServices
 
-  compile dep.okhttp3
-  compile dep.okHttpInterceptor
-  compile dep.rxjava2
-  compile dep.rxjavaAdapter
-  testCompile dep.truth
-  testCompile dep.junit4
-  testCompile dep.mockito
-  testCompile dep.mockWebServer
+  implementation dep.okhttp3
+  implementation dep.okHttpInterceptor
+  implementation dep.rxjava2
+  implementation dep.rxjavaAdapter
+  testImplementation dep.truth
+  testImplementation dep.junit4
+  testImplementation dep.mockito
+  testImplementation dep.mockWebServer
 }
 
 compileKotlin {
