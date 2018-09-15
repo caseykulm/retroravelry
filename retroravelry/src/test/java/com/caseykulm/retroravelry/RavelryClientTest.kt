@@ -12,14 +12,19 @@ class RavelryClientTest {
 
   @Rule @JvmField val mockClientRule = MockClientTestRule()
 
+  // Toggle between mock client and live client here. Uncomment which one you want
+  val testClient: RavelryApi by lazy {
+    mockClientRule.ravelryClient
+    // liveRavelryClient
+  }
+
   @Test
   fun searchPatternsShouldSubscribe() {
     // arrange
     mockClientRule.enqueueHttp200("search_patterns.json")
 
     // act
-    val searchResponse = mockClientRule.ravelryClient
-        .searchPatterns("cardigan", 1, 20)
+    val searchResponse = testClient.searchPatterns("cardigan", 1, 20)
     val testSubToSearch = searchResponse.test()
 
     // assert
@@ -32,7 +37,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("search_patterns.json")
 
     // act
-    val searchResponse = mockClientRule.ravelryClient
+    val searchResponse = testClient
         .searchPatterns("cardigan", 1, 20)
     val resp = searchResponse.blockingFirst()
     val patternsResp = resp.response().body()
@@ -49,7 +54,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("show_pattern.json")
 
     // act
-    val showResponse = mockClientRule.ravelryClient.showPattern(243083)
+    val showResponse = testClient.showPattern(243083)
     val testSubToShow = showResponse.test()
 
     // assert
@@ -62,7 +67,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("show_pattern.json")
 
     // act
-    val showResponse = mockClientRule.ravelryClient.showPattern(243083)
+    val showResponse = testClient.showPattern(243083)
     val resp = showResponse.blockingFirst()
     println(resp)
 
@@ -76,7 +81,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
-    val libraryResponse = mockClientRule.ravelryClient
+    val libraryResponse = testClient
         .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val testSubToSearchLibrary = libraryResponse.test()
 
@@ -90,7 +95,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
-    val libraryResponse = mockClientRule.ravelryClient
+    val libraryResponse = testClient
         .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     val libraryResp = resp.response().body()
@@ -107,7 +112,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_books.json")
 
     // act
-    val libraryResponse = mockClientRule.ravelryClient
+    val libraryResponse = testClient
         .searchMyLibrary("duck", null, Type.book, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     val libraryResp = resp.response().body()
@@ -124,7 +129,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
-    val libraryResponse = mockClientRule.ravelryClient
+    val libraryResponse = testClient
         .searchLibrary("ducksaucer", "duck", null, Type.pattern, null, 1, 20)
     val testSubToSearchLibrary = libraryResponse.test()
 
@@ -138,7 +143,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
-    val libraryResponse = mockClientRule.ravelryClient
+    val libraryResponse = testClient
         .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     val libraryResp = resp.response().body()
@@ -159,7 +164,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("show_photo_sizes.json")
 
     // act
-    val photoResponse = mockClientRule.ravelryClient.showPhotoSizes("17022022")
+    val photoResponse = testClient.showPhotoSizes("17022022")
     val resp = photoResponse.blockingFirst()
     println(resp)
 

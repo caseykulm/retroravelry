@@ -2,7 +2,6 @@ package com.caseykulm.retroravelry
 
 import okhttp3.mockwebserver.MockResponse
 import org.junit.rules.ExternalResource
-import org.mockito.Mock
 
 class MockClientTestRule : ExternalResource() {
   lateinit var mockClient: MockClient

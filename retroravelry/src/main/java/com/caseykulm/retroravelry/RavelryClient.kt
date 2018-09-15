@@ -21,10 +21,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
 
 class RavelryClient(
-    val username: String,
-    val okHttpClient: OkHttpClient,
-    val oauth1Interceptor: Oauth1Interceptor,
-    val baseUrl: HttpUrl = HttpUrl.parse("https://api.ravelry.com/")!!): RavelryApi {
+    private val username: String,
+    private val okHttpClient: OkHttpClient,
+    private val oauth1Interceptor: Oauth1Interceptor,
+    private val baseUrl: HttpUrl = HttpUrl.parse("https://api.ravelry.com/")!!): RavelryApi {
   var ravelryRetroApi: RavelryRetroApi
 
   init {
@@ -45,7 +45,7 @@ class RavelryClient(
   }
 
   override fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>> {
-    val searchPatternFlowable: Flowable<Result<SearchPatternsResponse>> = ravelryRetroApi.searchPatterns(query, page, pageSize, false)
+    val searchPatternFlowable: Flowable<Result<SearchPatternsResponse>> = ravelryRetroApi.searchPatterns(query, page, pageSize, true)
     return searchPatternFlowable
   }
 
