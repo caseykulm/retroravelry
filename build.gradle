@@ -1,9 +1,44 @@
-apply from: rootProject.file('dependencies.gradle')
-
 group 'com.caseykulm.retroravelry'
 version '0.2.4-SNAPSHOT'
 
 buildscript {
+  ext {
+    rxjava2 = '2.1.0'
+    retrofit2 = '2.2.0'
+    kotlinVersion = '1.2.30'
+    moshi = '1.5.0'
+    okhttpVersion = '3.8.0'
+    oauthVersion = '0.4.0'
+
+    dep = [
+            kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+            kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+
+            // Retroravelry Deps
+            retrofit2      : "com.squareup.retrofit2:retrofit:$retrofit2",
+            rxjavaAdapter  : "com.squareup.retrofit2:adapter-rxjava2:$retrofit2",
+            converterMoshi : "com.squareup.retrofit2:converter-moshi:$retrofit2",
+            moshi          : "com.squareup.moshi:moshi:$moshi",
+            moshiKotlin    : "com.squareup.moshi:moshi-kotlin:$moshi",
+            moshiAdapter   : "com.squareup.moshi:moshi-adapters:$moshi",
+            okhttp3        : "com.squareup.okhttp3:okhttp:$okhttpVersion",
+            okHttpInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
+
+            // Oauth Deps
+            oauth          : "com.caseykulm.oauthheader:oauthheader:$oauthVersion",
+            oauthServices  : "com.caseykulm.oauthheader:oauthheader-services:$oauthVersion",
+
+            // Test Deps
+            junit4         : "junit:junit:4.12",
+            truth          : "com.google.truth:truth:0.34",
+            mockito        : "org.mockito:mockito-core:2.8.9",
+            mockWebServer  : "com.squareup.okhttp3:mockwebserver:$okhttpVersion",
+
+            //RxJava
+            rxjava2        : "io.reactivex.rxjava2:rxjava:$rxjava2"
+    ]
+  }
+
   repositories {
     mavenCentral()
   }
