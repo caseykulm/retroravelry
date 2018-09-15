@@ -15,7 +15,7 @@ class RavelryClientTest {
   // Toggle between mock client and live client here. Uncomment which one you want
   val testClient: RavelryApi by lazy {
     mockClientRule.ravelryClient
-    // liveRavelryClient
+//     liveRavelryClient
   }
 
   @Test
@@ -152,10 +152,10 @@ class RavelryClientTest {
     // assert
     assertNotNull(resp)
     assertEquals(20, libraryResp.paginator?.page_size)
-    assertEquals(4, libraryResp.volumes?.size)
+    assertEquals(5, libraryResp.volumes?.size)
     val firstVolume = libraryResp.volumes!!.get(0)
     assertEquals(213045775, firstVolume.id)
-    assertEquals("Duck the Sailor - toy knitting pattern", firstVolume.title)
+    assertEquals("Duck the Sailor", firstVolume.title)
   }
 
   @Test
