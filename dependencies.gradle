@@ -1,14 +1,14 @@
 ext {
   rxjava2 = '2.1.0'
   retrofit2 = '2.2.0'
-  kotlin_version = '1.1.4'
+  kotlinVersion = '1.2.30'
   moshi = '1.5.0'
   okhttpVersion = '3.8.0'
-  oauthVersion = '0.3.1'
+  oauthVersion = '0.4.0'
 
   dep = [
-      kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
-      kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+      kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+      kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
 
       // Retroravelry Deps
       retrofit2      : "com.squareup.retrofit2:retrofit:$retrofit2",
