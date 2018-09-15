@@ -37,9 +37,9 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("search_patterns.json")
 
     // act
-    val searchResponse = testClient
-        .searchPatterns("cardigan", 1, 20)
+    val searchResponse = testClient.searchPatterns("cardigan", 1, 20)
     val resp = searchResponse.blockingFirst()
+    assertFalse(resp.error()?.message, resp.isError)
     val patternsResp = resp.response().body()
     println(resp)
 
