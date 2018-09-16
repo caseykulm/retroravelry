@@ -3,6 +3,7 @@ package com.caseykulm.retroravelry
 import com.caseykulm.oauthheader.Oauth1Interceptor
 import com.caseykulm.retroravelry.models.request.library.Sort
 import com.caseykulm.retroravelry.models.request.library.Type
+import com.caseykulm.retroravelry.network.API_URL
 import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
@@ -24,7 +25,7 @@ class RavelryClient(
     private val username: String,
     private val okHttpClient: OkHttpClient,
     private val oauth1Interceptor: Oauth1Interceptor,
-    private val baseUrl: HttpUrl = HttpUrl.parse("https://api.ravelry.com/")!!): RavelryApi {
+    private val baseUrl: HttpUrl = HttpUrl.parse(API_URL)!!): RavelryApi {
   var ravelryRetroApi: RavelryRetroApi
 
   init {

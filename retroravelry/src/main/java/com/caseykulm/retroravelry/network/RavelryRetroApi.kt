@@ -15,7 +15,6 @@ import retrofit2.http.Query
 val API_URL = "https://api.ravelry.com/"
 
 interface RavelryRetroApi {
-
   // region Patterns
 
   @GET("patterns/search.json")
