@@ -13,8 +13,8 @@ data class PatternSource (
     val amazon_url: String?,
     val amazon_rating: Int?,
     val url: String?,
-    val list_price: Int?,
-    val price: Int?,
+    val list_price: String?,
+    val price: String?,
     val permalink: String?,
     val shelf_image_path: String?
 )

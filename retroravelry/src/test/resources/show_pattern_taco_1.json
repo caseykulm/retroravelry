@@ -1,0 +1,319 @@
+{
+  "pattern": {
+    "photos": [
+      {
+        "medium_url": "https://images4-b.ravelrycache.com/uploads/TastyCrochet/7649745/Taco_medium.JPG",
+        "caption_html": null,
+        "sort_order": 1,
+        "thumbnail_url": "h",
+        "copyright_holder": "",
+        "small_url": "https://images4-e.ravelrycache.com/uploads/TastyCrochet/7649745/Taco_small.JPG",
+        "shelved_url": "https://images4-b.ravelrycache.com/uploads/TastyCrochet/7649745/Taco_shelved.JPG",
+        "x_offset": -24,
+        "medium2_url": "https://images4-e.ravelrycache.com/uploads/TastyCrochet/7649745/Taco_medium2.JPG",
+        "y_offset": -37,
+        "id": 6231059,
+        "small2_url": "https://images4-e.ravelrycache.com/uploads/TastyCrochet/7649745/Taco_small2.JPG",
+        "flickr_url": null,
+        "square_url": "https://images4-e.ravelrycache.com/uploads/TastyCrochet/7649745/Taco_square.JPG",
+        "caption": null
+      }
+    ],
+    "volumes_in_library": [],
+    "ravelry_download": false,
+    "permalink": "taco",
+    "downloadable": false,
+    "difficulty_count": 7,
+    "pattern_type": {
+      "permalink": "toys",
+      "clothing": false,
+      "name": "Toys",
+      "id": 16
+    },
+    "sizes_available": "",
+    "gauge_description": "",
+    "free": false,
+    "pattern_categories": [
+      {
+        "permalink": "food",
+        "parent": {
+          "permalink": "toysandhobbies",
+          "parent": {
+            "permalink": "categories",
+            "name": "Categories",
+            "id": 301
+          },
+          "name": "Toys and Hobbies",
+          "id": 526
+        },
+        "name": "Food",
+        "id": 532
+      }
+    ],
+    "notes_html": "",
+    "product_id": null,
+    "rating_average": 4.2,
+    "gauge_divisor": null,
+    "printings": [
+      {
+        "pattern_source": {
+          "permalink": "tasty-crochet-a-pantry-full-of-patterns-for-33-tasty-treats",
+          "patterns_count": 35,
+          "out_of_print": false,
+          "list_price": "$19.99",
+          "shelf_image_path": "http://images4.ravelry.com/uploads/nobody/7539210/51ebs0ess6l_shelved.jpg",
+          "author": "Rose Langlitz",
+          "amazon_url": "https://www.amazon.com/Tasty-Crochet-Pantry-Patterns-Treats/dp/1600613128?SubscriptionId=AKIAIVR5RCD3ZTXIG7RA&tag=ravelry-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=1600613128",
+          "url": "",
+          "amazon_rating": null,
+          "name": "Tasty Crochet: A Pantry Full of Patterns for 33 Tasty Treats",
+          "id": 40830,
+          "price": "$19.99"
+        },
+        "primary_source": true
+      }
+    ],
+    "yarn_weight_description": null,
+    "updated_at": "2009/04/06 20:48:27 -0400",
+    "queued_projects_count": 9,
+    "packs": [
+      {
+        "shop_id": null,
+        "meters_per_skein": null,
+        "dye_lot": null,
+        "total_meters": null,
+        "grams_per_skein": null,
+        "color_family_id": null,
+        "personal_name": null,
+        "colorway": null,
+        "total_grams": null,
+        "primary_pack_id": null,
+        "yards_per_skein": null,
+        "stash_id": null,
+        "prefer_metric_weight": true,
+        "quantity_description": null,
+        "yarn_weight": {
+          "wpi": "9",
+          "ply": "10",
+          "crochet_gauge": null,
+          "name": "Worsted",
+          "knit_gauge": "20",
+          "id": 12,
+          "min_gauge": null,
+          "max_gauge": null
+        },
+        "yarn_id": 723,
+        "prefer_metric_length": false,
+        "ounces_per_skein": null,
+        "total_ounces": null,
+        "yarn_name": "Patons North America Classic Wool Merino",
+        "total_yards": null,
+        "yarn": {
+          "permalink": "patons-north-america-classic-wool-merino",
+          "yarn_company_name": "Patons North America",
+          "name": "Classic Wool Merino",
+          "yarn_company_id": 45,
+          "id": 723
+        },
+        "id": 6221278,
+        "skeins": null,
+        "project_id": null,
+        "thread_size": null,
+        "shop_name": null
+      },
+      {
+        "shop_id": null,
+        "meters_per_skein": null,
+        "dye_lot": null,
+        "total_meters": null,
+        "grams_per_skein": null,
+        "color_family_id": null,
+        "personal_name": null,
+        "colorway": null,
+        "total_grams": null,
+        "primary_pack_id": null,
+        "yards_per_skein": null,
+        "stash_id": null,
+        "prefer_metric_weight": true,
+        "quantity_description": null,
+        "yarn_weight": {
+          "wpi": "8",
+          "ply": "10",
+          "crochet_gauge": "",
+          "name": "Aran",
+          "knit_gauge": "18",
+          "id": 1,
+          "min_gauge": null,
+          "max_gauge": null
+        },
+        "yarn_id": 1883,
+        "prefer_metric_length": false,
+        "ounces_per_skein": null,
+        "total_ounces": null,
+        "yarn_name": "Lion Brand Lion Wool Solids",
+        "total_yards": null,
+        "yarn": {
+          "permalink": "lion-brand-lion-wool-solids",
+          "yarn_company_name": "Lion Brand",
+          "name": "Lion Wool Solids",
+          "yarn_company_id": 99,
+          "id": 1883
+        },
+        "id": 6221277,
+        "skeins": null,
+        "project_id": null,
+        "thread_size": null,
+        "shop_name": null
+      },
+      {
+        "shop_id": null,
+        "meters_per_skein": null,
+        "dye_lot": null,
+        "total_meters": null,
+        "grams_per_skein": null,
+        "color_family_id": null,
+        "personal_name": null,
+        "colorway": null,
+        "total_grams": null,
+        "primary_pack_id": null,
+        "yards_per_skein": null,
+        "stash_id": null,
+        "prefer_metric_weight": true,
+        "quantity_description": null,
+        "yarn_weight": {
+          "wpi": "8",
+          "ply": "10",
+          "crochet_gauge": "",
+          "name": "Aran",
+          "knit_gauge": "18",
+          "id": 1,
+          "min_gauge": null,
+          "max_gauge": null
+        },
+        "yarn_id": 3374,
+        "prefer_metric_length": false,
+        "ounces_per_skein": null,
+        "total_ounces": null,
+        "yarn_name": "Lion Brand Cotton-Ease ",
+        "total_yards": null,
+        "yarn": {
+          "permalink": "lion-brand-cotton-ease",
+          "yarn_company_name": "Lion Brand",
+          "name": "Cotton-Ease ",
+          "yarn_company_id": 99,
+          "id": 3374
+        },
+        "id": 6221276,
+        "skeins": null,
+        "project_id": null,
+        "thread_size": null,
+        "shop_name": null
+      }
+    ],
+    "currency_symbol": null,
+    "url": "",
+    "favorites_count": 78,
+    "craft": {
+      "permalink": "crochet",
+      "name": "Crochet",
+      "id": 1
+    },
+    "yardage_description": " yards",
+    "yardage_max": null,
+    "name": "Taco",
+    "difficulty_average": 3,
+    "download_location": null,
+    "projects_count": 18,
+    "id": 117504,
+    "comments_count": 0,
+    "notes": "",
+    "pattern_needle_sizes": [
+      {
+        "hook": "G",
+        "pretty_metric": "4",
+        "us_steel": null,
+        "crochet": true,
+        "name": "4.0 mm (G)",
+        "knitting": false,
+        "id": 6,
+        "metric": 4,
+        "us": "6.0"
+      },
+      {
+        "hook": "F",
+        "pretty_metric": "3.75",
+        "us_steel": null,
+        "crochet": true,
+        "name": "3.75 mm (F)",
+        "knitting": false,
+        "id": 5,
+        "metric": 3.75,
+        "us": "5.0"
+      }
+    ],
+    "yardage": null,
+    "rating_count": 5,
+    "price": null,
+    "generally_available": "2009/03/01 00:00:00 -0500",
+    "gauge_pattern": "",
+    "pdf_in_library": false,
+    "personal_attributes": {
+      "queued": false,
+      "in_library": false,
+      "favorited": false,
+      "bookmark_id": null
+    },
+    "row_gauge": null,
+    "gauge": null,
+    "pattern_attributes": [
+      {
+        "permalink": "amigurumi",
+        "id": 217
+      },
+      {
+        "permalink": "3-dimensional",
+        "id": 247
+      },
+      {
+        "permalink": "written-pattern",
+        "id": 267
+      },
+      {
+        "permalink": "worked-flat",
+        "id": 285
+      },
+      {
+        "permalink": "in-the-round",
+        "id": 286
+      },
+      {
+        "permalink": "seamed",
+        "id": 86
+      },
+      {
+        "permalink": "embroidery",
+        "id": 291
+      }
+    ],
+    "pattern_author": {
+      "permalink": "rose-langlitz",
+      "patterns_count": 39,
+      "favorites_count": 201,
+      "name": "Rose Langlitz",
+      "id": 19769,
+      "users": [
+        {
+          "username": "Rose001",
+          "tiny_photo_url": "https://avatars-d.ravelrycache.com/TastyCrochet/5771860/Lydiacrop_tiny.jpg",
+          "id": 124778,
+          "small_photo_url": "https://avatars-d.ravelrycache.com/TastyCrochet/5771860/Lydiacrop_small.jpg",
+          "photo_url": "https://avatars-d.ravelrycache.com/TastyCrochet/5771860/Lydiacrop_large.jpg"
+        }
+      ]
+    },
+    "published": null,
+    "pdf_url": "",
+    "currency": null,
+    "created_at": "2009/04/06 20:48:10 -0400"
+  }
+}

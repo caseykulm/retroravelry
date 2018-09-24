@@ -1,9 +1,12 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.models.request.library.Type
+import io.reactivex.Flowable
+import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
+import java.util.concurrent.Executors
 
 class RavelryClientTest {
   // Used to aid TDD, but make sure to ship not using this
@@ -46,6 +49,39 @@ class RavelryClientTest {
     // assert
     assertNotNull(resp)
     assertEquals(20, patternsResp.paginator?.page_size)
+  }
+
+  @Test
+  fun searchPatternsWithShowForEach() {
+    // arrange
+    mockClientRule.enqueueHttp200("search_patterns_tacos.json")
+    mockClientRule.enqueueHttp200("show_pattern_taco_1.json")
+    mockClientRule.enqueueHttp200("show_pattern_taco_2.json")
+    mockClientRule.enqueueHttp200("show_pattern_taco_3.json")
+
+    val subscribeExecutor = Executors.newCachedThreadPool()
+    val subscribeScheduler = Schedulers.from(subscribeExecutor)
+
+    // act
+    val resultPatternResps = testClient.searchPatterns("taco", 1, 3)
+        .doOnNext { if (it.isError) { it.error()?.message } }
+        .flatMap { Flowable.fromIterable(it.response().body().patterns) }
+        .flatMap { testClient.showPattern(it.id).observeOn(subscribeScheduler) }
+        .doOnNext { println("Running on thread id: ${Thread.currentThread().id}")}
+        .toList()
+        .blockingGet()
+    val tacoPattern1 = resultPatternResps[0].response().body().pattern
+    val tacoPattern2 = resultPatternResps[1].response().body().pattern
+    val tacoPattern3 = resultPatternResps[2].response().body().pattern
+
+    // assert
+    assertEquals(3, resultPatternResps.size)
+    assertEquals(1, tacoPattern1?.craft?.id)
+    assertEquals("Crochet", tacoPattern1?.craft?.name)
+    assertEquals(1, tacoPattern1?.craft?.id)
+    assertEquals("Crochet", tacoPattern2?.craft?.name)
+    assertEquals(1, tacoPattern1?.craft?.id)
+    assertEquals("Crochet", tacoPattern3?.craft?.name)
   }
 
   @Test

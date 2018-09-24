@@ -17,7 +17,7 @@ dependencies {
   implementation dep.moshiAdapter
   implementation dep.converterMoshi
   implementation dep.kotlin
-//  implementation dep.kotlinReflect
+  implementation dep.kotlinReflect
   implementation dep.oauth
   implementation dep.oauthServices
 

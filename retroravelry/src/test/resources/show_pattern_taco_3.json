@@ -1,0 +1,229 @@
+{
+  "pattern": {
+    "packs": [
+      {
+        "grams_per_skein": null,
+        "personal_name": "",
+        "yarn_name": null,
+        "total_meters": null,
+        "id": 17193322,
+        "yards_per_skein": null,
+        "shop_name": null,
+        "prefer_metric_weight": true,
+        "skeins": null,
+        "color_family_id": null,
+        "colorway": null,
+        "prefer_metric_length": false,
+        "total_grams": null,
+        "quantity_description": null,
+        "yarn_id": null,
+        "total_ounces": null,
+        "primary_pack_id": null,
+        "ounces_per_skein": null,
+        "project_id": null,
+        "dye_lot": null,
+        "thread_size": null,
+        "yarn": null,
+        "yarn_weight": null,
+        "shop_id": null,
+        "meters_per_skein": null,
+        "total_yards": null,
+        "stash_id": null
+      }
+    ],
+    "product_id": 66637,
+    "id": 246637,
+    "craft": {
+      "id": 1,
+      "permalink": "crochet",
+      "name": "Crochet"
+    },
+    "yarn_weight_description": "Worsted (9 wpi)",
+    "price": null,
+    "pdf_url": "",
+    "free": true,
+    "downloadable": true,
+    "difficulty_count": 26,
+    "difficulty_average": 1.5,
+    "currency_symbol": null,
+    "permalink": "taco-cat-toy",
+    "currency": null,
+    "created_at": "2011/05/23 22:44:04 -0400",
+    "notes": "This taco would also make a tasty key chain.",
+    "yardage_description": " yards",
+    "row_gauge": null,
+    "gauge": null,
+    "download_location": {
+      "type": "ravelry",
+      "url": "http://www.ravelry.com/dls/15602/66637",
+      "free": true
+    },
+    "personal_attributes": {
+      "bookmark_id": null,
+      "in_library": false,
+      "queued": false,
+      "favorited": false
+    },
+    "name": "Taco Cat Toy",
+    "generally_available": "2011/05/23 22:44:04 -0400",
+    "gauge_pattern": "",
+    "comments_count": 0,
+    "pattern_attributes": [
+      {
+        "id": 267,
+        "permalink": "written-pattern"
+      }
+    ],
+    "pattern_author": {
+      "patterns_count": 11,
+      "id": 35742,
+      "permalink": "kristen-stevenson",
+      "name": "Kristen Stevenson",
+      "users": [
+        {
+          "id": 379112,
+          "photo_url": "https://avatars-d.ravelrycache.com/tinypurrs/480233696/6A044B7C-024A-4D04-A02F-ADC5988EA259_large.jpeg",
+          "username": "woolmagician",
+          "tiny_photo_url": "https://avatars-d.ravelrycache.com/tinypurrs/480233696/6A044B7C-024A-4D04-A02F-ADC5988EA259_tiny.jpeg",
+          "small_photo_url": "https://avatars-d.ravelrycache.com/tinypurrs/480233696/6A044B7C-024A-4D04-A02F-ADC5988EA259_small.jpeg"
+        }
+      ],
+      "favorites_count": 118
+    },
+    "pattern_needle_sizes": [
+      {
+        "hook": "E",
+        "crochet": true,
+        "pretty_metric": "3.5",
+        "name": "3.5 mm (E)",
+        "us_steel": "00",
+        "us": "4.0",
+        "id": 4,
+        "knitting": false,
+        "metric": 3.5
+      }
+    ],
+    "pdf_in_library": false,
+    "ravelry_download": true,
+    "yardage_max": null,
+    "url": "",
+    "updated_at": "2017/09/27 11:50:18 -0400",
+    "pattern_type": {
+      "id": 6,
+      "permalink": "pet",
+      "name": "Pet",
+      "clothing": false
+    },
+    "favorites_count": 630,
+    "photos": [
+      {
+        "shelved_url": "https://images4-b.ravelrycache.com/uploads/smushedsquirrel/63773553/DSCN1170_shelved.JPG",
+        "x_offset": -23,
+        "id": 17345606,
+        "medium2_url": "https://images4-e.ravelrycache.com/uploads/smushedsquirrel/63773553/DSCN1170_medium2.JPG",
+        "y_offset": -9,
+        "small2_url": "https://images4-e.ravelrycache.com/uploads/smushedsquirrel/63773553/DSCN1170_small2.JPG",
+        "flickr_url": null,
+        "square_url": "https://images4-e.ravelrycache.com/uploads/smushedsquirrel/63773553/DSCN1170_square.JPG",
+        "caption": null,
+        "medium_url": "https://images4-b.ravelrycache.com/uploads/smushedsquirrel/63773553/DSCN1170_medium.JPG",
+        "caption_html": null,
+        "thumbnail_url": "h",
+        "sort_order": 1,
+        "copyright_holder": "Kristen Stevenson",
+        "small_url": "https://images4-e.ravelrycache.com/uploads/smushedsquirrel/63773553/DSCN1170_small.JPG"
+      },
+      {
+        "shelved_url": "https://images4-e.ravelrycache.com/uploads/smushedsquirrel/63773659/DSCN1174_shelved.JPG",
+        "x_offset": -13,
+        "id": 17345622,
+        "medium2_url": "https://images4-b.ravelrycache.com/uploads/smushedsquirrel/63773659/DSCN1174_medium2.JPG",
+        "y_offset": -40,
+        "small2_url": "https://images4-b.ravelrycache.com/uploads/smushedsquirrel/63773659/DSCN1174_small2.JPG",
+        "flickr_url": null,
+        "square_url": "https://images4-b.ravelrycache.com/uploads/smushedsquirrel/63773659/DSCN1174_square.JPG",
+        "caption": null,
+        "medium_url": "https://images4-e.ravelrycache.com/uploads/smushedsquirrel/63773659/DSCN1174_medium.JPG",
+        "caption_html": null,
+        "thumbnail_url": "h",
+        "sort_order": 2,
+        "copyright_holder": "Kristen Stevenson",
+        "small_url": "https://images4-e.ravelrycache.com/uploads/smushedsquirrel/63773659/DSCN1174_small.JPG"
+      },
+      {
+        "shelved_url": "https://images4-b.ravelrycache.com/uploads/giraffadae/74876094/6002924854_91c527f26d_shelved.jpg",
+        "x_offset": -32,
+        "id": 21115819,
+        "medium2_url": "https://images4-e.ravelrycache.com/uploads/giraffadae/74876094/6002924854_91c527f26d_medium2.jpg",
+        "y_offset": -4,
+        "small2_url": "https://images4-e.ravelrycache.com/uploads/giraffadae/74876094/6002924854_91c527f26d_small2.jpg",
+        "flickr_url": null,
+        "square_url": "https://images4-e.ravelrycache.com/uploads/giraffadae/74876094/6002924854_91c527f26d_square.jpg",
+        "caption": null,
+        "medium_url": "https://images4-b.ravelrycache.com/uploads/giraffadae/74876094/6002924854_91c527f26d_medium.jpg",
+        "caption_html": null,
+        "thumbnail_url": "h",
+        "sort_order": 3,
+        "copyright_holder": "giraffadae",
+        "small_url": "https://images4-e.ravelrycache.com/uploads/giraffadae/74876094/6002924854_91c527f26d_small_best_fit.jpg"
+      }
+    ],
+    "volumes_in_library": [],
+    "queued_projects_count": 116,
+    "published": null,
+    "yarn_weight": {
+      "max_gauge": null,
+      "knit_gauge": "20",
+      "id": 12,
+      "crochet_gauge": null,
+      "wpi": "9",
+      "name": "Worsted",
+      "min_gauge": null,
+      "ply": "10"
+    },
+    "pattern_categories": [
+      {
+        "id": 569,
+        "parent": {
+          "id": 565,
+          "parent": {
+            "id": 301,
+            "permalink": "categories",
+            "name": "Categories"
+          },
+          "permalink": "pet",
+          "name": "Pet"
+        },
+        "permalink": "toys",
+        "name": "Toys"
+      }
+    ],
+    "notes_html": "\n<p>This taco would also make a tasty key chain.</p>\n",
+    "sizes_available": "",
+    "rating_average": 4.8,
+    "projects_count": 60,
+    "gauge_divisor": null,
+    "printings": [
+      {
+        "primary_source": true,
+        "pattern_source": {
+          "patterns_count": 9,
+          "id": 74454,
+          "author": "Kristen Stevenson",
+          "price": null,
+          "out_of_print": false,
+          "permalink": "smushed-squirrels-ravelry-downloads",
+          "amazon_url": null,
+          "amazon_rating": null,
+          "name": "Smushed Squirrel's Ravelry Downloads",
+          "url": "http://www.ravelry.com/stores/smushed-squirrels-ravelry-rampage",
+          "shelf_image_path": null,
+          "list_price": null
+        }
+      }
+    ],
+    "gauge_description": "",
+    "yardage": null,
+    "rating_count": 25
+  }
+}
