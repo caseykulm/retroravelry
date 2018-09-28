@@ -45,42 +45,33 @@ class RavelryClient(
     ravelryRetroApi = retrofit.create(RavelryRetroApi::class.java)
   }
 
-  override fun searchPatterns(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>> {
-    val searchPatternFlowable: Flowable<Result<SearchPatternsResponse>> = ravelryRetroApi.searchPatterns(query, page, pageSize, true)
-    return searchPatternFlowable
-  }
+  override fun searchPatternsRx(query: String, page: Int, pageSize: Int) =
+      ravelryRetroApi.searchPatternsRx(query, page, pageSize, true)
 
-  override fun showPattern(id: Int): Flowable<Result<ShowPatternResponse>> {
-    val showPatternFlowable: Flowable<Result<ShowPatternResponse>> = ravelryRetroApi.showPattern(id)
-    return showPatternFlowable
-  }
+  override fun searchPatterns(query: String, page: Int, pageSize: Int) =
+      ravelryRetroApi.searchPatterns(query, page, pageSize, true)
+
+  override fun showPatternRx(id: Int) = ravelryRetroApi.showPatternRx(id)
+
+  override fun showPattern(id: Int) = ravelryRetroApi.showPattern(id)
+
+  override fun searchMyLibraryRx(
+      query: String, queryType: String?, type: Type?, sort: Sort?, page: Int, pageSize: Int) =
+      ravelryRetroApi.searchLibraryRx(username, query, queryType, type, sort, page, pageSize)
 
   override fun searchMyLibrary(
-      query: String,
-      queryType: String?,
-      type: Type?,
-      sort: Sort?,
-      page: Int,
-      pageSize: Int
-  ): Flowable<Result<LibraryResponse>> {
-    val libraryFlowable: Flowable<Result<LibraryResponse>> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
-    return libraryFlowable
-  }
+      query: String, queryType: String?, type: Type?, sort: Sort?, page: Int, pageSize: Int) =
+      ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
+
+  override fun searchLibraryRx(
+      username: String, query: String, queryType: String?, type: Type?, sort: Sort?, page: Int, pageSize: Int) =
+      ravelryRetroApi.searchLibraryRx(username, query, queryType, type, sort, page, pageSize)
 
   override fun searchLibrary(
-      username: String,
-      query: String,
-      queryType: String?,
-      type: Type?,
-      sort: Sort?,
-      page: Int,
-      pageSize: Int
-  ): Flowable<Result<LibraryResponse>> {
-    val libraryFlowable: Flowable<Result<LibraryResponse>> = ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
-    return libraryFlowable
-  }
+      username: String, query: String, queryType: String?, type: Type?, sort: Sort?, page: Int, pageSize: Int) =
+      ravelryRetroApi.searchLibrary(username, query, queryType, type, sort, page, pageSize)
 
-  override fun showPhotoSizes(photoId: String): Flowable<Result<ShowPhotoSizesResponse>> {
-    return ravelryRetroApi.showPhotoDimensions(photoId)
-  }
+  override fun showPhotoSizesRx(photoId: String) = ravelryRetroApi.showPhotoDimensionsRx(photoId)
+
+  override fun showPhotoSizes(photoId: String) = ravelryRetroApi.showPhotoDimensions(photoId)
 }

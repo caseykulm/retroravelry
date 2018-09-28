@@ -22,12 +22,12 @@ class RavelryClientTest {
   }
 
   @Test
-  fun searchPatternsShouldSubscribe() {
+  fun searchPatternsRxShouldSubscribe() {
     // arrange
     mockClientRule.enqueueHttp200("search_patterns.json")
 
     // act
-    val searchResponse = testClient.searchPatterns("cardigan", 1, 20)
+    val searchResponse = testClient.searchPatternsRx("cardigan", 1, 20)
     val testSubToSearch = searchResponse.test()
 
     // assert
@@ -35,12 +35,12 @@ class RavelryClientTest {
   }
 
   @Test
-  fun searchPatternsShouldReturnResults() {
+  fun searchPatternsRxShouldReturnResults() {
     // arrange
     mockClientRule.enqueueHttp200("search_patterns.json")
 
     // act
-    val searchResponse = testClient.searchPatterns("cardigan", 1, 20)
+    val searchResponse = testClient.searchPatternsRx("cardigan", 1, 20)
     val resp = searchResponse.blockingFirst()
     assertFalse(resp.error()?.message, resp.isError)
     val patternsResp = resp.response().body()
@@ -52,7 +52,24 @@ class RavelryClientTest {
   }
 
   @Test
-  fun searchPatternsWithShowForEach() {
+  fun searchPatternsShouldReturnResults() {
+    // arrange
+    mockClientRule.enqueueHttp200("search_patterns.json")
+
+    // act
+    val searchResponse = testClient.searchPatterns("cardigan", 1, 20)
+    val resp = searchResponse.execute()
+
+    // assert
+    assertTrue(resp.message(), resp.isSuccessful)
+    val patternsResp = resp.body()
+    println(resp)
+    assertNotNull(resp)
+    assertEquals(20, patternsResp.paginator?.page_size)
+  }
+
+  @Test
+  fun searchPatternsRxWithShowForEach() {
     // arrange
     mockClientRule.enqueueHttp200("search_patterns_tacos.json")
     mockClientRule.enqueueHttp200("show_pattern_taco_1.json")
@@ -63,10 +80,10 @@ class RavelryClientTest {
     val subscribeScheduler = Schedulers.from(subscribeExecutor)
 
     // act
-    val resultPatternResps = testClient.searchPatterns("taco", 1, 3)
+    val resultPatternResps = testClient.searchPatternsRx("taco", 1, 3)
         .doOnNext { if (it.isError) { it.error()?.message } }
         .flatMap { Flowable.fromIterable(it.response().body().patterns) }
-        .flatMap { testClient.showPattern(it.id).observeOn(subscribeScheduler) }
+        .flatMap { testClient.showPatternRx(it.id).observeOn(subscribeScheduler) }
         .doOnNext { println("Running on thread id: ${Thread.currentThread().id}")}
         .toList()
         .blockingGet()
@@ -85,16 +102,30 @@ class RavelryClientTest {
   }
 
   @Test
-  fun showPatternShouldSubscribe() {
+  fun showPatternRxShouldSubscribe() {
     // arrange
     mockClientRule.enqueueHttp200("show_pattern.json")
 
     // act
-    val showResponse = testClient.showPattern(243083)
+    val showResponse = testClient.showPatternRx(243083)
     val testSubToShow = showResponse.test()
 
     // assert
     testSubToShow.assertNoErrors()
+  }
+
+  @Test
+  fun showPatternRxShouldReturnResults() {
+    // arrange
+    mockClientRule.enqueueHttp200("show_pattern.json")
+
+    // act
+    val showResponse = testClient.showPatternRx(243083)
+    val resp = showResponse.blockingFirst()
+    println(resp)
+
+    // assert
+    assertNotNull(resp)
   }
 
   @Test
@@ -104,21 +135,22 @@ class RavelryClientTest {
 
     // act
     val showResponse = testClient.showPattern(243083)
-    val resp = showResponse.blockingFirst()
+    val resp = showResponse.execute()
     println(resp)
 
     // assert
-    assertNotNull(resp)
+    assertTrue(resp.message(), resp.isSuccessful)
+    assertNotNull(resp.body())
   }
 
   @Test
-  fun myLibraryShouldSubscribe() {
+  fun myLibraryRxShouldSubscribe() {
     // arrange
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
     val libraryResponse = testClient
-        .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
+        .searchMyLibraryRx("duck", null, Type.pattern, null, 1, 20)
     val testSubToSearchLibrary = libraryResponse.test()
 
     // assert
@@ -126,13 +158,13 @@ class RavelryClientTest {
   }
 
   @Test
-  fun myLibraryShouldReturnPatternResults() {
+  fun myLibraryRxShouldReturnPatternResults() {
     // arrange
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
     val libraryResponse = testClient
-        .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
+        .searchMyLibraryRx("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     val libraryResp = resp.response().body()
     println(resp)
@@ -143,13 +175,31 @@ class RavelryClientTest {
   }
 
   @Test
-  fun myLibraryShouldReturnNoBooks() {
+  fun myLibraryShouldReturnPatternResults() {
+    // arrange
+    mockClientRule.enqueueHttp200("my_library_patterns.json")
+
+    // act
+    val libraryResponse = testClient
+        .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
+    val resp = libraryResponse.execute()
+    val libraryResp = resp.body()
+    println(resp)
+
+    // assert
+    assertTrue(resp.message(), resp.isSuccessful)
+    assertNotNull(resp.body())
+    assertEquals(20, libraryResp.paginator?.page_size)
+  }
+
+  @Test
+  fun myLibraryRxShouldReturnNoBooks() {
     // arrange
     mockClientRule.enqueueHttp200("my_library_books.json")
 
     // act
     val libraryResponse = testClient
-        .searchMyLibrary("duck", null, Type.book, null, 1, 20)
+        .searchMyLibraryRx("duck", null, Type.book, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     val libraryResp = resp.response().body()
     println(resp)
@@ -160,13 +210,13 @@ class RavelryClientTest {
   }
 
   @Test
-  fun libraryShouldSubscribe() {
+  fun libraryRxShouldSubscribe() {
     // arrange
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
     val libraryResponse = testClient
-        .searchLibrary("ducksaucer", "duck", null, Type.pattern, null, 1, 20)
+        .searchLibraryRx("ducksaucer", "duck", null, Type.pattern, null, 1, 20)
     val testSubToSearchLibrary = libraryResponse.test()
 
     // assert
@@ -174,13 +224,13 @@ class RavelryClientTest {
   }
 
   @Test
-  fun libraryShouldReturnPatternResults() {
+  fun libraryRxShouldReturnPatternResults() {
     // arrange
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
     val libraryResponse = testClient
-        .searchMyLibrary("duck", null, Type.pattern, null, 1, 20)
+        .searchMyLibraryRx("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
     val libraryResp = resp.response().body()
     println(resp)
@@ -195,12 +245,12 @@ class RavelryClientTest {
   }
 
   @Test
-  fun showPhotoDimensions() {
+  fun showPhotoDimensionsRx() {
     // arrange
     mockClientRule.enqueueHttp200("show_photo_sizes.json")
 
     // act
-    val photoResponse = testClient.showPhotoSizes("17022022")
+    val photoResponse = testClient.showPhotoSizesRx("17022022")
     val resp = photoResponse.blockingFirst()
     println(resp)
 
@@ -209,5 +259,22 @@ class RavelryClientTest {
     val url = resp.response().raw().request().url()
     assertEquals("/photos/17022022/sizes.json", url.encodedPath())
     assertTrue("Response should be success", resp.response().isSuccessful)
+  }
+
+  @Test
+  fun showPhotoDimensions() {
+    // arrange
+    mockClientRule.enqueueHttp200("show_photo_sizes.json")
+
+    // act
+    val photoResponse = testClient.showPhotoSizes("17022022")
+    val resp = photoResponse.execute()
+    println(resp)
+
+    // assert
+    assertNotNull(resp)
+    val url = resp.raw().request().url()
+    assertEquals("/photos/17022022/sizes.json", url.encodedPath())
+    assertTrue("Response should be success", resp.isSuccessful)
   }
 }
