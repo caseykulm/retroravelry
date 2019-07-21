@@ -1,42 +1,35 @@
 group 'com.caseykulm.retroravelry'
-version '0.3.0-SNAPSHOT'
+version '0.4.0-SNAPSHOT'
 
 buildscript {
   ext {
-    rxjava2 = '2.1.0'
-    retrofit2 = '2.2.0'
-    kotlinVersion = '1.3.41'
-    moshi = '1.6.0'
-    okhttpVersion = '3.8.0'
-    oauthVersion = '0.4.0'
-
     dep = [
-            kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41",
-            kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41",
+        kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41",
+        kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41",
 
-            // Retroravelry Deps
-            retrofit2      : "com.squareup.retrofit2:retrofit:2.2.0",
-            rxjavaAdapter  : "com.squareup.retrofit2:adapter-rxjava2:2.2.0",
-            converterMoshi : "com.squareup.retrofit2:converter-moshi:2.2.0",
-            kotlinReflect  : "org.jetbrains.kotlin:kotlin-reflect:1.2.70",
-            moshi          : "com.squareup.moshi:moshi:1.6.0",
-            moshiKotlin    : "com.squareup.moshi:moshi-kotlin:1.6.0",
-            moshiAdapter   : "com.squareup.moshi:moshi-adapters:1.6.0",
-            okhttp3        : "com.squareup.okhttp3:okhttp:3.8.0",
-            okHttpInterceptor: "com.squareup.okhttp3:logging-interceptor:3.8.0",
+        // Retroravelry Deps
+        retrofit2      : "com.squareup.retrofit2:retrofit:2.2.0",
+        rxjavaAdapter  : "com.squareup.retrofit2:adapter-rxjava2:2.2.0",
+        converterMoshi : "com.squareup.retrofit2:converter-moshi:2.2.0",
+        kotlinReflect  : "org.jetbrains.kotlin:kotlin-reflect:1.2.70",
+        moshi          : "com.squareup.moshi:moshi:1.6.0",
+        moshiKotlin    : "com.squareup.moshi:moshi-kotlin:1.6.0",
+        moshiAdapter   : "com.squareup.moshi:moshi-adapters:1.6.0",
+        okhttp3        : "com.squareup.okhttp3:okhttp:3.8.0",
+        okHttpInterceptor: "com.squareup.okhttp3:logging-interceptor:3.8.0",
 
-            // Oauth Deps
-            oauth          : "com.caseykulm.oauthheader:oauthheader:0.4.0",
-            oauthServices  : "com.caseykulm.oauthheader:oauthheader-services:0.4.0",
+        // Oauth Deps
+        oauth          : "com.caseykulm.oauthheader:oauthheader:0.4.0",
+        oauthServices  : "com.caseykulm.oauthheader:oauthheader-services:0.4.0",
 
-            // Test Deps
-            junit4         : "junit:junit:4.12",
-            truth          : "com.google.truth:truth:0.34",
-            mockito        : "org.mockito:mockito-core:2.8.9",
-            mockWebServer  : "com.squareup.okhttp3:mockwebserver:3.8.0",
+        // Test Deps
+        junit4         : "junit:junit:4.12",
+        truth          : "com.google.truth:truth:0.34",
+        mockito        : "org.mockito:mockito-core:2.8.9",
+        mockWebServer  : "com.squareup.okhttp3:mockwebserver:3.8.0",
 
-            //RxJava
-            rxjava2        : "io.reactivex.rxjava2:rxjava:2.1.0"
+        //RxJava
+        rxjava2        : "io.reactivex.rxjava2:rxjava:2.1.0"
     ]
   }
 
@@ -44,7 +37,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41"
   }
 }
 
@@ -57,7 +50,7 @@ repositories {
 }
 
 dependencies {
-  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41"
 }
 
 compileKotlin {
