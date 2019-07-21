@@ -1,6 +1,3 @@
-group 'com.caseykulm.retroravelry'
-version '0.4.0-SNAPSHOT'
-
 buildscript {
   ext {
     dep = [
@@ -42,7 +39,6 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
-apply plugin: 'maven'
 
 repositories {
   jcenter()

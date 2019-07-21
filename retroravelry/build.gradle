@@ -1,8 +1,5 @@
-group 'com.caseykulm.retroravelry'
-version '0.3.0-SNAPSHOT'
-
 apply plugin: 'kotlin'
-apply plugin: 'maven'
+apply from: "$rootProject.projectDir/gradle/maven-config.gradle"
 
 repositories {
   jcenter()
