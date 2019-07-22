@@ -1,0 +1,165 @@
+def isParent = project.name.contains("parent")
+
+group "${release.groupId}"
+version "${release.version}"
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+repositories {
+  mavenCentral()
+}
+
+if (!isParent) {
+  // custom tasks for creating source/javadoc jars
+  task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+  }
+
+  task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+  }
+
+  // add javadoc/source jar tasks as artifacts
+  artifacts {
+    archives sourcesJar, javadocJar
+  }
+
+  task checkSecrets {
+    doLast {
+      if (release.secrets.bintray.user.isEmpty()) {
+        throw new IllegalStateException('BINTRAY_USER must be defined in Environment Variable or Gradle Properties')
+      }
+      if (release.secrets.bintray.key.isEmpty()) {
+        throw new IllegalStateException('BINTRAY_API_KEY must be defined in Environment Variable or Gradle Properties')
+      }
+      if (release.secrets.bintray.gpgPassphrase.isEmpty()) {
+        throw new IllegalStateException('BINTRAY_GPG_PASSWORD must be defined in Environment Variable or Gradle Properties')
+      }
+      if (release.secrets.sonatype.user.isEmpty()) {
+        throw new IllegalStateException('SONATYPE_USER must be defined in Environment Variable or Gradle Properties')
+      }
+      if (release.secrets.sonatype.password.isEmpty()) {
+        throw new IllegalStateException('SONATYPE_PASSWORD must be defined in Environment Variable or Gradle Properties')
+      }
+    }
+  }
+
+  task updateReadmeVersion {
+    doLast {
+      def readmeFileString = new File('README.md').getText('UTF-8')                         // Read file
+      def updatedString = readmeFileString.replaceAll(/\d+.\d+.\d+/, "${release.version}")  // replace versions
+      new File('README.md').write(updatedString, 'UTF-8')                                   // Write file
+    }
+  }
+
+  build.dependsOn("updateReadmeVersion")
+  bintrayUpload.dependsOn("checkSecrets")
+
+  // This might not be necessary, but it doesn't seem to be generating the root pom.xml without this
+  // bintrayUpload.dependsOn("publish")
+}
+
+afterEvaluate { project ->
+  // Create the pom configuration:
+  def pomConfig = {
+    licenses {
+      license {
+        name "The Apache Software License, Version 2.0"
+        url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        distribution "repo"
+      }
+    }
+
+    if (isParent) {
+      // only add modules field to parent
+      modules {
+        project.subprojects.forEach { module "${it.name}" }
+      }
+    }
+
+    developers {
+      developer {
+        id "caseykulm"
+        name "Casey Kulm"
+        email "mlukyesac@gmail.com"
+      }
+    }
+
+    scm {
+      url "${release.githubRepo}"
+    }
+  }
+
+  publishing {
+    publications {
+      MyPublication(MavenPublication) {
+        if (!isParent) {
+          // Only generate jar/sources/javadocs if not parent
+          from components.java
+          artifact sourcesJar
+          artifact javadocJar
+        }
+        groupId "${release.groupId}"
+        artifactId "${project.name}"
+        version "${release.version}"
+        pom.withXml {
+          def root = asNode()
+          root.appendNode('description', "${release.description}")
+          root.appendNode('name', 'retroravelry')
+          root.appendNode('url', "${release.githubRepo}")
+          root.children().last() + pomConfig
+        }
+      }
+    }
+  }
+
+  bintray {
+    user = release.secrets.bintray.user
+    key = release.secrets.bintray.key
+
+    dryRun = false     // Whether to run this as dry-run, without deploying
+    publish = true    // Whether version should be auto published after an upload
+    override = false // Whether to override version artifacts already published
+
+    publications = ['MyPublication']
+    // - AND/OR -
+    filesSpec {
+      from 'build/libs'
+      into '.'
+    }
+
+    pkg {
+      repo = 'maven'
+      name = 'retroravelry'
+      userOrg = release.secrets.bintray.user
+      desc = "${release.description}"
+      licenses = ['Apache-2.0']
+      websiteUrl = "${release.githubRepo}"
+      issueTrackerUrl = 'https://github.com/caseykulm/retroravelry/issues'
+      vcsUrl = 'https://github.com/caseykulm/retroravelry.git'
+      labels = ['ravelry', 'kotlin', 'java', 'api']
+      publicDownloadNumbers = true
+      githubRepo = 'caseykulm/retroravelry'
+      githubReleaseNotesFile = 'README.md'
+      version {
+        name = "${release.version}"
+        desc = "${release.description}"
+        released  = new Date()
+        vcsTag = "${release.version}"
+        gpg {
+          sign = true //Determines whether to GPG sign the files. The default is false
+          passphrase = release.secrets.bintray.gpgPassphrase //Optional. The passphrase for GPG signing'
+        }
+        mavenCentralSync {
+          sync = true
+          user = release.secrets.sonatype.user //OSS user token: mandatory
+          password = release.secrets.sonatype.password //OSS user password: mandatory
+          close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+        }
+      }
+    }
+  }
+}

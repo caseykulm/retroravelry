@@ -8,16 +8,16 @@ buildscript {
         retrofit2      : "com.squareup.retrofit2:retrofit:2.2.0",
         rxjavaAdapter  : "com.squareup.retrofit2:adapter-rxjava2:2.2.0",
         converterMoshi : "com.squareup.retrofit2:converter-moshi:2.2.0",
-        kotlinReflect  : "org.jetbrains.kotlin:kotlin-reflect:1.2.70",
-        moshi          : "com.squareup.moshi:moshi:1.6.0",
-        moshiKotlin    : "com.squareup.moshi:moshi-kotlin:1.6.0",
-        moshiAdapter   : "com.squareup.moshi:moshi-adapters:1.6.0",
+        kotlinReflect  : "org.jetbrains.kotlin:kotlin-reflect:1.3.41",
+        moshi          : "com.squareup.moshi:moshi:1.8.0",
+        moshiKotlin    : "com.squareup.moshi:moshi-kotlin:1.8.0",
+        moshiAdapter   : "com.squareup.moshi:moshi-adapters:1.8.0",
         okhttp3        : "com.squareup.okhttp3:okhttp:3.8.0",
         okHttpInterceptor: "com.squareup.okhttp3:logging-interceptor:3.8.0",
 
         // Oauth Deps
-        oauth          : "com.caseykulm.oauthheader:oauthheader:0.4.0",
-        oauthServices  : "com.caseykulm.oauthheader:oauthheader-services:0.4.0",
+        oauth          : "com.caseykulm.oauthheader:oauthheader:0.5.0",
+        oauthServices  : "com.caseykulm.oauthheader:oauthheader-services:0.5.0",
 
         // Test Deps
         junit4         : "junit:junit:4.12",
@@ -28,30 +28,63 @@ buildscript {
         //RxJava
         rxjava2        : "io.reactivex.rxjava2:rxjava:2.1.0"
     ]
+
+    release = [
+        'groupId': 'com.caseykulm.retroravelry',
+        'version': '0.4.0',
+        'description': 'OkHttp OAuth 1.0 3-legged Helper',
+        'githubRepo': 'https://github.com/caseykulm/oauthheader',
+        'secrets': [
+            // Add secrets to System Environment Variables or Gradle Properties
+            'bintray': [
+                'user':
+                    System.env.BINTRAY_USER ?:
+                        (project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : ''),
+                'key':
+                    System.env.BINTRAY_API_KEY ?:
+                        (project.hasProperty('BINTRAY_API_KEY') ? project.property('BINTRAY_API_KEY') : ''),
+                'gpgPassphrase':
+                    System.env.BINTRAY_GPG_PASSWORD ?:
+                        (project.hasProperty('BINTRAY_GPG_PASSWORD') ? project.property('BINTRAY_GPG_PASSWORD') : ''),
+            ],
+            'sonatype': [
+                'user':
+                    System.env.SONATYPE_USER ?:
+                        (project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : ''),
+                'password':
+                    System.env.SONATYPE_PASSWORD ?:
+                        (project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : ''),
+            ]
+        ]
+    ]
   }
 
   repositories {
+    jcenter()
     mavenCentral()
   }
+
   dependencies {
+    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41"
   }
 }
 
-apply plugin: 'kotlin'
+subprojects { project ->
+  apply plugin: 'kotlin'
 
-repositories {
-  jcenter()
-  mavenCentral()
+  repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+  }
+
+  compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+  }
+  compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+  }
 }
 
-dependencies {
-  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41"
-}
-
-compileKotlin {
-  kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-  kotlinOptions.jvmTarget = "1.8"
-}
+allprojects { apply from: "$rootProject.projectDir/gradle/maven-publish.gradle" }
