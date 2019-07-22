@@ -48,7 +48,7 @@ class RavelryClientTest {
 
     // assert
     assertNotNull(resp)
-    assertEquals(20, patternsResp.paginator?.page_size)
+    assertEquals(20, patternsResp?.paginator?.page_size)
   }
 
   @Test
@@ -65,7 +65,7 @@ class RavelryClientTest {
     val patternsResp = resp.body()
     println(resp)
     assertNotNull(resp)
-    assertEquals(20, patternsResp.paginator?.page_size)
+    assertEquals(20, patternsResp?.paginator?.page_size)
   }
 
   @Test
@@ -82,14 +82,14 @@ class RavelryClientTest {
     // act
     val resultPatternResps = testClient.searchPatternsRx("taco", 1, 3)
         .doOnNext { if (it.isError) { it.error()?.message } }
-        .flatMap { Flowable.fromIterable(it.response().body().patterns) }
+        .flatMap { Flowable.fromIterable(it.response().body()?.patterns) }
         .flatMap { testClient.showPatternRx(it.id).observeOn(subscribeScheduler) }
         .doOnNext { println("Running on thread id: ${Thread.currentThread().id}")}
         .toList()
         .blockingGet()
-    val tacoPattern1 = resultPatternResps[0].response().body().pattern
-    val tacoPattern2 = resultPatternResps[1].response().body().pattern
-    val tacoPattern3 = resultPatternResps[2].response().body().pattern
+    val tacoPattern1 = resultPatternResps[0].response().body()?.pattern
+    val tacoPattern2 = resultPatternResps[1].response().body()?.pattern
+    val tacoPattern3 = resultPatternResps[2].response().body()?.pattern
 
     // assert
     assertEquals(3, resultPatternResps.size)
@@ -171,7 +171,7 @@ class RavelryClientTest {
 
     // assert
     assertNotNull(resp)
-    assertEquals(20, libraryResp.paginator?.page_size)
+    assertEquals(20, libraryResp?.paginator?.page_size)
   }
 
   @Test
@@ -189,7 +189,7 @@ class RavelryClientTest {
     // assert
     assertTrue(resp.message(), resp.isSuccessful)
     assertNotNull(resp.body())
-    assertEquals(20, libraryResp.paginator?.page_size)
+    assertEquals(20, libraryResp?.paginator?.page_size)
   }
 
   @Test
@@ -206,7 +206,7 @@ class RavelryClientTest {
 
     // assert
     assertNotNull(resp)
-    assertEquals(0, libraryResp.paginator?.page_size)
+    assertEquals(0, libraryResp?.paginator?.page_size)
   }
 
   @Test
@@ -237,11 +237,11 @@ class RavelryClientTest {
 
     // assert
     assertNotNull(resp)
-    assertEquals(20, libraryResp.paginator?.page_size)
-    assertEquals(5, libraryResp.volumes?.size)
-    val firstVolume = libraryResp.volumes!!.get(0)
-    assertEquals(213045775, firstVolume.id)
-    assertEquals("Duck the Sailor", firstVolume.title)
+    assertEquals(20, libraryResp?.paginator?.page_size)
+    assertEquals(5, libraryResp?.volumes?.size)
+    val firstVolume = libraryResp?.volumes?.get(0)
+    assertEquals(213045775, firstVolume?.id)
+    assertEquals("Duck the Sailor", firstVolume?.title)
   }
 
   @Test
