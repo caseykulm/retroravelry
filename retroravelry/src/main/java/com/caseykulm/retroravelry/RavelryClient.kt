@@ -3,7 +3,6 @@ package com.caseykulm.retroravelry
 import com.caseykulm.oauthheader.Oauth1Interceptor
 import com.caseykulm.retroravelry.models.request.library.Sort
 import com.caseykulm.retroravelry.models.request.library.Type
-import com.caseykulm.retroravelry.network.API_URL
 import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
@@ -15,11 +14,14 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
 
+private const val API_URL = "https://api.ravelry.com/"
+
 class RavelryClient(
     private val username: String,
     private val okHttpClient: OkHttpClient,
     private val oauth1Interceptor: Oauth1Interceptor,
-    private val baseUrl: HttpUrl = HttpUrl.parse(API_URL)!!): RavelryApi {
+    private val baseUrl: HttpUrl = HttpUrl.parse(API_URL)!!
+): RavelryApi {
   var ravelryRetroApi: RavelryRetroApi
 
   init {

@@ -41,14 +41,17 @@ class RavelryClientTest {
 
     // act
     val searchResponse = testClient.searchPatternsRx("cardigan", 1, 20)
-    val resp = searchResponse.blockingFirst()
-    assertFalse(resp.error()?.message, resp.isError)
-    val patternsResp = resp.response()?.body()
-    println(resp)
+
+//    assertFalse(resp.error()?.message, resp.isError)
+//    val patternsResp = resp.response()?.body()
+//    println(resp)
 
     // assert
-    assertNotNull(resp)
-    assertEquals(20, patternsResp?.paginator?.page_size)
+//    assertNotNull(resp)
+//    assertEquals(20, patternsResp?.paginator?.page_size)
+    val resp = searchResponse.test()
+        .assertValueCount(20)
+        .assertComplete()
   }
 
   @Test
@@ -76,16 +79,10 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("show_pattern_taco_2.json")
     mockClientRule.enqueueHttp200("show_pattern_taco_3.json")
 
-    val subscribeExecutor = Executors.newCachedThreadPool()
-    val subscribeScheduler = Schedulers.from(subscribeExecutor)
-
     // act
     val resultPatternResps = testClient.searchPatternsRx("taco", 1, 3)
-        .doOnNext { if (it.isError) { it.error()?.message } }
-        .flatMap { Flowable.fromIterable(it.response()?.body()?.patterns) }
-        .flatMap { testClient.showPatternRx(it.id).observeOn(subscribeScheduler) }
-        .doOnNext { println("Running on thread id: ${Thread.currentThread().id}")}
-        .toList()
+        .flatMap { it.response()?.body()?.patterns }
+        .map { testClient.showPatternRx(it.id).observeOn(subscribeScheduler) }
         .blockingGet()
     val tacoPattern1 = resultPatternResps[0].response()?.body()?.pattern
     val tacoPattern2 = resultPatternResps[1].response()?.body()?.pattern
@@ -121,11 +118,10 @@ class RavelryClientTest {
 
     // act
     val showResponse = testClient.showPatternRx(243083)
-    val resp = showResponse.blockingFirst()
-    println(resp)
 
     // assert
-    assertNotNull(resp)
+    val resp = showResponse.test().assertComplete()
+    println(resp)
   }
 
   @Test
@@ -163,15 +159,15 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
-    val libraryResponse = testClient
-        .searchMyLibraryRx("duck", null, Type.pattern, null, 1, 20)
-    val resp = libraryResponse.blockingFirst()
-    val libraryResp = resp.response()?.body()
-    println(resp)
+    val libraryResponse = testClient.searchMyLibraryRx(
+        "duck", null, Type.pattern, null, 1, 20
+    )
 
     // assert
-    assertNotNull(resp)
-    assertEquals(20, libraryResp?.paginator?.page_size)
+    val resp = libraryResponse.test()
+        .assertValueCount(20)
+        .assertComplete()
+    println(resp)
   }
 
   @Test
@@ -198,15 +194,15 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_books.json")
 
     // act
-    val libraryResponse = testClient
-        .searchMyLibraryRx("duck", null, Type.book, null, 1, 20)
-    val resp = libraryResponse.blockingFirst()
-    val libraryResp = resp.response()?.body()
-    println(resp)
+    val libraryResponse = testClient.searchMyLibraryRx(
+        "duck", null, Type.book, null, 1, 20
+    )
 
     // assert
-    assertNotNull(resp)
-    assertEquals(0, libraryResp?.paginator?.page_size)
+    val resp = libraryResponse.test()
+        .assertComplete()
+        .assertValueCount(0)
+    println(resp)
   }
 
   @Test
@@ -231,8 +227,7 @@ class RavelryClientTest {
     // act
     val libraryResponse = testClient
         .searchMyLibraryRx("duck", null, Type.pattern, null, 1, 20)
-    val resp = libraryResponse.blockingFirst()
-    val libraryResp = resp.response()?.body()
+    val resp = libraryResponse.test()
     println(resp)
 
     // assert
@@ -251,7 +246,7 @@ class RavelryClientTest {
 
     // act
     val photoResponse = testClient.showPhotoSizesRx("17022022")
-    val resp = photoResponse.blockingFirst()
+    val resp = photoResponse.test()
     println(resp)
 
     // assert

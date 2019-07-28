@@ -4,7 +4,13 @@ Kotlin wrapper for the [Ravelry API][1] using [Retrofit][2] and [RxJava2][3].
 
 ## Download
 
-Coming soon to a Maven repo near you.
+With Gradle:
+
+```groovy
+dependencies {
+  implementation "com.caseykulm.retroravelry:retroravelry:0.5.0" 
+}
+```
 
 ## License
 
