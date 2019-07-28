@@ -43,7 +43,7 @@ class RavelryClientTest {
     val searchResponse = testClient.searchPatternsRx("cardigan", 1, 20)
     val resp = searchResponse.blockingFirst()
     assertFalse(resp.error()?.message, resp.isError)
-    val patternsResp = resp.response().body()
+    val patternsResp = resp.response()?.body()
     println(resp)
 
     // assert
@@ -82,14 +82,14 @@ class RavelryClientTest {
     // act
     val resultPatternResps = testClient.searchPatternsRx("taco", 1, 3)
         .doOnNext { if (it.isError) { it.error()?.message } }
-        .flatMap { Flowable.fromIterable(it.response().body()?.patterns) }
+        .flatMap { Flowable.fromIterable(it.response()?.body()?.patterns) }
         .flatMap { testClient.showPatternRx(it.id).observeOn(subscribeScheduler) }
         .doOnNext { println("Running on thread id: ${Thread.currentThread().id}")}
         .toList()
         .blockingGet()
-    val tacoPattern1 = resultPatternResps[0].response().body()?.pattern
-    val tacoPattern2 = resultPatternResps[1].response().body()?.pattern
-    val tacoPattern3 = resultPatternResps[2].response().body()?.pattern
+    val tacoPattern1 = resultPatternResps[0].response()?.body()?.pattern
+    val tacoPattern2 = resultPatternResps[1].response()?.body()?.pattern
+    val tacoPattern3 = resultPatternResps[2].response()?.body()?.pattern
 
     // assert
     assertEquals(3, resultPatternResps.size)
@@ -166,7 +166,7 @@ class RavelryClientTest {
     val libraryResponse = testClient
         .searchMyLibraryRx("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
-    val libraryResp = resp.response().body()
+    val libraryResp = resp.response()?.body()
     println(resp)
 
     // assert
@@ -201,7 +201,7 @@ class RavelryClientTest {
     val libraryResponse = testClient
         .searchMyLibraryRx("duck", null, Type.book, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
-    val libraryResp = resp.response().body()
+    val libraryResp = resp.response()?.body()
     println(resp)
 
     // assert
@@ -232,7 +232,7 @@ class RavelryClientTest {
     val libraryResponse = testClient
         .searchMyLibraryRx("duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingFirst()
-    val libraryResp = resp.response().body()
+    val libraryResp = resp.response()?.body()
     println(resp)
 
     // assert
@@ -256,9 +256,9 @@ class RavelryClientTest {
 
     // assert
     assertNotNull(resp)
-    val url = resp.response().raw().request().url()
-    assertEquals("/photos/17022022/sizes.json", url.encodedPath())
-    assertTrue("Response should be success", resp.response().isSuccessful)
+    val url = resp.response()?.raw()?.request()?.url()
+    assertEquals("/photos/17022022/sizes.json", url?.encodedPath())
+    assertTrue("Response should be success", resp.response()?.isSuccessful == true)
   }
 
   @Test
