@@ -5,7 +5,7 @@ buildscript {
         kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41",
 
         // Retroravelry Deps
-        retrofit2      : "com.squareup.retrofit2:retrofit:2.6.0",
+        retrofit2      : "com.squareup.retrofit2:retrofit:2.6.1",
         rxjavaAdapter  : "com.squareup.retrofit2:adapter-rxjava2:2.6.0",
         converterMoshi : "com.squareup.retrofit2:converter-moshi:2.6.0",
         kotlinReflect  : "org.jetbrains.kotlin:kotlin-reflect:1.3.41",
