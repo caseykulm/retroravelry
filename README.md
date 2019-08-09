@@ -1,6 +1,6 @@
 # Retro-Ravelry
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.caseykulm.retroravelry/retroravelry-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.caseykulm.retroravelry/retroravelry-parent)
+[![Maven Central](https://img.shields.io/maven-central/v/com.caseykulm.retroravelry/retroravelry-parent.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.caseykulm.retroravelry%22%20AND%20a:%22retroravelry-parent%22)
 
 Kotlin wrapper for the [Ravelry API][1] using [Retrofit][2] and [RxJava2][3].
 
