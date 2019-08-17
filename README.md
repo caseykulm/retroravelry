@@ -10,7 +10,7 @@ With Gradle:
 
 ```groovy
 dependencies {
-  implementation "com.caseykulm.retroravelry:retroravelry:0.6.0-SNAPSHOT"
+  implementation "com.caseykulm.retroravelry:retroravelry:0.6.0"
 }
 ```
 
