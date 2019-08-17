@@ -36,7 +36,7 @@ buildscript {
 
     release = [
         'groupId': 'com.caseykulm.retroravelry',
-        'version': '0.6.0',
+        'version': '0.7.0-SNAPSHOT',
         'description': 'OkHttp OAuth 1.0 3-legged Helper',
         'githubRepo': 'https://github.com/caseykulm/oauthheader',
         'secrets': [
