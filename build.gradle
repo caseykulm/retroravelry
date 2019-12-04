@@ -2,7 +2,7 @@ buildscript {
   ext {
     versions = [
         okhttp3: "3.14.2",
-        retrofit: "2.6.1"
+        retrofit: "2.6.2"
     ]
 
     dep = [
