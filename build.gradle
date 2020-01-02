@@ -25,7 +25,7 @@ buildscript {
         oauthServices  : "com.caseykulm.oauthheader:oauthheader-services:0.5.0",
 
         // Test Deps
-        junit4         : "junit:junit:4.12",
+        junit4         : "junit:junit:4.13",
         truth          : "com.google.truth:truth:1.0",
         mockito        : "org.mockito:mockito-core:3.0.0",
         mockWebServer  : "com.squareup.okhttp3:mockwebserver:${versions.okhttp3}",
