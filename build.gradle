@@ -6,7 +6,7 @@ buildscript {
     ]
 
     dep = [
-        kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41",
+        kotlinPlugin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72",
         kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41",
 
         // Retroravelry Deps
