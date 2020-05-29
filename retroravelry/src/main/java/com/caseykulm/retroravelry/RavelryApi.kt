@@ -11,8 +11,7 @@ import retrofit2.Call
 import retrofit2.adapter.rxjava2.Result
 
 interface RavelryApi {
-  fun searchPatternsRx(
-      query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
+  fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
 
   fun searchPatterns(
       query: String, page: Int, pageSize: Int): Call<SearchPatternsResponse>

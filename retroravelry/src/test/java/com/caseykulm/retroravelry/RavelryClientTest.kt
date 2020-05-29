@@ -35,19 +35,32 @@ class RavelryClientTest {
   }
 
   @Test
-  fun searchPatternsRxShouldReturnResults() {
+  fun `Given query with spaces, When search patterns rx, Then return results`() {
+    val stubQuery = "baby hat"
+
+    val searchResponse = testClient.searchPatternsRx(stubQuery, 1, 20)
+    val result = searchResponse.blockingFirst()
+    val response = result.response()!!
+    println(response)
+
+    assertTrue(response.errorBody()?.charStream()?.readText(), response.isSuccessful)
+  }
+
+  @Test
+  fun `Given query with no spaces, When search patterns rx, Then return results`() {
     // arrange
     mockClientRule.enqueueHttp200("search_patterns.json")
 
     // act
     val searchResponse = testClient.searchPatternsRx("cardigan", 1, 20)
-    val resp = searchResponse.blockingFirst()
-    assertFalse(resp.error()?.message, resp.isError)
-    val patternsResp = resp.response()?.body()
-    println(resp)
+    val result = searchResponse.blockingFirst()
+    val response = result.response()!!
+    assertTrue(response.errorBody().toString(), response.isSuccessful)
+    val patternsResp = result.response()?.body()
+    println(result)
 
     // assert
-    assertNotNull(resp)
+    assertNotNull(result)
     assertEquals(20, patternsResp?.paginator?.page_size)
   }
 
@@ -96,7 +109,7 @@ class RavelryClientTest {
     assertEquals(1, tacoPattern1?.craft?.id)
     assertEquals("Crochet", tacoPattern1?.craft?.name)
     assertEquals(1, tacoPattern1?.craft?.id)
-    assertEquals("Crochet", tacoPattern2?.craft?.name)
+    assertEquals("Knitting", tacoPattern2?.craft?.name)
     assertEquals(1, tacoPattern1?.craft?.id)
     assertEquals("Crochet", tacoPattern3?.craft?.name)
   }

@@ -20,7 +20,7 @@ interface RavelryRetroApi {
 
   @GET("patterns/search.json")
   fun searchPatternsRx(
-      @Query("query") query: String,
+      @Query(value = "query") query: String,
       @Query("page") page: Int,
       @Query("page_size") pageSize: Int,
       @Query("personal_attributes") personal_attributes: Boolean): Flowable<Result<SearchPatternsResponse>>
