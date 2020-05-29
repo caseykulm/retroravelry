@@ -1,8 +1,8 @@
 buildscript {
   ext {
     versions = [
-        okhttp3: "3.14.2",
-        retrofit: "2.6.1"
+        okhttp3: "3.14.4",
+        retrofit: "2.6.2"
     ]
 
     dep = [
@@ -31,7 +31,7 @@ buildscript {
         mockWebServer  : "com.squareup.okhttp3:mockwebserver:${versions.okhttp3}",
 
         //RxJava
-        rxjava2        : "io.reactivex.rxjava2:rxjava:2.2.11"
+        rxjava2        : "io.reactivex.rxjava2:rxjava:2.2.15"
     ]
 
     release = [
