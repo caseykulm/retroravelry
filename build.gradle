@@ -16,7 +16,7 @@ buildscript {
         kotlinReflect  : "org.jetbrains.kotlin:kotlin-reflect:1.3.41",
         moshi          : "com.squareup.moshi:moshi:1.8.0",
         moshiKotlin    : "com.squareup.moshi:moshi-kotlin:1.8.0",
-        moshiAdapter   : "com.squareup.moshi:moshi-adapters:1.8.0",
+        moshiAdapter   : "com.squareup.moshi:moshi-adapters:1.9.3",
         okhttp3        : "com.squareup.okhttp3:okhttp:${versions.okhttp3}",
         okHttpInterceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp3}",
 
