@@ -20,27 +20,26 @@ class LiveClient {
     OauthConsumer(
         oauthTestSecrets.consumerKey,
         oauthTestSecrets.consumerSecret,
-        oauthTestSecrets.callbackUrl)
+        oauthTestSecrets.callbackUrl
+    )
   }
   private val oauthService = RavelryOauthService()
   private val oauthClient: Oauth1Client by lazy {
     Oauth1Client(
         oauthConsumer,
         oauthService,
-        okhttpClient)
+        okhttpClient
+    )
   }
   // hardcoded
   private val accessTokenResponse: AccessTokenResponse by lazy {
     AccessTokenResponse(
         oauthTestSecrets.accessToken,
-        oauthTestSecrets.accessTokenSecret)
+        oauthTestSecrets.accessTokenSecret
+    )
   }
-  private val oauthInterceptor: Oauth1Interceptor by lazy {
-    Oauth1Interceptor(oauthClient, accessTokenResponse)
-  }
-  val ravelryClient: RavelryClient by lazy {
-    RavelryClient(oauthTestSecrets.username, okhttpClient, oauthInterceptor)
-  }
+  private val oauthInterceptor: Oauth1Interceptor by lazy { Oauth1Interceptor(oauthClient, accessTokenResponse) }
+  val ravelryClient: RavelryClient by lazy { RavelryClient(oauthInterceptor, okhttpClient) }
 
   private val oauthTestSecrets: OauthTestSecrets by lazy {
     parseJsonResourceFile("oauth_secrets.json", OauthTestSecrets::class.java)

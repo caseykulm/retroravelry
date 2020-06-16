@@ -23,10 +23,9 @@ import java.util.*
 private const val API_URL = "https://api.ravelry.com/"
 
 class RavelryClient(
-    private val username: String,
-    okHttpClient: OkHttpClient,
     oauth1Interceptor: Oauth1Interceptor,
-    baseUrl: HttpUrl = HttpUrl.parse(API_URL)!!
+    okHttpClient: OkHttpClient, // TODO: Make this optional, and provide sensible defaults
+    baseUrl: HttpUrl = HttpUrl.parse(API_URL)!! // TODO: Only reveal this as an option for tests
 ): RavelryApi {
   private var ravelryRetroApi: RavelryRetroApi
 
@@ -54,6 +53,7 @@ class RavelryClient(
   override fun showPatternRx(id: Int) = ravelryRetroApi.showPatternRx(id)
 
   override fun searchMyLibraryRx(
+      username: String,
       query: String,
       queryType: String?,
       type: Type?,

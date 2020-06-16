@@ -36,9 +36,9 @@ buildscript {
 
     release = [
         'groupId': 'com.caseykulm.retroravelry',
-        'version': '0.7.0-SNAPSHOT',
-        'description': 'OkHttp OAuth 1.0 3-legged Helper',
-        'githubRepo': 'https://github.com/caseykulm/oauthheader',
+        'version': '0.7.0',
+        'description': 'Retrofit wrapper for the Ravelry REST API',
+        'githubRepo': 'https://github.com/caseykulm/retroravelry',
         'secrets': [
             // Add secrets to System Environment Variables or Gradle Properties
             'bintray': [
