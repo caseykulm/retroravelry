@@ -18,9 +18,7 @@ val MOCK_CALLBACK_URL = "https://example.com/oauth"
 
 class MockClient {
   var server: MockWebServer = MockWebServer()
-  val ravelryClient: RavelryClient by lazy {
-    RavelryClient(MOCK_USER_NAME, okhttpClient, oauthInterceptor, server.url("/"))
-  }
+  val ravelryClient: RavelryClient by lazy { RavelryClient(oauthInterceptor, okhttpClient, server.url("/")) }
   private val okhttpClient by lazy {
     val logging = HttpLoggingInterceptor()
     logging.level = HttpLoggingInterceptor.Level.BODY

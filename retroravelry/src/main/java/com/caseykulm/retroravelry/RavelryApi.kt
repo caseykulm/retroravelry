@@ -16,6 +16,7 @@ interface RavelryApi {
   fun showPatternRx(id: Int): Single<Result<ShowPatternResponse>>
 
   fun searchMyLibraryRx(
+      username: String,
       query: String,
       queryType: String?,
       type: Type?,
