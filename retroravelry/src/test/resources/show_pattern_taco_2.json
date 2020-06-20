@@ -1,296 +1,368 @@
 {
-  "pattern": {
-    "pattern_attributes": [
-      {
-        "id": 217,
-        "permalink": "amigurumi"
-      },
-      {
-        "id": 247,
-        "permalink": "3-dimensional"
-      },
-      {
-        "id": 267,
-        "permalink": "written-pattern"
-      },
-      {
-        "id": 286,
-        "permalink": "in-the-round"
-      },
-      {
-        "id": 291,
-        "permalink": "embroidery"
-      }
+  "pattern":{
+    "comments_count":6,
+    "created_at":"2017/03/06 19:09:12 -0500",
+    "currency":null,
+    "difficulty_average":3.3333333333333335,
+    "difficulty_count":12,
+    "downloadable":true,
+    "favorites_count":785,
+    "free":true,
+    "gauge":48.0,
+    "gauge_divisor":4,
+    "gauge_pattern":"",
+    "generally_available":"2017/03/01 00:00:00 -0500",
+    "id":732949,
+    "name":"Flying Geese Socks",
+    "pdf_url":"",
+    "permalink":"flying-geese-socks-3",
+    "price":null,
+    "projects_count":42,
+    "published":"2017/03/01",
+    "queued_projects_count":136,
+    "rating_average":4.363636363636363,
+    "rating_count":11,
+    "row_gauge":56.0,
+    "updated_at":"2017/03/06 20:02:27 -0500",
+    "url":"",
+    "yardage":400,
+    "yardage_max":420,
+    "personal_attributes":{
+      "favorited":false,
+      "bookmark_id":null,
+      "queued":false,
+      "in_library":false
+
+    },
+    "sizes_available":"Small, Medium, and Large",
+    "product_id":385612,
+    "currency_symbol":null,
+    "ravelry_download":true,
+    "download_location":{
+      "type":"ravelry",
+      "free":true,
+      "url":"http://www.ravelry.com/dls/62033/385612"
+
+    },
+    "pdf_in_library":false,
+    "volumes_in_library":[
+
+
     ],
-    "pattern_author": {
-      "users": [
-        {
-          "tiny_photo_url": "https://avatars-d.ravelrycache.com/skymagenta/12000249/octopus_002_tiny.JPG",
-          "username": "skymagenta",
-          "id": 398204,
-          "small_photo_url": "https://avatars-d.ravelrycache.com/skymagenta/12000249/octopus_002_small.JPG",
-          "photo_url": "https://avatars-d.ravelrycache.com/skymagenta/12000249/octopus_002_large.JPG"
-        }
-      ],
-      "favorites_count": 1257,
-      "name": "Sky Magenta",
-      "id": 24445,
-      "permalink": "sky-magenta",
-      "patterns_count": 134
-    },
-    "sizes_available": "",
-    "rating_average": 0,
-    "generally_available": "2009/09/09 05:17:48 -0400",
-    "gauge_description": "6 stitches and 8 rows = 1 inch in single crochet",
-    "ravelry_download": true,
-    "url": "http://www.etsy.com/view_listing.php?listing_id=30634903",
-    "updated_at": "2015/06/25 13:40:36 -0400",
-    "projects_count": 0,
-    "gauge_pattern": "single crochet",
-    "downloadable": true,
-    "pattern_type": {
-      "clothing": false,
-      "name": "Toys",
-      "id": 16,
-      "permalink": "toys"
-    },
-    "product_id": 21948,
-    "published": null,
-    "free": false,
-    "yarn_weight_description": "Fingering (14 wpi)",
-    "gauge": 6,
-    "yarn_weight": {
-      "ply": "4",
-      "max_gauge": null,
-      "crochet_gauge": "",
-      "name": "Fingering",
-      "id": 5,
-      "knit_gauge": "28",
-      "min_gauge": null,
-      "wpi": "14"
-    },
-    "pattern_categories": [
+    "gauge_description":"48 stitches and 56 rows = 4 inches",
+    "yarn_weight_description":"Fingering (14 wpi)",
+    "yardage_description":"400 - 420 yards",
+    "pattern_needle_sizes":[
       {
-        "parent": {
-          "parent": {
-            "name": "Categories",
-            "id": 301,
-            "permalink": "categories"
-          },
-          "name": "Toys and Hobbies",
-          "id": 526,
-          "permalink": "toysandhobbies"
+        "id":1,
+        "us":"1 ",
+        "metric":2.25,
+        "us_steel":"2",
+        "crochet":false,
+        "knitting":true,
+        "hook":"B",
+        "name":"US 1  - 2.25 mm",
+        "pretty_metric":"2.25"
+
+      }
+
+    ],
+    "notes_html":"\n<p><em>This is a quick, easy sock pattern that knits up surprisingly quickly. Perfect for knitting for a lazy Sunday afternoon or an interesting travel project.</em></p>\n\n<p><strong>Suggested Needles:</strong> US 1 (2.25MM) I used double pointed needles, but needles with a 32” cable or longer for a magic loop would work just as well.</p>\n\n<p><strong>Suggested Yarn:</strong> Madelinetosh Tosh Merino Light in Mandala, 1 Skein</p>\n\n<p><strong>Notions:</strong> Tapestry needle and stitch marker to mark the beginning of the row (if desired). A row counter is also recommended.</p>\n",
+    "notes":"*This is a quick, easy sock pattern that knits up surprisingly quickly. Perfect for knitting for a lazy Sunday afternoon or an interesting travel project.*\r\n\r\n**Suggested Needles:** US 1 (2.25MM) I used double pointed needles, but needles with a 32\" cable or longer for a magic loop would work just as well.\r\n\r\n**Suggested Yarn:** Madelinetosh Tosh Merino Light in Mandala, 1 Skein\r\n\r\n**Notions:** Tapestry needle and stitch marker to mark the beginning of the row (if desired). A row counter is also recommended.\r\n\r\n",
+    "packs":[
+      {
+        "id":63012490,
+        "primary_pack_id":null,
+        "project_id":null,
+        "skeins":null,
+        "stash_id":null,
+        "total_grams":null,
+        "total_meters":null,
+        "total_ounces":null,
+        "total_yards":null,
+        "yarn_id":53539,
+        "yarn_name":"madelinetosh Tosh Merino Light",
+        "yarn_weight":{
+          "crochet_gauge":"",
+          "id":5,
+          "knit_gauge":"28",
+          "max_gauge":null,
+          "min_gauge":null,
+          "name":"Fingering",
+          "ply":"4",
+          "wpi":"14"
+
         },
-        "name": "Food",
-        "id": 532,
-        "permalink": "food"
+        "colorway":null,
+        "shop_name":null,
+        "yarn":{
+          "permalink":"madelinetosh-tosh-merino-light",
+          "id":53539,
+          "name":"Tosh Merino Light",
+          "yarn_company_name":"madelinetosh",
+          "yarn_company_id":1342
+
+        },
+        "quantity_description":null,
+        "personal_name":null,
+        "dye_lot":null,
+        "color_family_id":null,
+        "grams_per_skein":null,
+        "yards_per_skein":null,
+        "meters_per_skein":null,
+        "ounces_per_skein":null,
+        "prefer_metric_weight":true,
+        "prefer_metric_length":false,
+        "shop_id":null,
+        "thread_size":null
+
       }
+
     ],
-    "notes_html": "\n<p>Language / Instruction: ENGLISH</p>\n\n<p>Skills Level: Intermediate (Must be able to understand basic crochet instructions)</p>\n\n<p>Patterns includes:</p>\n\n<ol>\n<li>Chips - 1.8 inches</li>\n\n<li>Salsa Sauce - 3.3 inches</li>\n\n<li>Lemon Slices - 2.2 inches</li>\n\n<li>Taco - 6 inches, with ingredients: meat cube, tomato cube and salad leaf.</li>\n\n<li>Taco Holder - 4 inches</li>\n</ol>\n\n<p>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>\n\n<p>I will email the file in PDF format within 24 hours after receiving your payment. No shipping and handling fees.</p>\n\n<p>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>\n\n<p><strong><em>This is my OWN DESIGN!</em></strong> <br /><strong><em>This pattern and item made from this pattern is not for commercial or retail purposes!</em></strong></p>\n\n<p>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>\n\n<p>Thanks for looking and please check out my other items!</p>\n",
-    "currency_symbol": "$",
-    "favorites_count": 151,
-    "currency": "USD",
-    "printings": [
+    "printings":[
       {
-        "primary_source": true,
-        "pattern_source": {
-          "shelf_image_path": null,
-          "author": "",
-          "amazon_url": null,
-          "url": "",
-          "out_of_print": false,
-          "amazon_rating": null,
-          "name": "skymagenta ",
-          "id": 49040,
-          "list_price": null,
-          "permalink": "skymagenta",
-          "price": null,
-          "patterns_count": 134
+        "primary_source":false,
+        "pattern_source":{
+          "amazon_rating":null,
+          "amazon_url":null,
+          "author":null,
+          "id":222436,
+          "list_price":null,
+          "name":"Yarn and Tacos' Ravelry Store",
+          "out_of_print":false,
+          "patterns_count":2,
+          "permalink":"yarn-and-tacos-ravelry-store",
+          "price":null,
+          "shelf_image_path":null,
+          "url":null
+
         }
+
       }
+
     ],
-    "yardage_description": " yards",
-    "name": "TACO and CHIPS with SALSA",
-    "id": 139777,
-    "packs": [
-      {
-        "grams_per_skein": null,
-        "personal_name": "100% 4 ply Acrylic",
-        "quantity_description": null,
-        "yards_per_skein": null,
-        "prefer_metric_weight": true,
-        "ounces_per_skein": null,
-        "yarn_id": null,
-        "total_ounces": null,
-        "prefer_metric_length": false,
-        "yarn": null,
-        "yarn_weight": null,
-        "skeins": null,
-        "project_id": null,
-        "yarn_name": "100% 4 ply Acrylic",
-        "stash_id": null,
-        "id": 8044018,
-        "shop_name": null,
-        "primary_pack_id": null,
-        "thread_size": null,
-        "color_family_id": null,
-        "colorway": null,
-        "total_yards": null,
-        "total_grams": null,
-        "shop_id": null,
-        "meters_per_skein": null,
-        "dye_lot": null,
-        "total_meters": null
-      }
-    ],
-    "download_location": {
-      "type": "ravelry",
-      "free": false,
-      "url": "http://www.ravelry.com/purchase/sky-magenta-designs/21948"
+    "yarn_weight":{
+      "crochet_gauge":"",
+      "id":5,
+      "knit_gauge":"28",
+      "max_gauge":null,
+      "min_gauge":null,
+      "name":"Fingering",
+      "ply":"4",
+      "wpi":"14"
+
     },
-    "yardage_max": null,
-    "row_gauge": 8,
-    "queued_projects_count": 16,
-    "craft": {
-      "name": "Crochet",
-      "id": 1,
-      "permalink": "crochet"
+    "craft":{
+      "id":2,
+      "name":"Knitting",
+      "permalink":"knitting"
+
     },
-    "pattern_needle_sizes": [
+    "pattern_categories":[
       {
-        "pretty_metric": "2",
-        "us_steel": "4",
-        "hook": null,
-        "knitting": false,
-        "crochet": true,
-        "name": "2.0 mm",
-        "metric": 2,
-        "id": 19,
-        "us": "0"
+        "id":885,
+        "name":"Mid-calf",
+        "permalink":"mid-calf",
+        "parent":{
+          "id":354,
+          "name":"Socks",
+          "permalink":"socks",
+          "parent":{
+            "id":353,
+            "name":"Feet / Legs",
+            "permalink":"feet-legs",
+            "parent":{
+              "id":337,
+              "name":"Accessories",
+              "permalink":"accessories",
+              "parent":{
+                "id":301,
+                "name":"Categories",
+                "permalink":"categories"
+
+              }
+
+            }
+
+          }
+
+        }
+
       }
+
     ],
-    "permalink": "taco-and-chips-with-salsa",
-    "comments_count": 2,
-    "photos": [
+    "pattern_attributes":[
       {
-        "caption": null,
-        "medium_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13746966/taco_chips_004_medium.JPG",
-        "caption_html": null,
-        "thumbnail_url": "h",
-        "copyright_holder": "",
-        "small_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13746966/taco_chips_004_small.JPG",
-        "id": 7987743,
-        "shelved_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13746966/taco_chips_004_shelved.JPG",
-        "x_offset": -42,
-        "medium2_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13746966/taco_chips_004_medium2.JPG",
-        "y_offset": -3,
-        "small2_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13746966/taco_chips_004_small2.JPG",
-        "flickr_url": null,
-        "sort_order": 1,
-        "square_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13746966/taco_chips_004_square.JPG"
+        "id":22,
+        "permalink":"toe-up"
+
       },
       {
-        "caption": null,
-        "medium_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13746976/taco_chips_005_medium.JPG",
-        "caption_html": null,
-        "thumbnail_url": "h",
-        "copyright_holder": "",
-        "small_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13746976/taco_chips_005_small.JPG",
-        "id": 7987745,
-        "shelved_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13746976/taco_chips_005_shelved.JPG",
-        "x_offset": -36,
-        "medium2_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13746976/taco_chips_005_medium2.JPG",
-        "y_offset": -9,
-        "small2_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13746976/taco_chips_005_small2.JPG",
-        "flickr_url": null,
-        "sort_order": 2,
-        "square_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13746976/taco_chips_005_square.JPG"
+        "id":212,
+        "permalink":"bottom-up"
+
       },
       {
-        "caption": null,
-        "medium_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747763/taco_chips_011_medium.JPG",
-        "caption_html": null,
-        "thumbnail_url": "h",
-        "copyright_holder": "",
-        "small_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747763/taco_chips_011_small.JPG",
-        "id": 7987962,
-        "shelved_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747763/taco_chips_011_shelved.JPG",
-        "x_offset": -33,
-        "medium2_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747763/taco_chips_011_medium2.JPG",
-        "y_offset": 0,
-        "small2_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747763/taco_chips_011_small2.JPG",
-        "flickr_url": null,
-        "sort_order": 3,
-        "square_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747763/taco_chips_011_square.JPG"
-      },
-      {
-        "caption": null,
-        "medium_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747788/taco_chips_017_medium.JPG",
-        "caption_html": null,
-        "thumbnail_url": "h",
-        "copyright_holder": "",
-        "small_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747788/taco_chips_017_small.JPG",
-        "id": 7987967,
-        "shelved_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747788/taco_chips_017_shelved.JPG",
-        "x_offset": -39,
-        "medium2_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747788/taco_chips_017_medium2.JPG",
-        "y_offset": -6,
-        "small2_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747788/taco_chips_017_small2.JPG",
-        "flickr_url": null,
-        "sort_order": 4,
-        "square_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747788/taco_chips_017_square.JPG"
-      },
-      {
-        "caption": null,
-        "medium_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747801/taco_chips_012_medium.JPG",
-        "caption_html": null,
-        "thumbnail_url": "h",
-        "copyright_holder": "",
-        "small_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747801/taco_chips_012_small.JPG",
-        "id": 7987970,
-        "shelved_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747801/taco_chips_012_shelved.JPG",
-        "x_offset": -48,
-        "medium2_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747801/taco_chips_012_medium2.JPG",
-        "y_offset": -9,
-        "small2_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747801/taco_chips_012_small2.JPG",
-        "flickr_url": null,
-        "sort_order": 5,
-        "square_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747801/taco_chips_012_square.JPG"
-      },
-      {
-        "caption": null,
-        "medium_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747836/taco_chips_022_medium.JPG",
-        "caption_html": null,
-        "thumbnail_url": "h",
-        "copyright_holder": "",
-        "small_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747836/taco_chips_022_small.JPG",
-        "id": 7987977,
-        "shelved_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747836/taco_chips_022_shelved.JPG",
-        "x_offset": -42,
-        "medium2_url": "https://images4-b.ravelrycache.com/uploads/skymagenta/13747836/taco_chips_022_medium2.JPG",
-        "y_offset": -3,
-        "small2_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747836/taco_chips_022_small2.JPG",
-        "flickr_url": null,
-        "sort_order": 6,
-        "square_url": "https://images4-e.ravelrycache.com/uploads/skymagenta/13747836/taco_chips_022_square.JPG"
+        "id":300,
+        "permalink":"gusset"
+
       }
+
     ],
-    "pdf_in_library": false,
-    "pdf_url": "",
-    "difficulty_count": null,
-    "difficulty_average": 0,
-    "notes": "Language / Instruction: ENGLISH\r\n\r\nSkills Level: Intermediate (Must be able to understand basic crochet instructions)\r\n\r\nPatterns includes:\r\n1. Chips - 1.8 inches\r\n2. Salsa Sauce - 3.3 inches\r\n3. Lemon Slices - 2.2 inches\r\n4. Taco - 6 inches, with ingredients: meat cube, tomato cube and salad leaf.\r\n5. Taco Holder - 4 inches\r\n\r\n\r\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n\r\nI will email the file in PDF format within 24 hours after receiving your payment. No shipping and handling fees.\r\n\r\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n\r\n***This is my OWN DESIGN!***\r\n***This pattern and item made from this pattern is not for commercial or retail purposes!***\r\n\r\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n\r\nThanks for looking and please check out my other items!",
-    "created_at": "2009/09/09 05:17:48 -0400",
-    "volumes_in_library": [],
-    "personal_attributes": {
-      "in_library": false,
-      "queued": false,
-      "favorited": false,
-      "bookmark_id": null
+    "pattern_author":{
+      "crochet_pattern_count":0,
+      "favorites_count":2,
+      "id":95970,
+      "knitting_pattern_count":2,
+      "name":"Yarn and Tacos",
+      "patterns_count":2,
+      "permalink":"yarn-and-tacos",
+      "notes":null,
+      "notes_html":null,
+      "users":[
+        {
+          "fave_colors":"",
+          "fave_curse":"",
+          "first_name":"",
+          "id":5607236,
+          "location":"",
+          "username":"yarnandtacos",
+          "tiny_photo_url":null,
+          "small_photo_url":null,
+          "photo_url":null,
+          "large_photo_url":null,
+          "about_me":"",
+          "about_me_html":null,
+          "pattern_author":{
+            "favorites_count":2,
+            "id":95970,
+            "name":"Yarn and Tacos",
+            "patterns_count":2,
+            "permalink":"yarn-and-tacos"
+
+          },
+          "user_sites":[
+            {
+              "id":383828,
+              "username":"https://www.instagram.com/yarnandtacos/",
+              "url":"http://instagram.com/https://www.instagram.com/yarnandtacos/",
+              "social_site":{
+                "id":28,
+                "name":"Instagram",
+                "favicon_url":"http:///images/instagram-favicon2018-1.png",
+                "active":true
+
+              }
+
+            }
+
+          ]
+
+        }
+
+      ]
+
     },
-    "yardage": null,
-    "rating_count": null,
-    "price": 5.99,
-    "gauge_divisor": 1
+    "photos":[
+      {
+        "id":64973245,
+        "sort_order":1,
+        "x_offset":-1,
+        "y_offset":-22,
+        "square_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465717/Flying_Geese_5_square.jpg",
+        "medium_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465717/Flying_Geese_5_medium.jpg",
+        "thumbnail_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465717/Flying_Geese_5_thumbnail.jpg",
+        "small_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465717/Flying_Geese_5_small_best_fit.jpg",
+        "flickr_url":null,
+        "shelved_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465717/Flying_Geese_5_shelved.jpg",
+        "medium2_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465717/Flying_Geese_5_medium2.jpg",
+        "small2_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465717/Flying_Geese_5_small2.jpg",
+        "caption":null,
+        "caption_html":null,
+        "copyright_holder":"yarnandtacos"
+
+      },
+      {
+        "id":64973246,
+        "sort_order":2,
+        "x_offset":-2,
+        "y_offset":-23,
+        "square_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465715/Flying_Geese_3_square.jpg",
+        "medium_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465715/Flying_Geese_3_medium.jpg",
+        "thumbnail_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465715/Flying_Geese_3_thumbnail.jpg",
+        "small_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465715/Flying_Geese_3_small_best_fit.jpg",
+        "flickr_url":null,
+        "shelved_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465715/Flying_Geese_3_shelved.jpg",
+        "medium2_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465715/Flying_Geese_3_medium2.jpg",
+        "small2_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465715/Flying_Geese_3_small2.jpg",
+        "caption":null,
+        "caption_html":null,
+        "copyright_holder":"yarnandtacos"
+
+      },
+      {
+        "id":64973247,
+        "sort_order":3,
+        "x_offset":-5,
+        "y_offset":-35,
+        "square_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465713/Flying_Geese_1_square.jpg",
+        "medium_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465713/Flying_Geese_1_medium.jpg",
+        "thumbnail_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465713/Flying_Geese_1_thumbnail.jpg",
+        "small_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465713/Flying_Geese_1_small.jpg",
+        "flickr_url":null,
+        "shelved_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465713/Flying_Geese_1_shelved.jpg",
+        "medium2_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465713/Flying_Geese_1_medium2.jpg",
+        "small2_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465713/Flying_Geese_1_small2.jpg",
+        "caption":null,
+        "caption_html":null,
+        "copyright_holder":"yarnandtacos"
+
+      },
+      {
+        "id":64973248,
+        "sort_order":4,
+        "x_offset":0,
+        "y_offset":0,
+        "square_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465716/Flying_Geese_4_square.jpg",
+        "medium_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465716/Flying_Geese_4_medium.jpg",
+        "thumbnail_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465716/Flying_Geese_4_thumbnail.jpg",
+        "small_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465716/Flying_Geese_4_small_best_fit.jpg",
+        "flickr_url":null,
+        "shelved_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465716/Flying_Geese_4_shelved.jpg",
+        "medium2_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465716/Flying_Geese_4_medium2.jpg",
+        "small2_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465716/Flying_Geese_4_small2.jpg",
+        "caption":null,
+        "caption_html":null,
+        "copyright_holder":"yarnandtacos"
+
+      },
+      {
+        "id":64973249,
+        "sort_order":5,
+        "x_offset":-1,
+        "y_offset":-22,
+        "square_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465720/Flying_Geese_2_square.jpg",
+        "medium_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465720/Flying_Geese_2_medium.jpg",
+        "thumbnail_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465720/Flying_Geese_2_thumbnail.jpg",
+        "small_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465720/Flying_Geese_2_small_best_fit.jpg",
+        "flickr_url":null,
+        "shelved_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465720/Flying_Geese_2_shelved.jpg",
+        "medium2_url":"https://images4-g.ravelrycache.com/uploads/yarnandtacos/434465720/Flying_Geese_2_medium2.jpg",
+        "small2_url":"https://images4-f.ravelrycache.com/uploads/yarnandtacos/434465720/Flying_Geese_2_small2.jpg",
+        "caption":null,
+        "caption_html":null,
+        "copyright_holder":"yarnandtacos"
+
+      }
+
+    ],
+    "pattern_type":{
+      "clothing":true,
+      "id":2,
+      "name":"Socks",
+      "permalink":"socks"
+
+    }
+
   }
 }
