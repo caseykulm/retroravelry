@@ -1,6 +1,7 @@
 package com.caseykulm.retroravelry
 
-import com.caseykulm.oauthheader.Oauth1Interceptor
+import com.caseykulm.retroravelry.auth.AuthProvider
+import com.caseykulm.retroravelry.auth.AuthorizationInterceptor
 import com.caseykulm.retroravelry.models.request.library.Sort
 import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.RavelryRetroApi
@@ -13,7 +14,7 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
-import org.intellij.lang.annotations.Flow
+import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.Result
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -23,7 +24,7 @@ import java.util.*
 private const val API_URL = "https://api.ravelry.com/"
 
 class RavelryClient(
-    oauth1Interceptor: Oauth1Interceptor,
+    authProvider: AuthProvider,
     okHttpClient: OkHttpClient, // TODO: Make this optional, and provide sensible defaults
     baseUrl: HttpUrl = HttpUrl.parse(API_URL)!! // TODO: Only reveal this as an option for tests
 ): RavelryApi {
@@ -35,7 +36,7 @@ class RavelryClient(
         .add(KotlinJsonAdapterFactory())
         .build()
     val oauthClient = okHttpClient.newBuilder()
-        .addInterceptor(oauth1Interceptor)
+        .addInterceptor(AuthorizationInterceptor(authProvider))
         .build()
     val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
