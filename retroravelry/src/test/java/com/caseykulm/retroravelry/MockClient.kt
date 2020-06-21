@@ -1,11 +1,8 @@
 package com.caseykulm.retroravelry
 
-import com.caseykulm.oauthheader.Oauth1Client
-import com.caseykulm.oauthheader.Oauth1Interceptor
-import com.caseykulm.oauthheader.models.AccessTokenResponse
-import com.caseykulm.oauthheader.models.OauthConsumer
-import com.caseykulm.oauthheader.services.RavelryOauthService
+import com.caseykulm.retroravelry.auth.AuthProvider
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockWebServer
 
@@ -18,7 +15,7 @@ val MOCK_CALLBACK_URL = "https://example.com/oauth"
 
 class MockClient {
   var server: MockWebServer = MockWebServer()
-  val ravelryClient: RavelryClient by lazy { RavelryClient(oauthInterceptor, okhttpClient, server.url("/")) }
+  val ravelryClient: RavelryClient by lazy { RavelryClient(authProvider, okhttpClient, server.url("/")) }
   private val okhttpClient by lazy {
     val logging = HttpLoggingInterceptor()
     logging.level = HttpLoggingInterceptor.Level.BODY
@@ -26,21 +23,11 @@ class MockClient {
         .addInterceptor(logging)
         .build()
   }
-  private val oauthInterceptor: Oauth1Interceptor by lazy {
-    Oauth1Interceptor(oauthClient, accessTokenResponse)
+  private val authProvider: AuthProvider by lazy {
+    object : AuthProvider {
+      override fun getAuthorizationHeaderValue(request: Request): String {
+        return "Bearer $MOCK_ACCESS_TOKEN"
+      }
+    }
   }
-  private val oauthClient: Oauth1Client by lazy {
-    Oauth1Client(
-        oauthConsumer,
-        oauthService,
-        okhttpClient)
-  }
-  // hardcoded
-  private val accessTokenResponse: AccessTokenResponse by lazy {
-    AccessTokenResponse(MOCK_ACCESS_TOKEN,MOCK_ACCESS_TOKEN_SECRET)
-  }
-  private val oauthConsumer: OauthConsumer by lazy {
-    OauthConsumer(MOCK_CONSUMER_KEY, MOCK_CONSUMER_SECRET, MOCK_CALLBACK_URL)
-  }
-  private val oauthService = RavelryOauthService()
 }
