@@ -35,8 +35,11 @@ class RavelryClientTest {
     testSubToSearch.assertNoErrors()
   }
 
-  @Test @Ignore // TODO: Fix this test after implementing OAuth2
+  @Test
   fun `Given query with spaces, When search patterns rx, Then return results`() {
+    // arrange
+    mockClientRule.enqueueHttp200("search_patterns.json")
+
     val stubQuery = "baby hat"
 
     val searchResponse = testClient.searchPatternsRx(stubQuery, 1, 20)
