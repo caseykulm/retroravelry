@@ -1,6 +1,7 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.auth.AuthenticationHeaderProvider
+import com.caseykulm.retroravelry.auth.OAuth2Authenticator
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,8 +23,26 @@ class LiveClient {
       }
     }
   }
+  private val oAuth2Authenticator: OAuth2Authenticator by lazy {
+    object : OAuth2Authenticator {
+      override val authHeaderProvider: AuthenticationHeaderProvider
+        get() = authHeaderProvider
 
-  val ravelryClient: RavelryClient by lazy { RavelryClient(authenticationHeaderProvider, okhttpClient) }
+      override fun isExpired(): Boolean {
+        return false
+      }
+
+      override fun refresh(): Boolean {
+        return true
+      }
+
+      override fun onRefreshFailed() {
+        /* no-op */
+      }
+    }
+  }
+
+  val ravelryClient: RavelryClient by lazy { RavelryClient(oAuth2Authenticator, okhttpClient) }
 
   private val oauthTestSecrets: OauthTestSecrets by lazy {
     parseJsonResourceFile("oauth_secrets.json", OauthTestSecrets::class.java)

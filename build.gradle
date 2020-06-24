@@ -36,7 +36,7 @@ buildscript {
 
     release = [
         'groupId': 'com.caseykulm.retroravelry',
-        'version': '0.9.0-CK-SNAPSHOT-1',
+        'version': '0.9.0',
         'description': 'Retrofit wrapper for the Ravelry REST API',
         'githubRepo': 'https://github.com/caseykulm/retroravelry',
         'secrets': [
