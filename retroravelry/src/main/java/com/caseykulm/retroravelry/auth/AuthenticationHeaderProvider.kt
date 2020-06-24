@@ -2,6 +2,6 @@ package com.caseykulm.retroravelry.auth
 
 import okhttp3.Request
 
-interface AuthProvider {
+interface AuthenticationHeaderProvider {
     fun getAuthorizationHeaderValue(request: Request): String
 }
