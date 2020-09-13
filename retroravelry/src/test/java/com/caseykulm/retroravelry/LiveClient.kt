@@ -26,14 +26,14 @@ class LiveClient {
   private val oAuth2Authenticator: OAuth2Authenticator by lazy {
     object : OAuth2Authenticator {
       override val authHeaderProvider: AuthenticationHeaderProvider
-        get() = authHeaderProvider
+        get() = this@LiveClient.authenticationHeaderProvider
 
       override fun isExpired(): Boolean {
         return false
       }
 
       override fun refresh(): Boolean {
-        return true
+        return false
       }
 
       override fun onRefreshFailed() {

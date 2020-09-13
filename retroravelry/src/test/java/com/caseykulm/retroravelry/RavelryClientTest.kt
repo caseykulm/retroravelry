@@ -19,8 +19,10 @@ class RavelryClientTest {
   // Toggle between mock client and live client here. Uncomment which one you want
   val testClient: RavelryApi by lazy {
     mockClientRule.ravelryClient
-//     liveRavelryClient
+//     liveRavelryClient // Note: You also need to update the accessToken in oauth_secrets.json for this to work
   }
+
+  val stubUserId = "rumpletestuser" // substitue your Ravelry user id here
 
   @Test
   fun searchPatternsRxShouldSubscribe() {
@@ -134,7 +136,7 @@ class RavelryClientTest {
     mockClientRule.enqueueHttp200("my_library_patterns.json")
 
     // act
-    val libraryResponse = testClient.searchMyLibraryRx("test_user", "duck", null, Type.pattern, null, 1, 20)
+    val libraryResponse = testClient.searchMyLibraryRx(stubUserId, "duck", null, Type.pattern, null, 1, 20)
     val testSubToSearchLibrary = libraryResponse.test()
 
     // assert
@@ -148,7 +150,7 @@ class RavelryClientTest {
 
     // act
     val libraryResponse = testClient
-        .searchMyLibraryRx("test_user", "duck", null, Type.pattern, null, 1, 20)
+        .searchMyLibraryRx(stubUserId, "duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingGet()
     val libraryResp = resp.response()?.body()
     println(resp)
@@ -165,7 +167,7 @@ class RavelryClientTest {
 
     // act
     val libraryResponse = testClient
-        .searchMyLibraryRx("test_user", "duck", null, Type.book, null, 1, 20)
+        .searchMyLibraryRx(stubUserId, "duck", null, Type.book, null, 1, 20)
     val resp = libraryResponse.blockingGet()
     val libraryResp = resp.response()?.body()
     println(resp)
@@ -195,7 +197,7 @@ class RavelryClientTest {
 
     // act
     val libraryResponse = testClient
-        .searchMyLibraryRx("test_user", "duck", null, Type.pattern, null, 1, 20)
+        .searchMyLibraryRx(stubUserId, "duck", null, Type.pattern, null, 1, 20)
     val resp = libraryResponse.blockingGet()
     val libraryResp = resp.response()?.body()
     println(resp)
