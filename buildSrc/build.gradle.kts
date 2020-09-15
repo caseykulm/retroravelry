@@ -10,6 +10,14 @@ plugins {
 
 gradlePlugin {
     plugins {
-        // Add custom plugins here
+        create("retroRaveleryPlugin") {
+            id = "retroravelry"
+            implementationClass = "com.caseykulm.retroravelry.gradle.plugins.RetroRavelryPlugin"
+        }
     }
+}
+
+dependencies {
+    implementation(gradleApi())
+    implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
 }

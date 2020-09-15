@@ -1,4 +1,4 @@
-package com.caseykulm.retroravelry.gradle
+package com.caseykulm.retroravelry.gradle.constants
 
 object Deps {
     const val junit4 = "junit:junit:${Versions.junit4}"
