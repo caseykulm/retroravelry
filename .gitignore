@@ -1,4 +1,5 @@
 .idea/
+!.idea/codeStyles
 .gradle/
 *.iml
 build/
@@ -7,3 +8,4 @@ out/
 .DS_Store
 local.properties
 retroravelry/src/test/resources/oauth_secrets.json
+secrets.properties

@@ -8,7 +8,6 @@ import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
 import com.caseykulm.retroravelry.network.responses.photos.ShowPhotoSizesResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.adapter.rxjava2.Result
 import retrofit2.http.GET
 import retrofit2.http.Path
