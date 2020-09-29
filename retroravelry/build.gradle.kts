@@ -1,4 +1,18 @@
-import com.caseykulm.retroravelry.gradle.Deps
+import com.caseykulm.retroravelry.gradle.constants.Deps
+
+repositories {
+  jcenter()
+  mavenCentral()
+  mavenLocal()
+}
+
+plugins {
+  id("org.jetbrains.kotlin.jvm") version "1.4.10"
+  id("com.jfrog.bintray")
+  `java-library`
+  `maven-publish`
+  id("retroravelry")
+}
 
 dependencies {
   implementation(Deps.Kotlin.core)
