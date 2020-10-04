@@ -6,6 +6,7 @@ import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
 import com.caseykulm.retroravelry.network.responses.photos.ShowPhotoSizesResponse
+import com.caseykulm.retroravelry.network.responses.user.CurrentUserResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.adapter.rxjava2.Result
@@ -14,6 +15,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RavelryRetroApi {
+    // region Users
+
+    @GET("current_user.json")
+    suspend fun getCurrentUser(): CurrentUserResponse
+
+    // endregion
+
     // region Patterns
 
     @GET("patterns/search.json")

@@ -8,7 +8,9 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.named
 import java.io.File
 import java.time.Instant
 
@@ -20,6 +22,7 @@ class RetroRavelryPlugin : Plugin<Project> {
             configureJavaLibraryPlugin()
             configureMavenPlugin()
             configureBintrayPlugin(project, loadRetroRavelrySecrets())
+            configureJunit5()
         }
     }
 }
@@ -136,3 +139,8 @@ private fun Project.configureBintrayPlugin(project: Project, secrets: RetroRavel
     }
 }
 
+private fun Project.configureJunit5() {
+    tasks.named<Test>("test") {
+        useJUnitPlatform()
+    }
+}

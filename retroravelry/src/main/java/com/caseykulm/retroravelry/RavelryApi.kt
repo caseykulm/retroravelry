@@ -6,11 +6,14 @@ import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
 import com.caseykulm.retroravelry.network.responses.photos.ShowPhotoSizesResponse
+import com.caseykulm.retroravelry.network.responses.user.CurrentUserResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.adapter.rxjava2.Result
 
 interface RavelryApi {
+    suspend fun getCurrentUser(): CurrentUserResponse
+
     fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
 
     fun showPatternRx(id: Int): Single<Result<ShowPatternResponse>>

@@ -7,6 +7,7 @@ import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
+import com.caseykulm.retroravelry.network.responses.user.CurrentUserResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -44,6 +45,10 @@ class RavelryClient(
             .client(oauthClient)
             .build()
         ravelryRetroApi = retrofit.create(RavelryRetroApi::class.java)
+    }
+
+    override suspend fun getCurrentUser(): CurrentUserResponse {
+        return ravelryRetroApi.getCurrentUser()
     }
 
     override fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>> {

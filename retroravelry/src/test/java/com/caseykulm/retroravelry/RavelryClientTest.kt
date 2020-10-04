@@ -3,32 +3,35 @@ package com.caseykulm.retroravelry
 import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
 import io.reactivex.Flowable
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
-import org.junit.Rule
-import org.junit.Test
+import kotlinx.coroutines.runBlocking
+import org.junit.jupiter.api.extension.RegisterExtension
 import retrofit2.adapter.rxjava2.Result
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 class RavelryClientTest {
     // Used to aid TDD, but make sure to ship not using this
     val liveClient = LiveClient()
     val liveRavelryClient: RavelryApi by lazy { liveClient.ravelryClient }
 
-    @Rule @JvmField val mockClientRule = MockClientTestRule()
+    companion object {
+        @JvmField @RegisterExtension val mockClientTestExtension = MockClientTestExtension()
+    }
 
     // Toggle between mock client and live client here. Uncomment which one you want
     val testClient: RavelryApi by lazy {
-        mockClientRule.ravelryClient
+        mockClientTestExtension.ravelryClient
 //     liveRavelryClient // Note: You also need to update the accessToken in oauth_secrets.json for this to work
     }
 
-    val stubUserId = "rumpletestuser" // substitute your Ravelry user id here
+    val stubUserName = "rumpletestuser" // substitute your Ravelry user id here
 
     @Test
     fun searchPatternsRxShouldSubscribe() {
         // arrange
-        mockClientRule.enqueueHttp200("search_patterns.json")
+        mockClientTestExtension.enqueueHttp200("search_patterns.json")
 
         // act
         val searchResponse = testClient.searchPatternsRx("cardigan", 1, 20)
@@ -41,7 +44,7 @@ class RavelryClientTest {
     @Test
     fun `Given query with spaces, When search patterns rx, Then return results`() {
         // arrange
-        mockClientRule.enqueueHttp200("search_patterns.json")
+        mockClientTestExtension.enqueueHttp200("search_patterns.json")
 
         val stubQuery = "baby hat"
 
@@ -50,19 +53,19 @@ class RavelryClientTest {
         val response = result.response()!!
         println(response)
 
-        assertTrue(response.errorBody()?.charStream()?.readText(), response.isSuccessful)
+        assertTrue(response.isSuccessful, response.errorBody()?.charStream()?.readText())
     }
 
     @Test
     fun `Given query with no spaces, When search patterns rx, Then return results`() {
         // arrange
-        mockClientRule.enqueueHttp200("search_patterns.json")
+        mockClientTestExtension.enqueueHttp200("search_patterns.json")
 
         // act
         val searchResponse = testClient.searchPatternsRx("cardigan", 1, 20)
         val result = searchResponse.blockingFirst()
         val response = result.response()!!
-        assertTrue(response.errorBody().toString(), response.isSuccessful)
+        assertTrue(response.isSuccessful, response.errorBody().toString())
         val patternsResp = result.response()?.body()
         println(result)
 
@@ -78,10 +81,10 @@ class RavelryClientTest {
     @Test
     fun searchPatternsRxWithShowForEach() {
         // arrange
-        mockClientRule.enqueueHttp200("search_patterns_tacos.json")
-        mockClientRule.enqueueHttp200("show_pattern_taco_1.json")
-        mockClientRule.enqueueHttp200("show_pattern_taco_2.json")
-        mockClientRule.enqueueHttp200("show_pattern_taco_3.json")
+        mockClientTestExtension.enqueueHttp200("search_patterns_tacos.json")
+        mockClientTestExtension.enqueueHttp200("show_pattern_taco_1.json")
+        mockClientTestExtension.enqueueHttp200("show_pattern_taco_2.json")
+        mockClientTestExtension.enqueueHttp200("show_pattern_taco_3.json")
 
         // act
         val fullPatternsResps: Flowable<Result<ShowPatternResponse>> = testClient.searchPatternsRx("taco", 1, 3)
@@ -107,7 +110,7 @@ class RavelryClientTest {
     @Test
     fun showPatternRxShouldSubscribe() {
         // arrange
-        mockClientRule.enqueueHttp200("show_pattern.json")
+        mockClientTestExtension.enqueueHttp200("show_pattern.json")
 
         // act
         val showResponse = testClient.showPatternRx(243083)
@@ -120,7 +123,7 @@ class RavelryClientTest {
     @Test
     fun showPatternRxShouldReturnResults() {
         // arrange
-        mockClientRule.enqueueHttp200("show_pattern.json")
+        mockClientTestExtension.enqueueHttp200("show_pattern.json")
 
         // act
         val showResponse = testClient.showPatternRx(243083)
@@ -134,10 +137,10 @@ class RavelryClientTest {
     @Test
     fun myLibraryRxShouldSubscribe() {
         // arrange
-        mockClientRule.enqueueHttp200("my_library_patterns.json")
+        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
 
         // act
-        val libraryResponse = testClient.searchMyLibraryRx(stubUserId, "duck", null, Type.pattern, null, 1, 20)
+        val libraryResponse = testClient.searchMyLibraryRx(stubUserName, "duck", null, Type.pattern, null, 1, 20)
         val testSubToSearchLibrary = libraryResponse.test()
 
         // assert
@@ -147,11 +150,11 @@ class RavelryClientTest {
     @Test
     fun myLibraryRxShouldReturnPatternResults() {
         // arrange
-        mockClientRule.enqueueHttp200("my_library_patterns.json")
+        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
 
         // act
         val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserId, "duck", null, Type.pattern, null, 1, 20)
+            .searchMyLibraryRx(stubUserName, "duck", null, Type.pattern, null, 1, 20)
         val resp = libraryResponse.blockingGet()
         val libraryResp = resp.response()?.body()
         println(resp)
@@ -164,11 +167,11 @@ class RavelryClientTest {
     @Test
     fun myLibraryRxShouldReturnNoBooks() {
         // arrange
-        mockClientRule.enqueueHttp200("my_library_books.json")
+        mockClientTestExtension.enqueueHttp200("my_library_books.json")
 
         // act
         val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserId, "duck", null, Type.book, null, 1, 20)
+            .searchMyLibraryRx(stubUserName, "duck", null, Type.book, null, 1, 20)
         val resp = libraryResponse.blockingGet()
         val libraryResp = resp.response()?.body()
         println(resp)
@@ -181,7 +184,7 @@ class RavelryClientTest {
     @Test
     fun libraryRxShouldSubscribe() {
         // arrange
-        mockClientRule.enqueueHttp200("my_library_patterns.json")
+        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
 
         // act
         val libraryResponse = testClient.searchLibraryRx("ducksaucer", "duck", null, Type.pattern, null, 1, 20)
@@ -194,11 +197,11 @@ class RavelryClientTest {
     @Test
     fun libraryRxShouldReturnPatternResults() {
         // arrange
-        mockClientRule.enqueueHttp200("my_library_patterns.json")
+        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
 
         // act
         val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserId, "duck", null, Type.pattern, null, 1, 20)
+            .searchMyLibraryRx(stubUserName, "duck", null, Type.pattern, null, 1, 20)
         val resp = libraryResponse.blockingGet()
         val libraryResp = resp.response()?.body()
         println(resp)
@@ -210,5 +213,15 @@ class RavelryClientTest {
         val firstVolume = libraryResp?.volumes?.get(0)
         assertEquals(213045775, firstVolume?.id)
         assertEquals("Duck the Sailor", firstVolume?.title)
+    }
+
+    @Test
+    fun `Given success, When getCurrentUser, Then should valid data`() = runBlocking {
+        mockClientTestExtension.enqueueHttp200("current_user_resp.json")
+
+        val currentUser = testClient.getCurrentUser().user
+        println(currentUser)
+
+        assertEquals(expected = stubUserName, actual = currentUser.username)
     }
 }
