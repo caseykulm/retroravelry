@@ -24,6 +24,7 @@ ktlint {
 
 dependencies {
     implementation(Deps.Kotlin.core)
+    implementation(Deps.Kotlin.coroutines)
     implementation(Deps.Kotlin.reflect)
     implementation(Deps.Moshi.core)
     implementation(Deps.Moshi.kotlin)
@@ -34,8 +35,13 @@ dependencies {
     implementation(Deps.Retrofit.core)
     implementation(Deps.Retrofit.rxJava2Adapter)
     implementation(Deps.rxjava2)
+    implementation(kotlin(Deps.Kotlin.jdk8))
 
-    testImplementation(Deps.junit4)
+    testImplementation(Deps.JUnit5.core)
+    testRuntimeOnly(Deps.JUnit5.runtime)
     testImplementation(Deps.mockito)
     testImplementation(Deps.OkHttp3.mockWebServer)
+    testImplementation(Deps.Kotlin.test)
+    testImplementation(Deps.Kotlin.testCommon)
+    testImplementation(Deps.Kotlin.testJunit5)
 }
