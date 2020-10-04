@@ -14,40 +14,40 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RavelryRetroApi {
-  // region Patterns
+    // region Patterns
 
-  @GET("patterns/search.json")
-  fun searchPatternsRx(
-      @Query(value = "query") query: String,
-      @Query("page") page: Int,
-      @Query("page_size") pageSize: Int,
-      @Query("personal_attributes") personal_attributes: Boolean
-  ): Flowable<Result<SearchPatternsResponse>>
+    @GET("patterns/search.json")
+    fun searchPatternsRx(
+        @Query(value = "query") query: String,
+        @Query("page") page: Int,
+        @Query("page_size") pageSize: Int,
+        @Query("personal_attributes") personal_attributes: Boolean
+    ): Flowable<Result<SearchPatternsResponse>>
 
-  @GET("patterns/{id}.json")
-  fun showPatternRx(@Path("id") id: Int): Single<Result<ShowPatternResponse>>
+    @GET("patterns/{id}.json")
+    fun showPatternRx(@Path("id") id: Int): Single<Result<ShowPatternResponse>>
 
-  // endregion
+    // endregion
 
-  // region Library
+    // region Library
 
-  @GET("people/{username}/library/search.json")
-  fun searchLibraryRx(
-      @Path("username") username: String,
-      @Query("query") query: String,
-      @Query("query_type") queryType: String?,
-      @Query("type") type: Type?,
-      @Query("sort") sort: Sort?,
-      @Query("page") page: Int,
-      @Query("page_size") pageSize: Int
-  ): Single<Result<LibraryResponse>>
+    @GET("people/{username}/library/search.json")
+    fun searchLibraryRx(
+        @Path("username") username: String,
+        @Query("query") query: String,
+        @Query("query_type") queryType: String?,
+        @Query("type") type: Type?,
+        @Query("sort") sort: Sort?,
+        @Query("page") page: Int,
+        @Query("page_size") pageSize: Int
+    ): Single<Result<LibraryResponse>>
 
-  // endregion
+    // endregion
 
-  // region Photos
+    // region Photos
 
-  @GET("photos/{id}/sizes.json")
-  fun showPhotoDimensionsRx(@Path("id") photoId: String): Single<Result<ShowPhotoSizesResponse>>
+    @GET("photos/{id}/sizes.json")
+    fun showPhotoDimensionsRx(@Path("id") photoId: String): Single<Result<ShowPhotoSizesResponse>>
 
-  // endregion
+    // endregion
 }

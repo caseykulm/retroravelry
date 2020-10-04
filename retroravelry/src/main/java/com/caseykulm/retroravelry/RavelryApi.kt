@@ -11,29 +11,29 @@ import io.reactivex.Single
 import retrofit2.adapter.rxjava2.Result
 
 interface RavelryApi {
-  fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
+    fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
 
-  fun showPatternRx(id: Int): Single<Result<ShowPatternResponse>>
+    fun showPatternRx(id: Int): Single<Result<ShowPatternResponse>>
 
-  fun searchMyLibraryRx(
-      username: String,
-      query: String,
-      queryType: String?,
-      type: Type?,
-      sort: Sort?,
-      page: Int,
-      pageSize: Int
-  ): Single<Result<LibraryResponse>>
+    fun searchMyLibraryRx(
+        username: String,
+        query: String,
+        queryType: String?,
+        type: Type?,
+        sort: Sort?,
+        page: Int,
+        pageSize: Int
+    ): Single<Result<LibraryResponse>>
 
-  fun searchLibraryRx(
-      username: String,
-      query: String,
-      queryType: String?,
-      type: Type?,
-      sort: Sort?,
-      page: Int,
-      pageSize: Int
-  ): Single<Result<LibraryResponse>>
+    fun searchLibraryRx(
+        username: String,
+        query: String,
+        queryType: String?,
+        type: Type?,
+        sort: Sort?,
+        page: Int,
+        pageSize: Int
+    ): Single<Result<LibraryResponse>>
 
-  fun showPhotoSizesRx(photoId: String): Single<Result<ShowPhotoSizesResponse>>
+    fun showPhotoSizesRx(photoId: String): Single<Result<ShowPhotoSizesResponse>>
 }

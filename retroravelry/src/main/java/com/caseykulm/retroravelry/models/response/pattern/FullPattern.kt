@@ -43,7 +43,7 @@ data class FullPattern(
     val printings: List<ListPrinting>?,
     val product_id: Int?,
     val projects_count: Int?,
-    //TODO Parse this into a recognized date format, currently returning YYYY/MM/DD instead of standard YYYY-MM-DD
+    // TODO Parse this into a recognized date format, currently returning YYYY/MM/DD instead of standard YYYY-MM-DD
     val published: String?,
     val queued_projects_count: Int?,
     val rating_average: Float?,

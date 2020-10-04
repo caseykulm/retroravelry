@@ -4,20 +4,21 @@ import okhttp3.mockwebserver.MockResponse
 import org.junit.rules.ExternalResource
 
 class MockClientTestRule : ExternalResource() {
-  lateinit var mockClient: MockClient
-  val ravelryClient: RavelryApi by lazy { mockClient.ravelryClient }
+    lateinit var mockClient: MockClient
+    val ravelryClient: RavelryApi by lazy { mockClient.ravelryClient }
 
-  override fun before() {
-    mockClient = MockClient()
-  }
+    override fun before() {
+        mockClient = MockClient()
+    }
 
-  override fun after() {
+    override fun after() {
+    }
 
-  }
-
-  fun enqueueHttp200(jsonFileName: String) {
-    val respJsonStr = javaClass.readResourceFile(jsonFileName)
-    mockClient.server.enqueue(MockResponse()
-        .setResponseCode(200).setBody(respJsonStr))
-  }
+    fun enqueueHttp200(jsonFileName: String) {
+        val respJsonStr = javaClass.readResourceFile(jsonFileName)
+        mockClient.server.enqueue(
+            MockResponse()
+                .setResponseCode(200).setBody(respJsonStr)
+        )
+    }
 }
