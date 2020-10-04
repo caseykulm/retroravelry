@@ -71,7 +71,7 @@ class RavelryClientTest {
 
         // assert
         assertNotNull(result)
-        assertEquals(20, patternsResp?.paginator?.page_size)
+        assertEquals(20, patternsResp?.paginator?.pageSize)
     }
 
     private fun failKt(message: String = "Test failed"): Nothing {
@@ -99,12 +99,12 @@ class RavelryClientTest {
 
         // assert
         assertEquals(3, fullPatterns.size)
-        assertEquals(1, tacoPattern1?.craft?.id)
-        assertEquals("Crochet", tacoPattern1?.craft?.name)
-        assertEquals(1, tacoPattern1?.craft?.id)
-        assertEquals("Knitting", tacoPattern2?.craft?.name)
-        assertEquals(1, tacoPattern1?.craft?.id)
-        assertEquals("Crochet", tacoPattern3?.craft?.name)
+        assertEquals(1, tacoPattern1.craft?.id)
+        assertEquals("Crochet", tacoPattern1.craft?.name)
+        assertEquals(1, tacoPattern1.craft?.id)
+        assertEquals("Knitting", tacoPattern2.craft?.name)
+        assertEquals(1, tacoPattern1.craft?.id)
+        assertEquals("Crochet", tacoPattern3.craft?.name)
     }
 
     @Test
@@ -140,7 +140,7 @@ class RavelryClientTest {
         mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
 
         // act
-        val libraryResponse = testClient.searchMyLibraryRx(stubUserName, "duck", null, Type.pattern, null, 1, 20)
+        val libraryResponse = testClient.searchMyLibraryRx(stubUserName, "duck", null, Type.Pattern, null, 1, 20)
         val testSubToSearchLibrary = libraryResponse.test()
 
         // assert
@@ -154,14 +154,14 @@ class RavelryClientTest {
 
         // act
         val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserName, "duck", null, Type.pattern, null, 1, 20)
+            .searchMyLibraryRx(stubUserName, "duck", null, Type.Pattern, null, 1, 20)
         val resp = libraryResponse.blockingGet()
         val libraryResp = resp.response()?.body()
         println(resp)
 
         // assert
         assertNotNull(resp)
-        assertEquals(20, libraryResp?.paginator?.page_size)
+        assertEquals(20, libraryResp?.paginator?.pageSize)
     }
 
     @Test
@@ -171,14 +171,14 @@ class RavelryClientTest {
 
         // act
         val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserName, "duck", null, Type.book, null, 1, 20)
+            .searchMyLibraryRx(stubUserName, "duck", null, Type.Book, null, 1, 20)
         val resp = libraryResponse.blockingGet()
         val libraryResp = resp.response()?.body()
         println(resp)
 
         // assert
         assertNotNull(resp)
-        assertEquals(0, libraryResp?.paginator?.page_size)
+        assertEquals(0, libraryResp?.paginator?.pageSize)
     }
 
     @Test
@@ -187,7 +187,7 @@ class RavelryClientTest {
         mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
 
         // act
-        val libraryResponse = testClient.searchLibraryRx("ducksaucer", "duck", null, Type.pattern, null, 1, 20)
+        val libraryResponse = testClient.searchLibraryRx("ducksaucer", "duck", null, Type.Pattern, null, 1, 20)
         val testSubToSearchLibrary = libraryResponse.test()
 
         // assert
@@ -201,14 +201,14 @@ class RavelryClientTest {
 
         // act
         val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserName, "duck", null, Type.pattern, null, 1, 20)
+            .searchMyLibraryRx(stubUserName, "duck", null, Type.Pattern, null, 1, 20)
         val resp = libraryResponse.blockingGet()
         val libraryResp = resp.response()?.body()
         println(resp)
 
         // assert
         assertNotNull(resp)
-        assertEquals(20, libraryResp?.paginator?.page_size)
+        assertEquals(20, libraryResp?.paginator?.pageSize)
         assertEquals(5, libraryResp?.volumes?.size)
         val firstVolume = libraryResp?.volumes?.get(0)
         assertEquals(213045775, firstVolume?.id)
@@ -219,7 +219,7 @@ class RavelryClientTest {
     fun `Given success, When getCurrentUser, Then should valid data`() = runBlocking {
         mockClientTestExtension.enqueueHttp200("current_user_resp.json")
 
-        val currentUser = testClient.getCurrentUser().user
+        val currentUser = testClient.getCurrentUser().smallUser
         println(currentUser)
 
         assertEquals(expected = stubUserName, actual = currentUser.username)

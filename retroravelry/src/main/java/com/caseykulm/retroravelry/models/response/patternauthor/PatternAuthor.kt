@@ -1,12 +1,15 @@
 package com.caseykulm.retroravelry.models.response.patternauthor
 
 import com.caseykulm.retroravelry.models.response.user.SmallUser
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class PatternAuthor(
-    val favorites_count: Int,
+    @Json(name = "favorites_count") val favoritesCount: Int,
     val id: Int,
     val name: String?,
-    val patterns_count: Int,
+    @Json(name = "patterns_count") val patternsCount: Int,
     val permalink: String?,
     val users: List<SmallUser>?
 )

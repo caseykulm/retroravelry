@@ -11,6 +11,7 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.named
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import java.io.File
 import java.time.Instant
 
@@ -23,6 +24,7 @@ class RetroRavelryPlugin : Plugin<Project> {
             configureMavenPlugin()
             configureBintrayPlugin(project, loadRetroRavelrySecrets())
             configureJunit5()
+            configureKapt()
         }
     }
 }
@@ -142,5 +144,11 @@ private fun Project.configureBintrayPlugin(project: Project, secrets: RetroRavel
 private fun Project.configureJunit5() {
     tasks.named<Test>("test") {
         useJUnitPlatform()
+    }
+}
+
+private fun Project.configureKapt() {
+    configure<KaptExtension> {
+        useBuildCache = true
     }
 }

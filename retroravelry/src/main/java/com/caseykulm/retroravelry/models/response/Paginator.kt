@@ -1,9 +1,13 @@
 package com.caseykulm.retroravelry.models.response
 
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class Paginator(
-    val last_page: Int,
+    @Json(name = "last_page") val lastPage: Int,
     val page: Int,
-    val page_count: Int,
-    val page_size: Int,
+    @Json(name = "page_count") val pageCount: Int,
+    @Json(name = "page_size") val pageSize: Int,
     val results: Int
 )

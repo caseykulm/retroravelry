@@ -8,7 +8,8 @@ repositories {
 }
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.4.10"
+    kotlin("jvm")
+    kotlin("kapt")
     id("com.jfrog.bintray")
     `java-library`
     `maven-publish`
@@ -29,6 +30,7 @@ dependencies {
     implementation(Deps.Moshi.core)
     implementation(Deps.Moshi.kotlin)
     implementation(Deps.Moshi.adapters)
+    kapt(Deps.Moshi.codegen)
     implementation(Deps.OkHttp3.core)
     implementation(Deps.OkHttp3.loggingInterceptor)
     implementation(Deps.Retrofit.converterMoshi)
