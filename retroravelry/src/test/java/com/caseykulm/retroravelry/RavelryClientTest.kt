@@ -22,7 +22,7 @@ class RavelryClientTest {
 //     liveRavelryClient // Note: You also need to update the accessToken in oauth_secrets.json for this to work
   }
 
-  val stubUserId = "rumpletestuser" // substitue your Ravelry user id here
+  val stubUserId = "rumpletestuser" // substitute your Ravelry user id here
 
   @Test
   fun searchPatternsRxShouldSubscribe() {

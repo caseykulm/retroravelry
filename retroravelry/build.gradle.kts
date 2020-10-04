@@ -1,6 +1,7 @@
 import com.caseykulm.retroravelry.gradle.constants.Deps
 
 repositories {
+  maven("https://plugins.gradle.org/m2/")
   jcenter()
   mavenCentral()
   mavenLocal()
@@ -11,7 +12,14 @@ plugins {
   id("com.jfrog.bintray")
   `java-library`
   `maven-publish`
+  id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
   id("retroravelry")
+}
+
+// Cannot currently move this to buildSrc because of https://github.com/JLLeitschuh/ktlint-gradle/issues/239
+ktlint {
+  version.set("0.39.0")
+  android.set(false)
 }
 
 dependencies {
