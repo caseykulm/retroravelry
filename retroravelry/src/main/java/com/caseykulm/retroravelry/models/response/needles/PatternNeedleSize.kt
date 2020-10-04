@@ -4,7 +4,7 @@ package com.caseykulm.retroravelry.models.response.needles
  * Created by lorajones on 10/14/17.
  */
 
-data class PatternNeedleSize (
+data class PatternNeedleSize(
     val hook: String?,
     val pretty_metric: String?,
     val us: String?,

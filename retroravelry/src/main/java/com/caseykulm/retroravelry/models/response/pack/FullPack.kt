@@ -3,7 +3,7 @@ package com.caseykulm.retroravelry.models.response.pack
 import com.squareup.moshi.Json
 
 data class FullPack(
-    @com.squareup.moshi.Json(name="color_family_id") val colorFamilyId: String?,
+    @com.squareup.moshi.Json(name = "color_family_id") val colorFamilyId: String?,
     val colorway: String?,
     val dye_lot: String?,
     val id: Int?,

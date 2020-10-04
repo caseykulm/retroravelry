@@ -34,8 +34,34 @@ dependencies {
 [2]: https://github.com/square/retrofit
 [3]: https://github.com/ReactiveX/RxJava
 
+## Setup
 
+1. Get the `secrets.properties` file from 1Password.
+2. Add it to the root of the project
 
+## Checks
 
+### Quick start
 
+Run the following to mimic what CI is running:
 
+`./.circleci/checks.sh`
+
+Note: Make sure you mark this file executable with `chmod +x ./.circleci/checks.sh`
+
+### More info
+
+We are running our CI on Circle CI with the following checks:
+
+* ktlint
+* unit tests
+* build a JAR successfully
+
+### ktlint
+
+Ktlint may report errors. If it does you can run:
+
+`./gradlew ktlintFormat`
+
+to attempt to fix it. It can fix most things, but sometimes it will tell you that 
+you need to resolve something by hand.

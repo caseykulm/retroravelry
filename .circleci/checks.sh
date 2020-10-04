@@ -5,4 +5,4 @@ set -e
 
 cat ./.circleci/art.txt
 
-./gradlew test build
+./gradlew ktlintCheck test jar

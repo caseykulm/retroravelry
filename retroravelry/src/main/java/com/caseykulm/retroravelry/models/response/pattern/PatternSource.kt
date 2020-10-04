@@ -4,7 +4,7 @@ package com.caseykulm.retroravelry.models.response.pattern
  * Created by lorajones on 10/14/17.
  */
 
-data class PatternSource (
+data class PatternSource(
     val out_of_print: Boolean?,
     val id: Int?,
     val name: String?,
