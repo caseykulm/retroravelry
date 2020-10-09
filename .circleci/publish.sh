@@ -26,6 +26,6 @@ git commit -am "Bump to $VERSION
 [skip ci]
 "
 git tag -a $VERSION -m "$VERSION"
-git push --follow-tags
+git push --follow-tags -u origin master
 
 ./gradlew bintrayUpload
