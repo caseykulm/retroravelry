@@ -10,7 +10,7 @@ With Gradle:
 
 ```kotlin
 dependencies {
-    implementation("com.caseykulm.retroravelry:retroravelry:0.9.0")
+    implementation("com.caseykulm.retroravelry:retroravelry:0.10.0")
 }
 ```
 
