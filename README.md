@@ -8,9 +8,9 @@ Kotlin wrapper for the [Ravelry API][1] using [Retrofit][2] and [RxJava2][3].
 
 With Gradle:
 
-```groovy
+```kotlin
 dependencies {
-  implementation "com.caseykulm.retroravelry:retroravelry:0.9.0"
+    implementation("com.caseykulm.retroravelry:retroravelry:0.9.0")
 }
 ```
 
@@ -34,8 +34,41 @@ dependencies {
 [2]: https://github.com/square/retrofit
 [3]: https://github.com/ReactiveX/RxJava
 
+## Setup
 
+1. Get the `secrets.properties` file from 1Password.
+2. Add it to the root of the project
 
+## Checks
 
+### Quick start
 
+Run the following to mimic what CI is running:
 
+`./.circleci/checks.sh`
+
+Note: Make sure you mark this file executable with `chmod +x ./.circleci/checks.sh`
+
+### More info
+
+We are running our CI on Circle CI with the following checks:
+
+* ktlint
+* unit tests
+* build a JAR successfully
+
+### ktlint
+
+Ktlint may report errors. If it does you can run:
+
+`./gradlew ktlintFormat`
+
+to attempt to fix it. It can fix most things, but sometimes it will tell you that 
+you need to resolve something by hand.
+
+## Browsing API
+
+There is a [ravelry_postman_collection.json](./ravelry_postman_collection.json) file available 
+at the root of this repo that can be imported into the [Postman](https://www.postman.com/) 
+application to browse the REST API via a collection. This in turn can be used to generate an 
+OAuth2 access token which you can use in this project to test your changes. 

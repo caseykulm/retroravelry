@@ -6,34 +6,37 @@ import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
 import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
 import com.caseykulm.retroravelry.network.responses.photos.ShowPhotoSizesResponse
+import com.caseykulm.retroravelry.network.responses.user.CurrentUserResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.adapter.rxjava2.Result
 
 interface RavelryApi {
-  fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
+    suspend fun getCurrentUser(): CurrentUserResponse
 
-  fun showPatternRx(id: Int): Single<Result<ShowPatternResponse>>
+    fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
 
-  fun searchMyLibraryRx(
-      username: String,
-      query: String,
-      queryType: String?,
-      type: Type?,
-      sort: Sort?,
-      page: Int,
-      pageSize: Int
-  ): Single<Result<LibraryResponse>>
+    fun showPatternRx(id: Int): Single<Result<ShowPatternResponse>>
 
-  fun searchLibraryRx(
-      username: String,
-      query: String,
-      queryType: String?,
-      type: Type?,
-      sort: Sort?,
-      page: Int,
-      pageSize: Int
-  ): Single<Result<LibraryResponse>>
+    fun searchMyLibraryRx(
+        username: String,
+        query: String,
+        queryType: String?,
+        type: Type?,
+        sort: Sort?,
+        page: Int,
+        pageSize: Int
+    ): Single<Result<LibraryResponse>>
 
-  fun showPhotoSizesRx(photoId: String): Single<Result<ShowPhotoSizesResponse>>
+    fun searchLibraryRx(
+        username: String,
+        query: String,
+        queryType: String?,
+        type: Type?,
+        sort: Sort?,
+        page: Int,
+        pageSize: Int
+    ): Single<Result<LibraryResponse>>
+
+    fun showPhotoSizesRx(photoId: String): Single<Result<ShowPhotoSizesResponse>>
 }

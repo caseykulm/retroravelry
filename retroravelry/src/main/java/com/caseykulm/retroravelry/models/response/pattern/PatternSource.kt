@@ -1,20 +1,23 @@
 package com.caseykulm.retroravelry.models.response.pattern
 
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
 /**
  * Created by lorajones on 10/14/17.
  */
-
-data class PatternSource (
-    val out_of_print: Boolean?,
+@JsonClass(generateAdapter = true)
+data class PatternSource(
+    @Json(name = "out_of_print") val outOfPrint: Boolean?,
     val id: Int?,
     val name: String?,
-    val patterns_count: Int?,
+    @Json(name = "patterns_count") val patternsCount: Int?,
     val author: String?,
-    val amazon_url: String?,
-    val amazon_rating: Int?,
+    @Json(name = "amazon_url") val amazonUrl: String?,
+    @Json(name = "amazon_rating") val amazonRating: Int?,
     val url: String?,
-    val list_price: String?,
+    @Json(name = "list_price") val listPrice: String?,
     val price: String?,
     val permalink: String?,
-    val shelf_image_path: String?
+    @Json(name = "shelf_image_path") val shelfImagePath: String?
 )

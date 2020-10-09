@@ -38,10 +38,13 @@ jobs:
               - ~/.gradle
               key: v1-dependencies-{{ checksum "build.gradle" }}
 
-        # run tests!
         - run:
               name: Tests and Build
               command: ./.circleci/checks.sh
+
+        - run:
+              name: Publish
+              command: ./.circleci/publish.sh
 
         - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
               path: retroravelry/build/reports

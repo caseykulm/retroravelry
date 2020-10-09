@@ -30,8 +30,11 @@ class AuthorizationInterceptor(private val oAuth2Manager: OAuth2Authenticator) :
         checkIfExpired()
 
         val signedRequest = chain.request().newBuilder()
-            .addHeader("Authorization", oAuth2Manager.authHeaderProvider
-                .getAuthorizationHeaderValue(chain.request()))
+            .addHeader(
+                "Authorization",
+                oAuth2Manager.authHeaderProvider
+                    .getAuthorizationHeaderValue(chain.request())
+            )
             .build()
         val resp = chain.proceed(signedRequest)
 
