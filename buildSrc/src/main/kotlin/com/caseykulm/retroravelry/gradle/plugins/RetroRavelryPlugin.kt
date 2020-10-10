@@ -9,9 +9,12 @@ import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.testing.Test
+import org.gradle.kotlin.dsl.KotlinBuildScript
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.named
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.File
 import java.util.Date
 
@@ -25,6 +28,7 @@ class RetroRavelryPlugin : Plugin<Project> {
             configureBintrayPlugin(project, loadRetroRavelrySecrets())
             configureJunit5()
             configureKapt()
+            configureKotlin()
         }
     }
 }
@@ -182,5 +186,13 @@ private fun Project.configureJunit5() {
 private fun Project.configureKapt() {
     configure<KaptExtension> {
         useBuildCache = true
+    }
+}
+
+private fun Project.configureKotlin() {
+    tasks.withType<KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 }

@@ -30,24 +30,21 @@ class RavelryClient(
     okHttpClient: OkHttpClient, // TODO: Make this optional, and provide sensible defaults
     baseUrl: HttpUrl = HttpUrl.parse(API_URL)!! // TODO: Only reveal this as an option for tests
 ) : RavelryApi {
-    private var ravelryRetroApi: RavelryRetroApi
-
-    init {
-        val moshi = Moshi.Builder()
-            .add(Date::class.java, Rfc3339DateJsonAdapter())
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        val oauthClient = okHttpClient.newBuilder()
-            .addInterceptor(AuthorizationInterceptor(oAuth2Authenticator))
-            .build()
-        val retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(oauthClient)
-            .build()
-        ravelryRetroApi = retrofit.create(RavelryRetroApi::class.java)
-    }
+    private val moshi = Moshi.Builder()
+        .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
+        .add(KotlinJsonAdapterFactory())
+        .build()
+    private val oauthClient = okHttpClient.newBuilder()
+        .addInterceptor(AuthorizationInterceptor(oAuth2Authenticator))
+        .build()
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addConverterFactory(MoshiEnumConverterFactory())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .client(oauthClient)
+        .build()
+    private val ravelryRetroApi: RavelryRetroApi = retrofit.create(RavelryRetroApi::class.java)
 
     override suspend fun getCurrentUser(): CurrentUserResponse {
         return ravelryRetroApi.getCurrentUser()
@@ -68,11 +65,11 @@ class RavelryClient(
     override suspend fun getUserLibrary(
         username: String,
         query: String,
+        page: Int,
+        pageSize: Int,
         queryType: String?,
         type: Type?,
         sort: Sort?,
-        page: Int,
-        pageSize: Int
     ): LibraryResponse {
         return ravelryRetroApi.getUserLibrary(username, query, queryType, type, sort, page, pageSize)
     }

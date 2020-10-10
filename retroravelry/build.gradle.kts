@@ -1,4 +1,5 @@
 import com.caseykulm.retroravelry.gradle.constants.Deps
+import com.caseykulm.retroravelry.gradle.constants.Versions
 
 repositories {
     maven("https://plugins.gradle.org/m2/")
@@ -19,14 +20,13 @@ plugins {
 
 // Cannot currently move this to buildSrc because of https://github.com/JLLeitschuh/ktlint-gradle/issues/239
 ktlint {
-    version.set("0.39.0")
+    version.set(Versions.ktlint)
     android.set(false)
 }
 
 dependencies {
     implementation(Deps.Kotlin.core)
     implementation(Deps.Kotlin.coroutines)
-    implementation(Deps.Kotlin.reflect)
     implementation(Deps.Moshi.core)
     implementation(Deps.Moshi.kotlin)
     implementation(Deps.Moshi.adapters)
