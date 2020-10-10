@@ -25,6 +25,14 @@ interface RavelryRetroApi {
     // region Patterns
 
     @GET("patterns/search.json")
+    suspend fun getPatterns(
+        @Query(value = "query") query: String,
+        @Query("page") page: Int,
+        @Query("page_size") pageSize: Int,
+        @Query("personal_attributes") personal_attributes: Boolean
+    ): SearchPatternsResponse
+
+    @GET("patterns/search.json")
     fun searchPatternsRx(
         @Query(value = "query") query: String,
         @Query("page") page: Int,
@@ -33,11 +41,25 @@ interface RavelryRetroApi {
     ): Flowable<Result<SearchPatternsResponse>>
 
     @GET("patterns/{id}.json")
+    suspend fun getPattern(@Path("id") id: Int): ShowPatternResponse
+
+    @GET("patterns/{id}.json")
     fun showPatternRx(@Path("id") id: Int): Single<Result<ShowPatternResponse>>
 
     // endregion
 
     // region Library
+
+    @GET("people/{username}/library/search.json")
+    suspend fun getUserLibrary(
+        @Path("username") username: String,
+        @Query("query") query: String,
+        @Query("query_type") queryType: String?,
+        @Query("type") type: Type?,
+        @Query("sort") sort: Sort?,
+        @Query("page") page: Int,
+        @Query("page_size") pageSize: Int
+    ): LibraryResponse
 
     @GET("people/{username}/library/search.json")
     fun searchLibraryRx(
@@ -53,6 +75,9 @@ interface RavelryRetroApi {
     // endregion
 
     // region Photos
+
+    @GET("photos/{id}/sizes.json")
+    suspend fun getPhotoDimensions(@Path("id") photoId: Int): ShowPhotoSizesResponse
 
     @GET("photos/{id}/sizes.json")
     fun showPhotoDimensionsRx(@Path("id") photoId: String): Single<Result<ShowPhotoSizesResponse>>

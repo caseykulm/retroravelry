@@ -135,53 +135,6 @@ class RavelryClientTest {
     }
 
     @Test
-    fun myLibraryRxShouldSubscribe() {
-        // arrange
-        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
-
-        // act
-        val libraryResponse = testClient.searchMyLibraryRx(stubUserName, "duck", null, Type.Pattern, null, 1, 20)
-        val testSubToSearchLibrary = libraryResponse.test()
-
-        // assert
-        testSubToSearchLibrary.assertNoErrors()
-    }
-
-    @Test
-    fun myLibraryRxShouldReturnPatternResults() {
-        // arrange
-        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
-
-        // act
-        val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserName, "duck", null, Type.Pattern, null, 1, 20)
-        val resp = libraryResponse.blockingGet()
-        val libraryResp = resp.response()?.body()
-        println(resp)
-
-        // assert
-        assertNotNull(resp)
-        assertEquals(20, libraryResp?.paginator?.pageSize)
-    }
-
-    @Test
-    fun myLibraryRxShouldReturnNoBooks() {
-        // arrange
-        mockClientTestExtension.enqueueHttp200("my_library_books.json")
-
-        // act
-        val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserName, "duck", null, Type.Book, null, 1, 20)
-        val resp = libraryResponse.blockingGet()
-        val libraryResp = resp.response()?.body()
-        println(resp)
-
-        // assert
-        assertNotNull(resp)
-        assertEquals(0, libraryResp?.paginator?.pageSize)
-    }
-
-    @Test
     fun libraryRxShouldSubscribe() {
         // arrange
         mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
@@ -192,27 +145,6 @@ class RavelryClientTest {
 
         // assert
         testSubToSearchLibrary.assertNoErrors()
-    }
-
-    @Test
-    fun libraryRxShouldReturnPatternResults() {
-        // arrange
-        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
-
-        // act
-        val libraryResponse = testClient
-            .searchMyLibraryRx(stubUserName, "duck", null, Type.Pattern, null, 1, 20)
-        val resp = libraryResponse.blockingGet()
-        val libraryResp = resp.response()?.body()
-        println(resp)
-
-        // assert
-        assertNotNull(resp)
-        assertEquals(20, libraryResp?.paginator?.pageSize)
-        assertEquals(5, libraryResp?.volumes?.size)
-        val firstVolume = libraryResp?.volumes?.get(0)
-        assertEquals(213045775, firstVolume?.id)
-        assertEquals("Duck the Sailor", firstVolume?.title)
     }
 
     @Test
