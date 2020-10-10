@@ -14,11 +14,23 @@ import retrofit2.adapter.rxjava2.Result
 interface RavelryApi {
     suspend fun getCurrentUser(): CurrentUserResponse
 
+    suspend fun getPatterns(query: String, page: Int, pageSize: Int): SearchPatternsResponse
+
+    @Deprecated(
+        message = "Deprecating the RxJava2 API in favor of Kotlin Coroutines",
+        replaceWith = ReplaceWith(expression = "getPatterns(query, page, pageSie)")
+    )
     fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>>
 
+    suspend fun getPattern(id: Int): ShowPatternResponse
+
+    @Deprecated(
+        message = "Deprecating the RxJava2 API in favor of Kotlin Coroutines",
+        replaceWith = ReplaceWith(expression = "getPattern(id)")
+    )
     fun showPatternRx(id: Int): Single<Result<ShowPatternResponse>>
 
-    fun searchMyLibraryRx(
+    suspend fun getUserLibrary(
         username: String,
         query: String,
         queryType: String?,
@@ -26,8 +38,12 @@ interface RavelryApi {
         sort: Sort?,
         page: Int,
         pageSize: Int
-    ): Single<Result<LibraryResponse>>
+    ): LibraryResponse
 
+    @Deprecated(
+        message = "Deprecating the RxJava2 API in favor of Kotlin Coroutines",
+        replaceWith = ReplaceWith(expression = "getUserLibrary(username, query, queryType, type, sort, page, pageSize)")
+    )
     fun searchLibraryRx(
         username: String,
         query: String,
@@ -38,5 +54,11 @@ interface RavelryApi {
         pageSize: Int
     ): Single<Result<LibraryResponse>>
 
+    suspend fun getPhotoSizes(photoId: Int): ShowPhotoSizesResponse
+
+    @Deprecated(
+        message = "Deprecating the RxJava2 API in favor of Kotlin Coroutines",
+        replaceWith = ReplaceWith(expression = "getPhotoSizes(photoId)")
+    )
     fun showPhotoSizesRx(photoId: String): Single<Result<ShowPhotoSizesResponse>>
 }

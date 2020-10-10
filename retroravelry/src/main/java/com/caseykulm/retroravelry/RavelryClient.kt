@@ -7,6 +7,8 @@ import com.caseykulm.retroravelry.models.request.library.Type
 import com.caseykulm.retroravelry.network.RavelryRetroApi
 import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import com.caseykulm.retroravelry.network.responses.patterns.SearchPatternsResponse
+import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
+import com.caseykulm.retroravelry.network.responses.photos.ShowPhotoSizesResponse
 import com.caseykulm.retroravelry.network.responses.user.CurrentUserResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
@@ -51,13 +53,19 @@ class RavelryClient(
         return ravelryRetroApi.getCurrentUser()
     }
 
+    override suspend fun getPatterns(query: String, page: Int, pageSize: Int): SearchPatternsResponse {
+        return ravelryRetroApi.getPatterns(query, page, pageSize, true)
+    }
+
     override fun searchPatternsRx(query: String, page: Int, pageSize: Int): Flowable<Result<SearchPatternsResponse>> {
         return ravelryRetroApi.searchPatternsRx(query, page, pageSize, true)
     }
 
+    override suspend fun getPattern(id: Int): ShowPatternResponse = ravelryRetroApi.getPattern(id)
+
     override fun showPatternRx(id: Int) = ravelryRetroApi.showPatternRx(id)
 
-    override fun searchMyLibraryRx(
+    override suspend fun getUserLibrary(
         username: String,
         query: String,
         queryType: String?,
@@ -65,8 +73,8 @@ class RavelryClient(
         sort: Sort?,
         page: Int,
         pageSize: Int
-    ): Single<Result<LibraryResponse>> {
-        return ravelryRetroApi.searchLibraryRx(username, query, queryType, type, sort, page, pageSize)
+    ): LibraryResponse {
+        return ravelryRetroApi.getUserLibrary(username, query, queryType, type, sort, page, pageSize)
     }
 
     override fun searchLibraryRx(
@@ -80,6 +88,8 @@ class RavelryClient(
     ): Single<Result<LibraryResponse>> {
         return ravelryRetroApi.searchLibraryRx(username, query, queryType, type, sort, page, pageSize)
     }
+
+    override suspend fun getPhotoSizes(photoId: Int): ShowPhotoSizesResponse = ravelryRetroApi.getPhotoDimensions(photoId)
 
     override fun showPhotoSizesRx(photoId: String) = ravelryRetroApi.showPhotoDimensionsRx(photoId)
 }

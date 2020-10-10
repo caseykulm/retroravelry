@@ -2,7 +2,7 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.caseykulm.retroravelry/retroravelry.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.caseykulm.retroravelry%22%20AND%20a:%22retroravelry%22)
 
-Kotlin wrapper for the [Ravelry API][1] using [Retrofit][2] and [RxJava2][3].
+Kotlin wrapper for the [Ravelry API][1] using [Retrofit][2] and [Kotlin Coroutines][3].
 
 ## Download 
 
@@ -32,7 +32,7 @@ dependencies {
 
 [1]: http://www.ravelry.com/groups/ravelry-api
 [2]: https://github.com/square/retrofit
-[3]: https://github.com/ReactiveX/RxJava
+[3]: https://kotlinlang.org/docs/reference/coroutines-overview.html
 
 ## Setup
 
