@@ -13,7 +13,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.named
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import java.io.File
-import java.time.Instant
+import java.util.Date
 
 class RetroRavelryPlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -154,7 +154,7 @@ private fun Project.configureBintrayPlugin(project: Project, secrets: RetroRavel
             version.apply {
                 name = Versions.retroravelry
                 description = MavenInfo.description
-                released = Instant.now().toString() // TODO Make sure this isn't running when not necessary
+                released = Date().toString()
                 vcsTag = Versions.retroravelry
 
                 gpg.apply {

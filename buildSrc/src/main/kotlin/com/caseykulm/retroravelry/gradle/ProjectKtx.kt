@@ -21,9 +21,5 @@ fun Project.getSystemVariableOrGradleProperty(name: String, gradleFileName: Stri
         gradleVar
     }
 
-    return if (prop.contains("\"")) {
-        prop
-    } else {
-        "\"$prop\""
-    }
+    return prop
 }
