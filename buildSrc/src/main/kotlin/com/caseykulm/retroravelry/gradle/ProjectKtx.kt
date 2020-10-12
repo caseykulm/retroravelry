@@ -10,14 +10,14 @@ fun Project.loadProperties(fileName: String): Properties = Properties().apply {
 
 fun Project.getSystemVariableOrGradleProperty(name: String, gradleFileName: String): String {
     val prop: String = if (System.getenv()[name] != null) {
-        print("Checking for $name in shell system variables... ")
+        // print("Checking for $name in shell system variables... ")
         val sysVar: String = System.getenv()[name] ?: throw IllegalStateException("Failed to parse system variable $name")
-        println("Found!")
+        // println("Found!")
         sysVar
     } else {
-        print("Checking for $name in $gradleFileName... ")
+        // print("Checking for $name in $gradleFileName... ")
         val gradleVar = loadProperties(gradleFileName).getProperty(name)
-        println("Found!")
+        // println("Found!")
         gradleVar
     }
 

@@ -10,7 +10,6 @@ object Deps {
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinx}"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val jdk8 = "stdlib-jdk8"
-        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
         const val test = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
         const val testCommon = "org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}"
         const val testJunit5 = "org.jetbrains.kotlin:kotlin-test-junit5:${Versions.kotlin}"

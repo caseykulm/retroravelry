@@ -33,16 +33,16 @@ interface RavelryApi {
     suspend fun getUserLibrary(
         username: String,
         query: String,
-        queryType: String?,
-        type: Type?,
-        sort: Sort?,
         page: Int,
-        pageSize: Int
+        pageSize: Int,
+        queryType: String? = null,
+        type: Type? = null,
+        sort: Sort? = null,
     ): LibraryResponse
 
     @Deprecated(
         message = "Deprecating the RxJava2 API in favor of Kotlin Coroutines",
-        replaceWith = ReplaceWith(expression = "getUserLibrary(username, query, queryType, type, sort, page, pageSize)")
+        replaceWith = ReplaceWith(expression = "getUserLibrary(username, query, page, pageSize, queryType, type, sort)")
     )
     fun searchLibraryRx(
         username: String,
