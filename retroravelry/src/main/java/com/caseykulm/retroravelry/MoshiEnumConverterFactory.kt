@@ -3,6 +3,7 @@ package com.caseykulm.retroravelry
 import com.squareup.moshi.Json
 import retrofit2.Converter
 import retrofit2.Retrofit
+import java.lang.reflect.Field
 import java.lang.reflect.Type
 
 /**
@@ -23,15 +24,23 @@ class MoshiEnumConverterFactory : Converter.Factory() {
     }
 }
 
-private fun getJsonName(type: Type, e: Enum<*>): String? {
-    var value: String? = null
-    try {
-        value = e::class.java.fields
-            .first { it.type == type && it.name == e.name }
-            .getAnnotation(Json::class.java)
-            .name
+private fun getJsonName(type: Type, e: Enum<*>): String {
+    return try {
+        val field: Field? = e::class.java.fields.first { it.type == type && it.name == e.name }
+        if (field == null) {
+            println("Could not find a field with type: $type and name ${e.name}, so defaulting to ${e.name}")
+            e.name
+        } else {
+            val jsonAnnotation: Json? = field.getAnnotation(Json::class.java)
+            if (jsonAnnotation == null) {
+                println("Could not find a com.squareup.moshi.Json annotation, so defaulting to ${e.name}")
+                e.name
+            } else {
+                jsonAnnotation.name
+            }
+        }
     } catch (throwable: Throwable) {
         throwable.printStackTrace()
+        e.name
     }
-    return value
 }
