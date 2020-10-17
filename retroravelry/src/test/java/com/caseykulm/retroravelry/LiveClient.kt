@@ -2,6 +2,7 @@ package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.auth.AuthenticationHeaderProvider
 import com.caseykulm.retroravelry.auth.OAuth2Authenticator
+import com.squareup.moshi.JsonClass
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -48,7 +49,8 @@ class LiveClient {
         parseJsonResourceFile("oauth_secrets.json", OauthTestSecrets::class.java)
     }
 
-    private data class OauthTestSecrets(
+    @JsonClass(generateAdapter = true)
+    data class OauthTestSecrets(
         val consumerKey: String,
         val consumerSecret: String,
         val callbackUrl: String,

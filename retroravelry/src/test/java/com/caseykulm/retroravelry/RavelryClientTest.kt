@@ -1,15 +1,16 @@
 package com.caseykulm.retroravelry
 
 import com.caseykulm.retroravelry.models.request.library.Type
-import com.caseykulm.retroravelry.network.responses.patterns.ShowPatternResponse
+import com.caseykulm.retroravelry.models.response.pattern.FullPattern
+import com.caseykulm.retroravelry.network.responses.library.LibraryResponse
 import io.reactivex.Flowable
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.extension.RegisterExtension
-import retrofit2.adapter.rxjava2.Result
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 class RavelryClientTest {
     // Used to aid TDD, but make sure to ship not using this
@@ -74,37 +75,51 @@ class RavelryClientTest {
         assertEquals(20, patternsResp?.paginator?.pageSize)
     }
 
-    private fun failKt(message: String = "Test failed"): Nothing {
-        throw IllegalStateException(message)
+    @Test
+    fun `Given success, When getPatterns, Then should have valid data`() = runBlocking {
+        getPatternsSetup()
+
+        val fullPatterns: List<FullPattern> = testClient.getPatterns(query = "taco", page = 1, pageSize = 3)
+            .patterns!!
+            .map { testClient.getPattern(it.id).pattern!! }
+
+        getPatternsAssertions(fullPatterns)
     }
 
     @Test
     fun searchPatternsRxWithShowForEach() {
         // arrange
+        getPatternsSetup()
+
+        // act
+        val fullPatternsResps: Flowable<FullPattern> = testClient.searchPatternsRx("taco", 1, 3)
+            .flatMap { Flowable.fromIterable(it.response()?.body()?.patterns ?: emptyList()) }
+            .map { testClient.showPatternRx(it.id).blockingGet().response()?.body()?.pattern ?: fail() }
+
+        val fullPatterns: List<FullPattern> = fullPatternsResps.test().values()
+
+        getPatternsAssertions(fullPatterns)
+    }
+
+    private fun getPatternsSetup() {
         mockClientTestExtension.enqueueHttp200("search_patterns_tacos.json")
         mockClientTestExtension.enqueueHttp200("show_pattern_taco_1.json")
         mockClientTestExtension.enqueueHttp200("show_pattern_taco_2.json")
         mockClientTestExtension.enqueueHttp200("show_pattern_taco_3.json")
+    }
 
-        // act
-        val fullPatternsResps: Flowable<Result<ShowPatternResponse>> = testClient.searchPatternsRx("taco", 1, 3)
-            .flatMap { Flowable.fromIterable(it.response()?.body()?.patterns ?: emptyList()) }
-            .map { testClient.showPatternRx(it.id).blockingGet() }
+    private fun getPatternsAssertions(fullPatterns: List<FullPattern>) {
+        val tacoPattern1 = fullPatterns[0]
+        val tacoPattern2 = fullPatterns[1]
+        val tacoPattern3 = fullPatterns[2]
 
-        val fullPatterns: List<Result<ShowPatternResponse>> = fullPatternsResps.test().values()
-
-        val tacoPattern1 = fullPatterns[0].response()?.body()?.pattern ?: failKt()
-        val tacoPattern2 = fullPatterns[1].response()?.body()?.pattern ?: failKt()
-        val tacoPattern3 = fullPatterns[2].response()?.body()?.pattern ?: failKt()
-
-        // assert
-        assertEquals(3, fullPatterns.size)
-        assertEquals(1, tacoPattern1.craft?.id)
-        assertEquals("Crochet", tacoPattern1.craft?.name)
-        assertEquals(1, tacoPattern1.craft?.id)
-        assertEquals("Knitting", tacoPattern2.craft?.name)
-        assertEquals(1, tacoPattern1.craft?.id)
-        assertEquals("Crochet", tacoPattern3.craft?.name)
+        assertEquals(expected = 3, actual = fullPatterns.size)
+        assertEquals(expected = 1, actual = tacoPattern1.craft?.id)
+        assertEquals(expected = "Crochet", actual = tacoPattern1.craft?.name)
+        assertEquals(expected = 1, actual = tacoPattern1.craft?.id)
+        assertEquals(expected = "Knitting", actual = tacoPattern2.craft?.name)
+        assertEquals(expected = 1, actual = tacoPattern1.craft?.id)
+        assertEquals(expected = "Crochet", actual = tacoPattern3.craft?.name)
     }
 
     @Test
@@ -135,20 +150,46 @@ class RavelryClientTest {
     }
 
     @Test
-    fun libraryRxShouldSubscribe() {
+    fun `Given success, When searchLibraryRx, Then should have valid data`() {
         // arrange
-        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
+        getUserLibrarySetup()
 
         // act
         val libraryResponse = testClient.searchLibraryRx("ducksaucer", "duck", null, Type.Pattern, null, 1, 20)
-        val testSubToSearchLibrary = libraryResponse.test()
 
         // assert
-        testSubToSearchLibrary.assertNoErrors()
+        getUserLibraryAssertions(libraryResponse.blockingGet().response()!!.body()!!)
     }
 
     @Test
-    fun `Given success, When getCurrentUser, Then should valid data`() = runBlocking {
+    fun `Given success, When getUserLibrary, Then should have valid data`() = runBlocking {
+        getUserLibrarySetup()
+
+        val libraryResponse: LibraryResponse = testClient.getUserLibrary(
+            username = "ducksaucer",
+            query = "duck",
+            queryType = null,
+            page = 1,
+            pageSize = 20,
+            type = Type.Pattern,
+            sort = null
+        )
+
+        getUserLibraryAssertions(libraryResponse)
+    }
+
+    private fun getUserLibrarySetup() {
+        mockClientTestExtension.enqueueHttp200("my_library_patterns.json")
+    }
+
+    private fun getUserLibraryAssertions(libraryResponse: LibraryResponse) {
+        assertNotNull(libraryResponse)
+        assertEquals(expected = 5, libraryResponse.paginator?.results)
+        assertEquals(expected = 5, libraryResponse.volumes?.size)
+    }
+
+    @Test
+    fun `Given success, When getCurrentUser, Then should have valid data`() = runBlocking {
         mockClientTestExtension.enqueueHttp200("current_user_resp.json")
 
         val currentUser = testClient.getCurrentUser().smallUser
