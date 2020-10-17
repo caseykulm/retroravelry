@@ -9,6 +9,6 @@ object Versions {
     const val moshi = "1.11.0"
     const val okhttp3 = "3.14.4"
     const val retrofit = "2.9.0"
-    const val retroravelry = "0.10.0"
+    const val retroravelry = "0.11.0"
     const val rxjava2 = "2.2.15"
 }
